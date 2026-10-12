@@ -1,0 +1,23 @@
+import {act,cleanup,renderHook} from '@testing-library/react';
+import {afterEach,expect,it,vi} from 'vitest';
+const mock=vi.hoisted(()=>({send:vi.fn()}));
+vi.mock('../../api',()=>({ToggleFavoriteRoom:(roomId:number,favourite:boolean)=>mock.send(favourite?new DeleteFavouriteRoomMessageComposer(roomId):new AddFavouriteRoomMessageComposer(roomId))}));
+vi.mock('@octane/renderer',()=>({AddFavouriteRoomMessageComposer:class{constructor(public roomId:number){}},DeleteFavouriteRoomMessageComposer:class{constructor(public roomId:number){}}}));
+import {useNavigatorFavourite} from './useNavigatorFavourite';
+import {useNavigatorFavouritesStore} from './navigatorFavouritesStore';
+import {AddFavouriteRoomMessageComposer,DeleteFavouriteRoomMessageComposer} from '@octane/renderer';
+afterEach(()=>{cleanup();useNavigatorFavouritesStore.getState().setAll([]);vi.clearAllMocks();});
+it('sends add/remove packets and displays only server-confirmed favourites, including after reopening',()=>{
+ const view=renderHook(()=>useNavigatorFavourite(128));
+ act(()=>view.result.current.toggle());
+ expect(mock.send.mock.calls[0][0]).toBeInstanceOf(AddFavouriteRoomMessageComposer);
+ expect(view.result.current.isFavourite).toBe(false);
+ act(()=>useNavigatorFavouritesStore.getState().apply(128,true));
+ expect(view.result.current.isFavourite).toBe(true);
+ act(()=>view.result.current.toggle());
+ expect(mock.send.mock.calls[1][0]).toBeInstanceOf(DeleteFavouriteRoomMessageComposer);
+ act(()=>useNavigatorFavouritesStore.getState().apply(128,false));
+ expect(view.result.current.isFavourite).toBe(false);
+ view.unmount();useNavigatorFavouritesStore.getState().setAll([128]);
+ expect(renderHook(()=>useNavigatorFavourite(128)).result.current.isFavourite).toBe(true);
+});

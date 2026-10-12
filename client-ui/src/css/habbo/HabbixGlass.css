@@ -1,0 +1,177 @@
+/* Habbix window skin, authored locally from visual observations.
+   No foreign stylesheets, scripts or artwork are imported. */
+:root {
+ --habbix-window: rgba(43,43,43,.98);
+ --habbix-panel: rgba(34,34,34,.95);
+ --habbix-accent: #b8423b;
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) {
+ --octane-card-surface: var(--habbix-window);
+ --octane-card-text: #ededed;
+ --octane-card-muted: #bebebe;
+ --octane-card-focus: #d97770;
+ background: var(--habbix-window);
+ color: #ededed;
+ border: 1px solid #ffffff16 !important;
+ border-radius: 7px;
+ box-shadow: 0 8px 24px #0005;
+ filter: none;
+ font-family: UbuntuRegular, Ubuntu, sans-serif;
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) > .octane-card-header-shell {
+ background: transparent;
+ border: 0;
+ box-shadow: none;
+ min-height: 40px;
+ max-height: 40px;
+ padding: 0 42px 0 14px;
+ align-items: flex-start;
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) > .octane-card-header-shell::before {display:none}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-title {
+ margin: 0 auto 0 0;
+ font-family: UbuntuRegular,Ubuntu,sans-serif;
+ font-size: 15px;
+ line-height: 36px;
+ min-height: 36px;
+ text-shadow: none;
+ border-bottom: 2px solid var(--habbix-accent);
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-close-button {
+ border: 1px solid #ffffff12;
+ width: 24px;
+ height: 24px;
+ right: 12px;
+ box-shadow: none;
+ background: #914d52;
+ border-radius: 5px;
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-tabs-shell {
+ background: transparent;
+ padding: 4px 10px 8px;
+ border: 0;
+ gap: 5px;
+ min-height: 40px;
+ max-height: 40px;
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-tab-item {
+ background: #2a2a2a99;
+ border: 1px solid #ffffff12;
+ border-radius: 5px;
+ color: #dedede;
+ min-height: 30px;
+ margin-bottom: 0;
+ transition: background-color .15s ease, border-color .15s ease;
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-tab-item-active {
+ background: var(--habbix-accent);
+ border-color: #d9777088;
+ color: #fff;
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-content-shell {
+ background: transparent;
+ color: #ededed;
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) input:not([type=checkbox]):not([type=range]):not([type=color]),
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) textarea,
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) select {
+ background: #232323;
+ color: #ededed;
+ border: 1px solid #ffffff16;
+ border-radius: 5px;
+}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) input::placeholder,
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) textarea::placeholder {color:#a8a8a8}
+@media(prefers-reduced-motion:reduce) {
+ .octane-card-tab-item {transition:none!important}
+}
+
+/* Desktop rail uses the existing native toolbar actions and owned icon set. */
+@media(min-width:768px) {
+ .habbix-left-rail {
+  top:0!important;bottom:46px!important;left:0!important;
+  width:72px!important;max-width:72px!important;height:auto!important;
+  flex-direction:column;align-items:center!important;
+  background:#3e3e3e;border-right:1px solid #ffffff12;
+  overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;
+ }
+ .habbix-left-rail .tb-open-shell {
+  height:auto!important;width:100%;flex-direction:column;
+  align-items:center;overflow:visible;flex-shrink:0;
+ }
+ .habbix-left-rail .tb-slot {
+  min-height:58px;width:64px;display:flex;align-items:center;justify-content:center;
+ }
+ .habbix-left-rail .tb-collapse {min-height:28px;flex-shrink:0;transform:rotate(90deg)}
+ .habbix-left-rail .tb-divider {display:none}
+ .octane-toolbar-hobba {background:#3e3e3e;border-top:1px solid #ffffff12}
+}
+.octane-infostand__score {color:#d97770}
+.octane-infostand__profile-link {border-radius:4px}
+.octane-infostand__avatar-well {border-radius:7px}
+
+.habbix-profile-ui {display:flex;align-items:center;justify-content:center;min-width:28px;height:28px;background:#292929;border:1px solid #ffffff22;border-radius:50%;color:#fff;font:700 10px UbuntuRegular, sans-serif;box-shadow:0 2px 5px #0005}.habbix-profile-ui:hover{background:#b8423b}.habbix-profile-ui:focus-visible{outline:2px solid #d97770;outline-offset:2px}
+/* Habbo.cc layout measurements, with Habbix neutral surfaces and turquoise actions. */
+:root{--habbix-window:#2b2b2b;--habbix-panel:#222222;--habbix-accent:#b8423b}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3){background:#2b2b2b;border-radius:4px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;box-shadow:0 6px 20px #0004}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3)>.octane-card-header-shell{margin:10px 10px 0;padding:0 32px 0 12px;min-height:32px;max-height:32px;background:#222222;border-radius:3px;align-items:center}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-title{border:0;font:600 13px/30px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;text-align:center;width:100%;min-height:30px}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-close-button{background:#834146;width:24px;height:24px;right:3px;top:4px;border-radius:3px;transition:background .25s}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-close-button:hover{background:#a64b54}
+.octane-card-shell:not(.octane-wired):not(.octane-card-frame-3) .octane-card-tab-item-active{background:#b8423b33;border:1px solid #b8423b66;color:#f3c9c5}
+.octane-card-shell button,.habbix-wallet-bar>span,.tb-slot{transition:background-color .25s cubic-bezier(.4,0,.2,1),box-shadow .25s cubic-bezier(.4,0,.2,1)}
+.octane-card-shell button:hover{box-shadow:0 2px 6px #0002}
+.habbix-legacy-wallet{display:none!important}
+.octane-purse-container{position:fixed!important;left:50%!important;right:auto!important;top:10px!important;width:auto!important;transform:translateX(-50%);z-index:75}
+.habbix-wallet-bar{display:flex;gap:10px;align-items:center;background:#2b2b2b;padding:8px 12px;border-radius:4px;box-shadow:0 3px 8px #0004}
+.habbix-wallet-bar>span{background:#222222;border:1px solid #ffffff0a;border-radius:3px;min-width:62px;padding:4px 8px}
+.habbix-wallet-bar>span:hover{background:#2b2b2b}
+.habbix-wallet-bar .currency-info{display:flex!important;flex-direction:row-reverse;gap:8px;height:auto!important;width:auto!important;padding:0!important;background:none!important;position:static!important;color:#eee;font-size:12px;font-weight:600}
+.habbix-wallet-bar>button{background:#222222;border-radius:3px;width:28px;height:28px;color:#eee}
+.habbix-wallet-bar>button>img{max-width:24px;max-height:24px;image-rendering:pixelated}
+.habbix-bottom-rail{background:transparent!important;border:0!important}
+.habbix-bottom-rail .tb-slot{border-radius:6px}.habbix-bottom-rail .tb-slot:hover{background:#ffffff0a}
+.octane-toolbar-hobba{background:#2b2b2b!important;border-top:1px solid #ffffff0a}
+.habbix-custom-profile{background-color:var(--habbix-profile-color,#2b2b2b);color:inherit;border-radius:4px}
+.habbix-custom-profile .octane-infostand__identity,.habbix-custom-profile .octane-infostand__identity .text-white,.habbix-custom-profile .octane-extended-profile__username{color:inherit!important}
+.habbix-profile-edit{background:#222222;border:1px solid #ffffff14;color:#eee;border-radius:4px;padding:5px 9px;margin-bottom:8px}
+.habbix-profile-editor section{background:#2b2b2b;border:1px solid #ffffff12;border-radius:4px;padding:16px;margin:12px 0}
+.habbix-profile-editor h3{font-size:14px;font-weight:600;margin-bottom:12px}
+.habbix-profile-editor label{display:flex;flex-direction:column;gap:8px;margin:12px 0;font-size:12px;color:#ddd}
+.habbix-profile-editor input:not([type=range]):not([type=color]),.habbix-profile-editor select{padding:8px 10px;background:#222222;color:#ddd;border:1px solid #ffffff12;border-radius:4px;width:100%}
+.habbix-profile-editor input[type=range]{accent-color:#b8423b;width:100%}
+.habbix-profile-editor input[type=color]{width:42px;height:32px}
+.habbix-editor-tabs,.habbix-profile-tabs>nav{display:flex;gap:5px;margin:8px 0}
+.habbix-editor-tabs button,.habbix-profile-tabs>nav button{background:#222222;border:1px solid #ffffff12;border-radius:3px;color:#ddd;padding:7px 10px;flex:1;font-size:12px}
+.habbix-editor-tabs button[aria-pressed=true],.habbix-profile-tabs>nav button[aria-pressed=true]{background:#b8423b33;border-color:#b8423b66;color:#f3c9c5}
+.habbix-editor-preview{padding:14px;border:1px solid #ffffff12;border-radius:4px}
+.habbix-save{background:#b8423b!important;border:1px solid #d97770;color:#fff;border-radius:4px;padding:8px 20px}
+.habbix-profile-tabs{height:100%;display:flex;flex-direction:column}
+.habbix-profile-tab-body{overflow:auto;flex:1;min-height:0;background:#2b2b2b;padding:10px}
+.habbix-profile-room{display:flex;width:100%;justify-content:space-between;background:#222222;border:1px solid #ffffff10;color:#ddd;padding:12px;margin-bottom:8px;border-radius:4px}
+.habbix-profile-photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}.habbix-profile-photos img{width:100%;object-fit:contain}.habbix-profile-photos time{display:block;font-size:10px;color:#aaa}
+.habbix-profile-tab-body textarea{width:100%;height:65px;background:#222222;color:#eee;border:1px solid #ffffff15;padding:8px}
+.habbix-wall-post{background:#222222;padding:10px;margin:10px 0;border:1px solid #ffffff10;border-radius:4px}.habbix-wall-post time{display:block;font-size:10px;color:#aaa}.habbix-wall-post p{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0}
+.habbix-profile-tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px}.habbix-profile-tags span{padding:3px 7px;background:#0002;border:1px solid #ffffff14;border-radius:3px;color:var(--habbix-tag-color,#eee);font-size:11px}
+[data-badge-layout=list] :is(.octane-infostand__badges,.octane-extended-profile__badges){display:flex;flex-direction:column}
+[data-badge-layout=carousel] :is(.octane-infostand__badges,.octane-extended-profile__badges){display:flex;flex-wrap:nowrap;overflow-x:auto}
+[data-badge-style=glow] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot){filter:drop-shadow(0 0 3px #b8423b)}
+[data-badge-style=neon] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot){filter:drop-shadow(0 0 5px #f3c9c5)}
+[data-badge-style=retro] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot){filter:sepia(.4)}
+[data-badge-hover] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot){transition:transform .25s,filter .25s}
+[data-badge-hover=zoom] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot):hover{transform:scale(1.08)}
+[data-badge-hover=rotate] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot):hover{transform:rotate(8deg)}
+[data-badge-hover=glow] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot):hover{filter:drop-shadow(0 0 4px #b8423b)}
+[data-badge-hover=bounce] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot):hover{animation:habbix-bounce .7s infinite}
+[data-badge-hover=pulse] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot):hover{animation:habbix-pulse 1s infinite}
+[data-badge-hover=shimmer] :is(.octane-infostand__badge-slot,.octane-extended-profile__badge-slot):hover{filter:brightness(1.3)}
+[data-frame-effect=glow]{box-shadow:0 0 9px #b8423b66}
+[data-frame-effect=pulse]{animation:habbix-pulse 2s infinite}
+[data-frame-effect=bounce]{animation:habbix-bounce 2s infinite}
+[data-frame-effect=shake]{animation:habbix-shake 2s infinite}
+[data-frame-effect=rainbow]{animation:habbix-rainbow 4s infinite}
+[data-frame-effect=sparkle]{animation:habbix-sparkle 2s infinite}
+[data-button-style=neo] button{border-radius:12px!important}[data-button-style=retro] button{border-radius:0!important;border-width:2px!important}[data-button-style=cyber] button{border:1px solid #b8423b!important}[data-button-style=space] button{background:#202637!important}
+@keyframes habbix-pulse{50%{box-shadow:0 0 12px #b8423b77}}@keyframes habbix-bounce{50%{transform:translateY(-2px)}}@keyframes habbix-shake{25%{transform:rotate(.3deg)}75%{transform:rotate(-.3deg)}}@keyframes habbix-rainbow{0%,100%{box-shadow:0 0 9px #b8423b}50%{box-shadow:0 0 9px #786baa}}@keyframes habbix-sparkle{50%{box-shadow:0 0 6px #ffffff66}}
+@media(prefers-reduced-motion:reduce){.habbix-custom-profile,.habbix-custom-profile *{animation:none!important;transition:none!important}}
+@media(max-width:600px){.habbix-wallet-bar{gap:4px;padding:5px}.habbix-wallet-bar>span{min-width:40px;padding:4px}.habbix-profile-editor{width:95vw!important}}

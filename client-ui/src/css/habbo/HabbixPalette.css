@@ -1,0 +1,33 @@
+/* One neutral surface palette for windows, desktop docks and touch controls. */
+:root{
+ --habbix-surface:#2b2b2b;--habbix-surface-raised:#353535;--habbix-surface-inset:#222222;
+ --habbix-window-bg:var(--habbix-surface);--habbix-window:var(--habbix-surface);--habbix-panel:var(--habbix-surface-inset);
+ --habbix-accent:#b8423b;--habbix-accent-hover:#a63832;--habbix-accent-text:#f3c9c5;--habbix-accent-soft:#3b292a;
+ --habbix-popup:rgba(43,43,43,.90);
+ --habbix-receipt-read:#59b7fa;
+}
+:is(.habbix-wallet-bar,.habbix-live-lotto,.habbix-voice-channels,.ht-panel,.hep-panel,.habbix-pricelist){background:var(--habbix-surface)!important}
+.octane-app-root :is(.habbix-main-dock>.tb-open-shell,.habbix-social-dock,.habbix-social-dock>.tb-open-shell,.habbix-personal-dock,.habbix-event-dock,.habbix-mobile-nav,.habbix-mobile-tools){background:var(--habbix-surface)!important;border-color:#ffffff15!important}
+.octane-app-root :is(.habbix-main-dock,.habbix-personal-dock,.habbix-event-dock,.habbix-social-dock) .tb-slot:not(.habbix-controller-slot),.octane-app-root .habbix-social-dock .friend-bar :is(.friend-bar-tab,.friend-bar-search),.habbix-wallet-bar>span{background:var(--habbix-surface-inset)!important}
+.octane-app-root :is(.habbix-main-dock,.habbix-personal-dock,.habbix-event-dock,.habbix-social-dock) .tb-slot:not(.habbix-controller-slot):hover,.octane-app-root .habbix-social-dock .friend-bar :is(.friend-bar-tab,.friend-bar-search):hover,.habbix-wallet-bar>span:hover{background:var(--habbix-surface-raised)!important}
+.habbix-voice-channels .hvc-header{background:var(--habbix-surface)!important}
+.draggable-window .octane-card-shell,.draggable-window .habbo-friend-list,.octane-navigator-air{background:var(--habbix-surface)!important}
+.habbix-message-notice{background:var(--habbix-popup)!important;border-left-color:var(--habbix-accent)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.habbix-message-notice-open small{color:var(--habbix-accent-text)!important}
+.octane-rightside-notifications :is(.octane-notification-bubble,.notification-bubble){background:var(--habbix-popup)!important;border-left-color:var(--habbix-accent)!important;backdrop-filter:blur(8px)}
+.habbix-unread-badge{background:var(--habbix-accent)!important;border-color:#d97770!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-input>button,.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-recording .hmx-media-send{background:var(--habbix-accent)!important;color:white!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-input>button:hover:not(:disabled){background:var(--habbix-accent-hover)!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-input{background:var(--habbix-surface-raised)!important}
+.habbix-chat-panel .hmx-messenger .own .messenger-message-bubble:not(.hmx-media-message){background:var(--habbix-accent-soft)!important;border-color:#b8423b40!important}
+
+/* Read receipts communicate delivery state independently of the red UI accent. */
+.hmx-messenger .hmx-read,.messenger-message-status.read{color:var(--habbix-receipt-read)!important}
+
+/* Selection fills only the chosen tab or friend slot, including its hover state. */
+.octane-app-root .habbix-social-dock .friend-bar :is(.friend-bar-tab,.friend-bar-search):is([aria-pressed="true"],[aria-expanded="true"]),
+.octane-app-root .habbix-social-dock .friend-bar .is-selected>:is(.friend-bar-tab,.friend-bar-search),
+.octane-app-root .habbo-friend-list .habbix-friends-tabs>button[aria-pressed="true"],
+.draggable-window .octane-card-shell .octane-card-tab-item-active,
+.octane-navigator-air .octane-navigator-air__tab.is-active,
+:is(.draggable-window,.octane-app-root) :is(.ht-tabs,.hep-tabs,.hco-tabs)>button:is([aria-selected="true"],[aria-pressed="true"]){background:var(--habbix-accent)!important;border-color:#d9777080!important;color:#fff!important;box-shadow:none!important}

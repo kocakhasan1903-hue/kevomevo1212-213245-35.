@@ -1,0 +1,34 @@
+/* Profile surfaces are independent of the AIR infostand/overview skins. */
+.hpx-overview,.hpx-infostand{font:600 12px/1.4 HabbixKarla,Arial,sans-serif;color:#eee;box-sizing:border-box}
+.hpx-overview *,.hpx-infostand *{box-sizing:border-box}
+.hpx-overview{display:flex;flex-direction:column;gap:9px;width:100%;min-width:0}
+.hpx-overview button,.hpx-infostand button{font:inherit;color:inherit;cursor:pointer}
+.hpx-identity{height:100px;flex:0 0 100px;padding:12px;display:flex;align-items:center;gap:12px;border-radius:3px;background:#151515}
+.hpx-avatar{width:64px;height:64px;flex:0 0 64px;position:relative;overflow:hidden;border-radius:5px;background-color:var(--habbix-avatar-color,#222222);padding:0}
+.hpx-avatar .avatar-image{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;width:64px!important;height:110px!important;background-repeat:no-repeat!important;image-rendering:pixelated}
+.hpx-presence{position:absolute;bottom:4px;right:4px;width:8px;height:8px;border-radius:50%;background:#777;box-shadow:0 0 3px #000;z-index:2}.hpx-presence.online{background:#32bc30;box-shadow:0 0 4px #32bc3066}
+.hpx-identity-copy{min-width:0;color:#eee}.hpx-name{display:inline!important;color:#eee;font-weight:700!important;font-size:13px!important}.hpx-identity-copy p{margin:4px 0 0!important;color:#ddd!important;font-size:11px!important;overflow-wrap:anywhere}
+.hpx-badges{display:flex;align-items:center;gap:3px;padding:6px 8px;min-height:48px;flex:0 0 48px;border-radius:3px;background:#262626;overflow:hidden}.hpx-badges>div{max-width:40px;max-height:40px;flex-shrink:0}
+.hpx-details{padding:8px 11px;background:#262626;border-radius:3px}.hpx-stat{display:flex;align-items:center;gap:6px;min-height:28px;width:100%;padding:4px 0;border:0;border-bottom:1px solid #ffffff0c;background:none;font-size:10px!important;text-align:left}.hpx-stat img{max-width:15px;max-height:15px;image-rendering:pixelated}.hpx-stat span{color:#ddd!important}.hpx-action{padding:4px 8px;background:#222222;border:1px solid #ffffff15;border-radius:3px}
+.hpx-relationships{padding-top:5px}.hpx-relationships .octane-extended-profile__relationship{display:grid;grid-template-columns:18px minmax(0,1fr);min-height:23px;height:23px;padding:0 5px!important;margin:3px 0!important;gap:5px;background:#222222;border:1px solid #ffffff0a;border-radius:3px}.hpx-relationships .octane-extended-profile__relationship-icon{height:21px}.hpx-relationships .octane-extended-profile__relationship-box{border:0;background:none;min-height:21px;padding:0;justify-content:flex-end}.hpx-relationships .octane-extended-profile__relationship-name{font:600 9px HabbixKarla,Arial,sans-serif;color:#ddd!important;max-width:100%;text-align:right}.hpx-relationships .octane-extended-profile__relationship-subcopy{display:none}
+.hpx-empty{margin:auto!important;text-align:center;color:#999!important;font:600 12px HabbixKarla,Arial,sans-serif!important}
+.octane-extended-profile-window__content>div:first-of-type{overflow:auto!important;scrollbar-width:thin;scrollbar-color:#555 transparent}
+.octane-extended-profile-window .octane-extended-profile-groups{height:100%;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.hpx-infostand{position:relative;display:flex;flex-direction:column;width:250px;max-width:90vw;max-height:75vh;min-height:0;overflow-y:auto;overflow-x:hidden;pointer-events:auto;border-radius:8px;border:1px solid #ffffff18;box-shadow:0 4px 14px #0006;scrollbar-width:thin;scrollbar-color:#555 transparent}
+.hpx-banner{height:90px;flex:0 0 90px;position:relative;background-size:cover;background-position:center;background-color:#2b2b2b}
+.hpx-controls{position:absolute;right:8px;top:8px;display:flex;gap:6px;z-index:3}.hpx-controls button{width:27px;height:27px;border:0;border-radius:50%;padding:0;background:#222222dd;color:#fff;font:700 11px/27px HabbixKarla,Arial,sans-serif;box-shadow:0 2px 4px #0004}
+.hpx-avatar-round{position:absolute;left:16px;bottom:-6px;width:70px;height:70px;border-radius:50%;z-index:2;box-shadow:0 2px 5px #0005}
+.hpx-namebar{height:25px;flex:0 0 25px;padding:0 10px;text-align:right;border:0;background:var(--habbix-profile-color,#b8423b);font-weight:700!important}
+.hpx-infostand section{padding:9px 12px;margin:0;border-bottom:1px solid #ffffff0c}.hpx-infostand h3{margin:0 0 6px;font:700 10px HabbixKarla,Arial,sans-serif;color:inherit}
+.hpx-motto>button,.hpx-motto>input{display:block;width:100%;border:0;border-radius:3px;background:#0002;color:inherit;padding:4px 6px;text-align:left;font:600 italic 11px HabbixKarla,Arial,sans-serif;min-height:24px;overflow-wrap:anywhere}.hpx-motto>button:disabled{opacity:1;cursor:default}
+.hpx-infostand-badges>div{display:flex;align-items:center;flex-wrap:wrap;gap:3px;min-height:40px}.hpx-infostand-badges .octane-infostand__badge-slot{margin:0!important;width:40px!important;height:40px!important;padding:0!important;background:none!important}
+.hpx-score button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:4px 7px;min-height:26px;background:#0002;border:1px solid #ffffff20;border-radius:3px;font-size:10px!important}.hpx-score strong{color:#d97770;font-size:12px}
+.hpx-tags>div{display:flex;gap:5px;flex-wrap:wrap}.hpx-tags span{background:#ffffff18;border:1px solid #ffffff12;border-radius:3px;padding:1px 5px;font-size:10px}.hpx-group{background:none;border:0;padding:6px 12px;text-align:left}
+.hpx-infostand button,.hpx-overview button{transition:background-color .2s ease,box-shadow .2s ease}.hpx-infostand button:hover,.hpx-action:hover{background-color:#ffffff14}.hpx-infostand button:focus-visible,.hpx-overview button:focus-visible{outline:1px solid #d97770;outline-offset:2px}
+
+/* Portaled badge hints sit beside the badge, outside clipped profile panels. */
+.hpx-badge-tooltip{position:fixed;z-index:2147483000;box-sizing:border-box;width:max-content;max-width:min(210px,calc(100vw - 8px));padding:7px 10px;border:0;border-radius:3px;background:#080808;color:#eee;box-shadow:0 2px 7px #0008;pointer-events:none;white-space:normal;overflow-wrap:anywhere;text-align:left;font:500 11px/1.25 HabbixKarla,Arial,sans-serif}
+.hpx-badge-tooltip.is-measuring{visibility:hidden}
+.hpx-badge-tooltip::before,.hpx-badge-tooltip::after{display:none}
+.hpx-badge-tooltip__name{margin:0 0 2px;font-size:11px;font-weight:700;color:#fff}
+.hpx-badge-tooltip__description{font-size:11px;font-weight:500;color:#ddd;white-space:pre-line}

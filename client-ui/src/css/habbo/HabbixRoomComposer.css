@@ -1,0 +1,44 @@
+/* Compact room chat, using the same surfaces as the wallet and lower docks. */
+#toolbar-chat-input-container .habbix-room-composer{
+ display:flex!important;align-items:center;position:relative;gap:8px!important;width:100%!important;min-width:0!important;
+ height:46px!important;min-height:46px!important;padding:5px 7px!important;box-sizing:border-box;
+ background:var(--habbix-surface)!important;border:1px solid #ffffff1c!important;border-radius:11px!important;
+ box-shadow:0 3px 12px #0003!important;transition:border-color .18s,box-shadow .18s!important;
+}
+#toolbar-chat-input-container .habbix-room-composer::before,#toolbar-chat-input-container .habbix-room-composer::after{display:none!important}
+#toolbar-chat-input-container .habbix-room-composer .habbix-chat-options-trigger::before{display:none!important}
+#toolbar-chat-input-container .habbix-room-composer:focus-within{border-color:#b8423b99!important;box-shadow:0 0 0 2px #b8423b12,0 3px 12px #0003!important}
+#toolbar-chat-input-container .habbix-room-field{flex:1;min-width:0;overflow:hidden}
+#toolbar-chat-input-container .habbix-room-field[hidden]{display:none}
+#toolbar-chat-input-container .habbix-room-field .swf-chat-input-sizer{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;padding:0!important;margin:0!important;background:transparent!important}
+#toolbar-chat-input-container .habbix-room-field .swf-chat-input-sizer::after{display:none!important}
+#toolbar-chat-input-container .habbix-room-composer .swf-chat-input-sizer .swf-chat-input-field{display:block;width:100%!important;min-width:0!important;height:32px!important;padding:0 9px!important;margin:0!important;border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;color:#f2f2f2!important;font:400 13px/32px HabbixKarla,Arial,sans-serif!important}
+#toolbar-chat-input-container .habbix-room-composer .swf-chat-input-field::placeholder{color:#aaa!important;font-weight:400!important}
+#toolbar-chat-input-container .habbix-room-composer .swf-chat-input-field.is-shout{font-weight:700!important}
+#toolbar-chat-input-container .habbix-composer-actions{display:flex;align-items:center;gap:3px;flex:none}
+#toolbar-chat-input-container .habbix-room-composer :is(.habbix-room-send,.hcv-microphone,.habbix-chat-options-trigger){display:flex;align-items:center;justify-content:center;flex:none;width:32px!important;min-width:32px!important;height:32px!important;margin:0!important;padding:0!important;border:0;border-radius:7px;background:transparent!important;background-image:none!important;color:#bcbcbc;opacity:1;cursor:pointer;box-shadow:none;transition:background-color .15s,color .15s,transform .15s}
+#toolbar-chat-input-container .habbix-room-composer :is(.habbix-room-send,.hcv-microphone,.habbix-chat-options-trigger) svg{width:16px;height:16px;stroke-width:1.8}
+#toolbar-chat-input-container .habbix-room-composer :is(.hcv-microphone,.habbix-chat-options-trigger):hover{background:var(--habbix-surface-raised)!important;color:#fff}
+#toolbar-chat-input-container .habbix-room-composer .habbix-room-send{color:#fff;background:var(--habbix-accent)!important;animation:habbix-room-send-enter .16s ease-out}
+#toolbar-chat-input-container .habbix-room-composer .habbix-room-send:hover{background:var(--habbix-accent-hover)!important;transform:translateY(-1px)}
+#toolbar-chat-input-container .habbix-room-composer button:focus-visible{outline:2px solid var(--habbix-accent-text);outline-offset:1px}
+#toolbar-chat-input-container .habbix-room-composer .hcv-microphone:disabled{opacity:.4;cursor:default}
+#toolbar-chat-input-container .habbix-room-composer .hcv-microphone.is-recording{color:#fff;background:var(--habbix-accent)!important}
+#toolbar-chat-input-container .habbix-room-composer .hcv-microphone.is-recording svg{width:12px;height:12px;fill:currentColor}
+#toolbar-chat-input-container .habbix-room-recording-label{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:8px;font:12px HabbixKarla,Arial,sans-serif;color:#ccc}
+#toolbar-chat-input-container .habbix-room-composer .hcv-compact{gap:8px}
+#toolbar-chat-input-container .habbix-room-composer .hcv-compact :is(.hcv-send,.hcv-discard){width:30px;height:30px;border-radius:7px}
+@keyframes habbix-room-send-enter{from{opacity:0;scale:.85}to{opacity:1;scale:1}}
+@media(max-width:760px),(pointer:coarse) and (max-width:1024px){
+ #toolbar-chat-input-container .habbix-room-composer{gap:5px!important;height:44px!important;min-height:44px!important;padding:4px!important}
+ #toolbar-chat-input-container .habbix-room-composer .swf-chat-input-sizer .swf-chat-input-field{font-size:16px!important}
+}
+@media(prefers-reduced-motion:reduce){#toolbar-chat-input-container .habbix-room-composer,#toolbar-chat-input-container .habbix-room-composer button{animation:none!important;transition:none!important}}
+.hco-menu .hco-shout-toggle{display:flex;align-items:center;gap:10px;width:100%;margin-top:6px;padding:10px 8px;border:0;border-top:1px solid #ffffff14;background:transparent;color:#ddd;text-align:left;cursor:pointer;border-radius:0 0 5px 5px;font:12px HabbixKarla,Arial,sans-serif}
+.hco-menu .hco-shout-toggle>svg{width:17px;height:17px;flex:none}
+.hco-menu .hco-shout-toggle>span{flex:1}.hco-menu .hco-shout-toggle small{display:block;margin-top:3px;color:#999;font-size:9px}
+.hco-menu .hco-shout-toggle>i{width:26px;height:15px;border-radius:8px;padding:2px;background:#555;flex:none}
+.hco-menu .hco-shout-toggle>i::after{content:"";display:block;width:11px;height:11px;background:#ddd;border-radius:50%;transition:translate .15s}
+.hco-menu .hco-shout-toggle[aria-checked="true"]>i{background:var(--habbix-accent)}.hco-menu .hco-shout-toggle[aria-checked="true"]>i::after{translate:11px 0;background:#fff}
+.hco-menu .hco-shout-toggle:hover{background:#ffffff07}.hco-menu .hco-shout-toggle:focus-visible{outline:2px solid var(--habbix-accent-text);outline-offset:-2px}
+@media(prefers-reduced-motion:reduce){.hco-menu .hco-shout-toggle>i::after{transition:none}}

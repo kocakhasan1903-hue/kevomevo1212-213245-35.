@@ -1,0 +1,1003 @@
+.octane-alert {
+    min-height: 150px;
+    max-height: 350px;
+
+    .notification-frank {
+        background-image: url('@/assets/images/notifications/frank.gif');
+        width:47px;
+        height: 85px;
+    }
+
+    .notification-text {
+        min-width: 250px;
+    }
+
+    &.octane-alert-default,
+    &.octane-alert-motd {
+        width: 350px;
+        .notification-text {
+            min-width: auto;
+        }
+    }
+
+	&.octane-alert-credits {
+        width: 370px;
+        .notification-text {
+            min-width: auto;
+        }
+    }
+
+    &.octane-alert-moderation,
+    &.octane-alert-alert {
+        width: 250px;
+        .notification-text {
+            min-width: 225px;
+        }
+    }
+
+    &.octane-alert-system {
+        width: auto;
+        min-width: 260px;
+        max-width: 90vw;
+        min-height: auto;
+        max-height: none;
+        height: auto;
+
+        .notification-text {
+            min-width: auto;
+        }
+    }
+
+    /* Hotel event announcement. The box is a fixed 530x300 so that a one word
+       message and a long one produce exactly the same window: the message is the
+       only part that scrolls, and the button never moves. */
+    &.octane-alert-hotel-event {
+        width: 530px;
+        height: 300px;
+        min-height: 300px;
+        max-height: 300px;
+
+        animation: hotelEventPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+        .octane-card-content-shell {
+            display: flex;
+            flex-direction: column;
+            /* The shell carries h-full from the card defaults, which inside a card
+               of a fixed height would add up to the header's height on top of it.
+               It takes what is left under the header instead. */
+            flex: 1 1 auto;
+            height: auto;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .hotel-event-body {
+            display: flex;
+            /* Stretch, not flex-start: the text column has to take the body's
+               height, otherwise a long message grows past the fixed box instead
+               of scrolling inside it. The image centres itself instead. */
+            align-items: stretch;
+            gap: 14px;
+            padding: 6px 4px 0 4px;
+            flex: 1;
+            /* Without this the flex child refuses to shrink and the message pushes
+               the button out of the fixed height. */
+            min-height: 0;
+        }
+
+        .hotel-event-figure {
+            position: relative;
+            width: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+        }
+
+        .hotel-event-promo {
+            width: 170px;
+            image-rendering: var(--octane-pixel-art, pixelated);
+        }
+
+        .hotel-event-avatar {
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+            animation: hotelEventBob 2.6s ease-in-out infinite;
+        }
+
+        .hotel-event-avatar-shadow {
+            width: 54px;
+            height: 9px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.32) 0%, transparent 70%);
+        }
+
+        .hotel-event-details {
+            flex: 1;
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            color: #2b4a63;
+            font-size: 12px;
+        }
+
+        .hotel-event-headline {
+            font-size: 32px;
+            line-height: 1.05;
+            font-weight: 700;
+            /* No text-shadow here: the glyphs are filled by the gradient through
+               background-clip, so a shadow shows straight through them. */
+            background: linear-gradient(180deg, #ffa412 0%, #ef6c00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            /* A long headline stays on one line rather than eating the box. */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .hotel-event-intro,
+        .hotel-event-room {
+            /* Two lines at most: a 60 character room name cannot reflow the card. */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .hotel-event-host {
+            font-weight: 700;
+            color: #1b3a52;
+        }
+
+        .hotel-event-room-label {
+            font-style: italic;
+        }
+
+        .hotel-event-room-name {
+            font-weight: 700;
+            word-break: break-word;
+        }
+
+        .hotel-event-message {
+            flex: 1;
+            min-height: 0;
+            padding: 7px 9px;
+            border: 1px solid #b6c6d8;
+            border-radius: 6px;
+            background: linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+            box-shadow: inset 0 1px 0 #fff;
+            word-break: break-word;
+            /* The only part that scrolls, so the window keeps its size. */
+            overflow-y: auto;
+        }
+
+        .hotel-event-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            /* The message box is optional. Without it nothing else fills the column,
+               so the footer takes the slack and stays at the bottom of the card. */
+            margin-top: auto;
+            font-style: italic;
+            color: #4a6880;
+            font-size: 11px;
+        }
+
+        .hotel-event-actions {
+            display: flex;
+            justify-content: center;
+            padding: 12px 0 6px 0;
+        }
+
+        .hotel-event-visit {
+            padding: 7px 26px;
+            font-size: 14px;
+            font-weight: 700;
+            background: linear-gradient(180deg, #d97770 0%, #1f7fb5 100%);
+            border-color: #16597f;
+        }
+
+        .hotel-event-countdown {
+            height: 4px;
+            margin: 0 -10px -10px -10px;
+            background: rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        .hotel-event-countdown-bar {
+            height: 100%;
+            width: 100%;
+            transform-origin: left center;
+            background: linear-gradient(90deg, #ffd166 0%, #f28c28 100%);
+            animation-name: hotelEventCountdown;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    &.octane-alert-octane-info {
+        width: 460px;
+        min-height: 320px;
+        max-height: 640px;
+        animation: octaneInfoPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+        .octane-info-hero {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: -8px -8px 6px -8px;
+            padding: 14px 10px 18px 10px;
+            background:
+                radial-gradient(ellipse at top, rgba(255, 220, 120, 0.45) 0%, transparent 60%),
+                linear-gradient(135deg, #4a72b8 0%, #2d4a82 45%, #5a3d9a 100%);
+            border-bottom: 2px solid #1c2a4a;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .octane-info-hero-stars {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(2px 2px at 18% 28%, rgba(255, 255, 255, 0.85), transparent 60%),
+                radial-gradient(1.5px 1.5px at 72% 18%, rgba(255, 255, 255, 0.7), transparent 60%),
+                radial-gradient(1px 1px at 42% 65%, rgba(255, 255, 255, 0.9), transparent 60%),
+                radial-gradient(1.5px 1.5px at 88% 78%, rgba(255, 255, 255, 0.75), transparent 60%),
+                radial-gradient(1px 1px at 12% 80%, rgba(255, 255, 255, 0.8), transparent 60%);
+            opacity: 0.85;
+            animation: octaneInfoTwinkle 2.6s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        .octane-info-version-badge {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 auto;
+            padding: 6px 18px;
+            background: linear-gradient(180deg, #ffeb8a 0%, #ffd54d 50%, #f0a318 100%);
+            border: 2px solid #8a5b00;
+            border-radius: 18px;
+            color: #4a2b00;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.4px;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.7),
+                inset 0 -2px 0 rgba(140, 75, 0, 0.4),
+                0 3px 0 rgba(0, 0, 0, 0.25),
+                0 0 18px rgba(255, 200, 80, 0.55);
+            width: max-content;
+            max-width: 90%;
+        }
+
+        .octane-info-version-spark {
+            color: #fff;
+            text-shadow: 0 0 6px rgba(255, 255, 200, 0.9);
+            animation: octaneInfoSpin 3s linear infinite;
+            display: inline-block;
+        }
+
+        .octane-info-version-spark:last-child {
+            animation-direction: reverse;
+        }
+
+        .octane-info-content {
+            padding: 0 2px;
+        }
+
+        .octane-info-avatar-wrap {
+            position: relative;
+            width: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 2px;
+        }
+
+        .octane-info-avatar {
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+            animation: octaneInfoBob 2.6s ease-in-out infinite;
+        }
+
+        .octane-info-avatar-shadow {
+            width: 60px;
+            height: 8px;
+            margin-top: -4px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+            animation: octaneInfoShadowPulse 2.6s ease-in-out infinite;
+        }
+
+        .octane-info-body {
+            font-family: Volter, Volter_Goldfish, "Ubuntu", sans-serif;
+            color: #2f2f2f;
+            padding-right: 4px;
+        }
+
+        .octane-info-section {
+            background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
+            border: 1px solid #6f8db5;
+            border-radius: 6px;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 2px 0 rgba(0, 0, 0, 0.12);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .octane-info-section:hover {
+            transform: translateY(-1px);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 3px 0 rgba(0, 0, 0, 0.18),
+                0 0 0 1px rgba(110, 160, 230, 0.4);
+        }
+
+        .octane-info-section-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #ffffff;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.45);
+            padding: 4px 10px;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        .octane-info-section-icon {
+            font-size: 14px;
+            filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.4));
+        }
+
+        .octane-info-section-hotel .octane-info-section-header {
+            background: linear-gradient(180deg, #4fb3ff 0%, #1f6dc7 100%);
+        }
+
+        .octane-info-section-server .octane-info-section-header {
+            background: linear-gradient(180deg, #6bd66b 0%, #2a8a2a 100%);
+        }
+
+        .octane-info-section-credits .octane-info-section-header {
+            background: linear-gradient(180deg, #ff9a44 0%, #d9591a 100%);
+        }
+
+        .octane-info-section-generic .octane-info-section-header {
+            background: linear-gradient(180deg, #8da0bc 0%, #4b5d7a 100%);
+        }
+
+        .octane-info-section-body {
+            padding: 6px 10px;
+            color: #1f2f4a;
+        }
+
+        .octane-info-stats-list,
+        .octane-info-credits-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .octane-info-stats-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .octane-info-stats-list li:nth-child(odd) {
+            background: rgba(110, 160, 230, 0.08);
+        }
+
+        .octane-info-stat-label {
+            font-size: 12px;
+            color: #4a5a76;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .octane-info-stat-value {
+            font-size: 12px;
+            color: #1a3a6b;
+            font-weight: 700;
+            background: linear-gradient(180deg, #ffffff 0%, #e6efff 100%);
+            border: 1px solid #b8cce6;
+            border-radius: 4px;
+            padding: 1px 8px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .octane-info-credits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            padding: 3px 4px;
+            font-size: 12px;
+            color: #4a2b00;
+            border-radius: 3px;
+            transition: background 0.15s ease;
+            word-break: break-word;
+        }
+
+        .octane-info-credits-list li:hover {
+            background: rgba(255, 180, 80, 0.15);
+        }
+
+        .octane-info-credit-star {
+            color: #f0a318;
+            text-shadow: 0 0 4px rgba(240, 163, 24, 0.6);
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        .octane-info-footer {
+            margin-top: 6px;
+            padding-top: 8px;
+            border-top: 1px dashed #b0b0b0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .octane-info-actions {
+            margin-top: 2px;
+        }
+
+        .octane-info-report-btn {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #ff6b6b 0%, #c92a2a 100%) !important;
+            border-color: #8a1a1a !important;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.25),
+                0 0 12px rgba(255, 100, 100, 0.4);
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
+
+        .octane-info-report-btn:hover {
+            transform: translateY(-1px);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.25),
+                0 2px 0 rgba(0, 0, 0, 0.2),
+                0 0 18px rgba(255, 100, 100, 0.7);
+        }
+
+        .octane-info-report-btn:active {
+            transform: translateY(1px);
+        }
+
+        .octane-info-report-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: skewX(-20deg);
+            animation: octaneInfoShine 2.8s ease-in-out infinite;
+        }
+    }
+
+    &.octane-alert-furnidata {
+        width: 400px;
+        max-height: 520px;
+
+        .notification-text {
+            min-width: auto;
+        }
+
+        .furnidata-item-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: -8px -8px 8px -8px;
+            padding: 10px;
+            background: linear-gradient(135deg, #4a72b8 0%, #2d4a82 60%, #1c2a4a 100%);
+            border-bottom: 2px solid #1c2a4a;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        .furnidata-item-icon {
+            font-size: 16px;
+            filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.4));
+        }
+
+        .furnidata-item-name {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.45);
+            word-break: break-word;
+        }
+
+        .furnidata-body {
+            font-family: Volter, Volter_Goldfish, "Ubuntu", sans-serif;
+            padding-right: 4px;
+        }
+
+        .furnidata-section {
+            background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
+            border: 1px solid #6f8db5;
+            border-radius: 6px;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 2px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .furnidata-section-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #ffffff;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.45);
+            padding: 4px 8px;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        .furnidata-section-base .furnidata-section-header {
+            background: linear-gradient(180deg, #4fb3ff 0%, #1f6dc7 100%);
+        }
+
+        .furnidata-section-room .furnidata-section-header {
+            background: linear-gradient(180deg, #6bd66b 0%, #2a8a2a 100%);
+        }
+
+        .furnidata-section-icon {
+            font-size: 13px;
+            filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.4));
+        }
+
+        .furnidata-section-title {
+            flex-grow: 1;
+        }
+
+        .furnidata-copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #1f2f4a;
+            text-shadow: none;
+            background: linear-gradient(180deg, #ffffff 0%, #d9e6f7 100%);
+            border: 1px solid rgba(0, 0, 0, 0.35);
+            border-radius: 4px;
+            padding: 1px 8px;
+            cursor: pointer;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                0 1px 0 rgba(0, 0, 0, 0.25);
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
+
+        .furnidata-copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                0 2px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .furnidata-copy-btn:active {
+            transform: translateY(1px);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+        }
+
+        .furnidata-rows {
+            list-style: none;
+            margin: 0;
+            padding: 6px 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .furnidata-rows li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .furnidata-rows li:nth-child(odd) {
+            background: rgba(110, 160, 230, 0.08);
+        }
+
+        .furnidata-row-label {
+            font-size: 12px;
+            color: #4a5a76;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .furnidata-row-value {
+            font-size: 12px;
+            color: #1a3a6b;
+            font-weight: 700;
+            background: linear-gradient(180deg, #ffffff 0%, #e6efff 100%);
+            border: 1px solid #b8cce6;
+            border-radius: 4px;
+            padding: 1px 8px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            text-align: right;
+            word-break: break-word;
+        }
+    }
+}
+
+@keyframes octaneInfoPop {
+    0% { transform: scale(0.85); opacity: 0; }
+    60% { transform: scale(1.04); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes octaneInfoTwinkle {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+@keyframes octaneInfoSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes octaneInfoBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+@keyframes octaneInfoShadowPulse {
+    0%, 100% { transform: scaleX(1); opacity: 0.55; }
+    50% { transform: scaleX(0.8); opacity: 0.35; }
+}
+
+@keyframes octaneInfoShine {
+    0% { left: -120%; }
+    60%, 100% { left: 140%; }
+}
+
+.octane-notification-bubble {
+    pointer-events: all;
+    padding: 6px 5px;
+    pointer-events: all;
+    padding: 10px;
+    background-color: #262626;
+    box-shadow: inset 0 5px rgba(38,38,57,.6), inset 0 -4px rgba(25,25,37,.6);
+    font-size: .7875rem;
+    border-radius: 0.5rem;
+    font-size: 0.7875rem;
+	color: white;
+
+    .bubble-image-container {
+        width: 50px;
+        height: 50px;
+    }
+}
+.topnotifications{
+    margin-top: -6px;
+}
+
+.octane-rightside-notifications {
+    width: 100%;
+    align-items: flex-end;
+    gap: 4px;
+    pointer-events: none;
+}
+
+.octane-rightside-notifications > * {
+    margin-left: auto;
+    pointer-events: auto;
+}
+
+.octane-rightside-notifications{width:min(280px,calc(100vw - 40px));align-self:flex-end;flex:none;gap:8px;margin-right:16px;padding:0;box-sizing:border-box}
+.octane-rightside-notifications .notification-bubble-slot{width:100%;max-width:100%;min-width:0;margin-left:0;flex-shrink:0;align-self:stretch}
+.notification-club-gift{display:flex;align-items:center;gap:10px;cursor:pointer}
+.notification-club-gift>div{min-width:0}
+.notification-club-gift:focus-visible{outline:2px solid #d97770;outline-offset:-3px}
+.octane-swf-notification-bubble {
+    position:relative;box-sizing:border-box;width:100%;max-width:100%;min-height:56px;margin-left:auto;
+    padding:12px 14px!important;border:1px solid #494949;border-left:3px solid #d97770;
+    border-radius:7px!important;background:#2b2b2bf5!important;box-shadow:0 4px 14px #0004!important;
+    color:#e4e4e4;font:12px/1.45 HabbixKarla,Arial,sans-serif!important;text-shadow:none;
+}
+.octane-swf-notification-bubble :is(div,span,p,strong,button){font-family:HabbixKarla,Arial,sans-serif!important;text-shadow:none;overflow-wrap:anywhere}
+.octane-swf-notification-bubble :is(.w-\[50px\],.h-\[50px\],.bubble-image-container){width:34px!important;height:34px!important;flex-shrink:0}
+.octane-swf-notification-bubble img{width:auto;height:auto;max-width:34px;max-height:34px;object-fit:contain;image-rendering:pixelated}
+.octane-swf-notification-bubble .btn,
+.octane-swf-notification-bubble button {
+    min-height:28px;padding:5px 10px;border:1px solid #b8423b!important;border-image:none!important;
+    border-radius:4px!important;background:#b8423b!important;box-shadow:none!important;color:#fff!important;
+    font-size:11px;font-weight:500;line-height:1.25;text-shadow:none;transition:background .15s,border-color .15s;
+}
+.octane-swf-notification-bubble :is(.btn,button):hover{background:#b8423b!important;border-color:#d97770!important}
+.octane-swf-notification-bubble .notification-secondary{background:transparent!important;border-color:#713c38!important;color:#bfbfbf!important;white-space:nowrap}
+.octane-swf-notification-bubble button:focus-visible{outline:2px solid #d97770;outline-offset:2px}
+.octane-swf-notification-bubble .mention-toast-dismiss{min-height:22px;width:22px;padding:3px;background:transparent!important;border-color:transparent!important}
+.notification-club-title{display:block;color:#fff;font-size:12px;font-weight:700;margin-bottom:3px}
+.notification-club-copy{color:#c0c0c0;font-size:12px;line-height:1.45}
+.notification-club-actions{display:flex;gap:7px;margin-top:12px}
+.notification-club-actions button:first-child{flex:1}
+
+.alertView_octane-coolui-logo {
+	width: 150px;
+	height: 73px;
+	position: relative;
+	background-image: url("@/assets/images/notifications/octane_v3.png");
+	background-repeat: no-repeat;
+}
+
+.octane-friendonline-notification {
+    position: relative;
+    min-width: 86px;
+    height: 58px;
+    margin-left: auto;
+    cursor: pointer;
+    pointer-events: auto;
+    image-rendering: var(--octane-pixel-art, pixelated);
+    user-select: none;
+}
+
+.octane-friendonline-notification__content {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    display: flex;
+    height: 34px;
+    overflow: hidden;
+}
+
+.octane-friendonline-notification__left,
+.octane-friendonline-notification__right {
+    width: auto;
+    height: auto;
+    flex: 0 0 auto;
+}
+
+.octane-friendonline-notification__middle {
+    height: 34px;
+    flex: 1 1 auto;
+    background-repeat: repeat-x;
+}
+
+.octane-friendonline-notification__message {
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 19px;
+    max-width: calc(100% - 16px);
+    color: #cfcfcf;
+    font-size: 12px;
+    line-height: 19px;
+    white-space: nowrap;
+    text-shadow: 0 1px 0 #000;
+}
+
+.octane-friendonline-notification__message span {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.octane-friendonline-notification__message img {
+    width: auto;
+    height: auto;
+    margin-top: 1px;
+    flex: 0 0 auto;
+}
+
+.octane-friendonline-notification__avatar {
+    position: absolute;
+    left: 33px;
+    top: 3px;
+    width: 53px;
+    height: 53px;
+}
+
+.octane-friendonline-notification__circle-inner,
+.octane-friendonline-notification__circle {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    pointer-events: none;
+}
+
+.octane-friendonline-notification__head {
+    position: absolute;
+    left: 2px;
+    top: 1px;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.octane-friendonline-notification__head .avatar-image {
+    width: 50px !important;
+    height: 50px !important;
+    background-size: 76px auto !important;
+    background-position: center 34% !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Command list produced by ":commands". NotificationDefaultAlertView tags the alert
+   with .octane-alert-command-list and renders one button per command; without these
+   rules the buttons stay inline and several commands share a visual line. */
+.octane-alert.octane-alert-command-list {
+    width: 430px;
+    max-height: 470px;
+}
+
+.notification-command-template {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-height: 370px;
+    padding-right: 4px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* The listing names itself on its first line; that line becomes the card header,
+   so the body carries no heading of its own. */
+.notification-command-search {
+    --notification-command-search-bg: #fff;
+    --notification-command-search-border: #a8a8a8;
+    --notification-command-search-border-focus: #4a72b8;
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    margin-bottom: 4px;
+    padding: 3px 7px;
+    background: var(--notification-command-search-bg);
+    border: 1px solid var(--notification-command-search-border);
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+    color: inherit;
+    font-family: inherit;
+    font-size: 11px;
+}
+
+.notification-command-search:focus {
+    border-color: var(--notification-command-search-border-focus);
+    outline: none;
+}
+
+.notification-command-copy {
+    padding: 0 8px 4px 8px;
+    color: #4b5563;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.notification-command-row {
+    display: grid;
+    grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+    align-items: baseline;
+    gap: 2px 10px;
+    width: 100%;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.notification-command-row:nth-child(even) {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.notification-command-row:hover {
+    background: #fff6d6;
+    border-color: #d8a72a;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.notification-command-row:active {
+    background: #ffe9a8;
+}
+
+.notification-command-name {
+    min-width: 0;
+    color: #2d4a82;
+    font-weight: 700;
+    font-size: 12px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    overflow-wrap: anywhere;
+}
+
+.notification-command-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.notification-command-args {
+    color: #7a6a35;
+    font-size: 11px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    overflow-wrap: anywhere;
+}
+
+.notification-command-description {
+    color: #747474;
+    font-size: 11px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+@keyframes hotelEventPop {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes hotelEventBob {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes hotelEventCountdown {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(0);
+    }
+}
+
+.octane-swf-notification-bubble>.notification-bubble-message{flex:1;min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:left;font:inherit!important;color:#ddd}
+.octane-swf-notification-bubble>.notification-bubble-icon{flex:0 0 34px;width:34px;height:34px}

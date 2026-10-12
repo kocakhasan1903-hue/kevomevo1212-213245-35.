@@ -1,0 +1,32 @@
+.habbix-room-create{height:100%;min-height:0;display:flex;flex-direction:column;color:#eee;font:12px HabbixKarla,Arial,sans-serif;gap:8px}
+.habbix-room-create *{box-sizing:border-box}
+.habbix-room-create__scroll{flex:1;min-height:0;overflow:auto;scrollbar-width:thin;scrollbar-color:#65716f #242424;padding-right:3px}
+.habbix-room-create__models{display:flex;align-items:center;gap:8px;height:145px;min-height:145px;border:1px solid #ffffff0d;background:#292929;border-radius:4px;padding:12px}
+.habbix-room-create button{font-family:inherit;cursor:pointer;color:#eee;background:#242424;border:1px solid #414141;border-radius:4px;transition:background-color .16s,border-color .16s}
+.habbix-room-create button:hover:not(:disabled){background:#363636;border-color:#666}
+.habbix-room-create button:focus-visible{outline:2px solid #aaa;outline-offset:2px}
+.habbix-room-create button:disabled{opacity:.3;cursor:default}
+.habbix-room-create__arrow{flex:0 0 32px;width:32px;height:34px;font-size:28px;line-height:28px;color:#dedede!important}
+.habbix-room-create__model-window{flex:1;min-width:0;overflow:hidden;height:118px}
+.habbix-room-create__model-track{display:flex;align-items:center;gap:10px;height:100%;padding:6px 4px;transition:transform .25s ease}
+.habbix-room-create .habbix-room-create__model{position:relative;flex:0 0 94px;height:82px;padding:5px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:6px;transition:height .2s ease,border-color .2s,background-color .2s;opacity:.7}
+.habbix-room-create .habbix-room-create__model.is-selected{flex-basis:124px;height:106px;border:2px solid #8b8b8b;box-shadow:0 0 0 3px #ffffff0a;opacity:1;background:#303030}
+.habbix-room-create__model-image{width:100%;height:60px;object-fit:contain;image-rendering:pixelated;transition:height .2s}
+.habbix-room-create__model.is-selected .habbix-room-create__model-image{height:76px}
+.habbix-room-create__model span{font-size:9px;font-weight:700;white-space:nowrap}
+.habbix-room-create__club{position:absolute;right:4px;top:4px;width:19px;height:10px;image-rendering:pixelated}
+.habbix-room-create__fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px;padding:12px;background:#292929;border:1px solid #ffffff0b;border-radius:4px}
+.habbix-room-create label{display:flex;flex-direction:column;gap:12px;min-width:0;font-weight:700}
+.habbix-room-create .is-wide{grid-column:1/-1}
+.habbix-room-create :is(input,select,textarea){width:100%;min-width:0;border:1px solid #ffffff1a;border-radius:4px;padding:8px 10px;background:#262626;color:#eee;box-shadow:none;font:12px HabbixKarla,Arial,sans-serif;outline:none}
+.habbix-room-create :is(input,select){height:33px}.habbix-room-create textarea{height:74px;min-height:74px;resize:vertical}
+.habbix-room-create :is(input,select,textarea):focus{border-color:#999}
+.habbix-room-create :is(input,textarea)::placeholder{color:#888}
+.habbix-room-create__custom{display:flex;align-items:center;flex-wrap:wrap;gap:8px;border-top:1px solid #ffffff12;padding-top:12px}
+.habbix-room-create__custom>div{flex:1 1 100%;display:grid;gap:4px}.habbix-room-create__custom small{color:#929a9a;font-size:10px}
+.habbix-room-create__custom button{padding:7px 10px;font-size:11px}
+.habbix-room-create footer{flex-shrink:0;border-top:1px solid #ffffff12;padding-top:8px}.habbix-room-create footer button{height:34px;width:100%;background:#b8423b;border-color:#c9534a;font-size:12px;font-weight:700}
+.habbix-room-create footer button:hover:not(:disabled){background:#c24d45;border-color:#d5635b}
+.habbix-room-create footer button:disabled{opacity:1;background:#333;border-color:#444;color:#858585}
+.habbix-room-create [role=alert]{margin:0;color:#efaaaa}
+@media(prefers-reduced-motion:reduce){.habbix-room-create *{transition:none!important}}

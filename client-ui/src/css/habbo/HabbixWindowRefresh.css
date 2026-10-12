@@ -1,0 +1,196 @@
+/* One restrained tint shared by window titles and transient notices. */
+:root{--habbix-title-tint:linear-gradient(90deg,#b8423b42 0%,#b8423b1a 45%,#b8423b00 88%)}
+.octane-app-root .habbix-voice-channels .hvc-header{
+ background:var(--habbix-title-tint),var(--habbix-surface)!important;
+}
+.habbix-message-notice,
+.octane-rightside-notifications :is(.octane-notification-bubble,.notification-bubble){
+ background:var(--habbix-title-tint),var(--habbix-popup)!important;
+ border-color:#ffffff24!important;border-left:1px solid #ffffff24!important;
+}
+/* The extra card class also covers the profile's frame-3 rules. */
+.draggable-window .octane-card-shell.octane-card>.octane-card-header-shell,
+.draggable-window .habbo-friend-list .hfl-titlebar,
+.octane-navigator-air .octane-navigator-air__caption,
+.habbix-help-window>.octane-card-header-shell,
+.ht-window>.ht-window-header,.hep-window>.hep-window-header,.preview-private-title,
+.octane-app-root .habbix-live-lotto>header,
+.octane-app-root .hep-live-stack .hep-auction-widget>header{
+ box-sizing:border-box;background:var(--habbix-title-tint),#252525!important;
+ border:0!important;border-bottom:1px solid #ffffff12!important;border-image:none!important;
+ border-radius:7px!important;box-shadow:none!important;color:#f3f3f3!important;
+}
+.draggable-window .octane-card-shell.octane-card>.octane-card-header-shell::before,
+.draggable-window .habbo-friend-list .hfl-titlebar::before,
+.octane-navigator-air .octane-navigator-air__caption::before,
+.habbix-help-window>.octane-card-header-shell::before,
+.ht-window>.ht-window-header::before,
+.hep-window>.hep-window-header::before,
+.preview-private-title::before,
+.octane-app-root .habbix-live-lotto>header::before,
+.octane-app-root .hep-live-stack .hep-auction-widget>header::before,
+.draggable-window .octane-card-shell.octane-card>.octane-card-header-shell::after,
+.draggable-window .habbo-friend-list .hfl-titlebar::after,
+.octane-navigator-air .octane-navigator-air__caption::after,
+.habbix-help-window>.octane-card-header-shell::after,
+.ht-window>.ht-window-header::after,
+.hep-window>.hep-window-header::after,
+.preview-private-title::after,
+.octane-app-root .habbix-live-lotto>header::after,
+.octane-app-root .hep-live-stack .hep-auction-widget>header::after{content:none!important;display:none!important}
+.draggable-window .octane-card-shell.octane-card .octane-card-title,
+.draggable-window .habbo-friend-list .hfl-title,
+.octane-navigator-air .octane-navigator-air__title{
+ text-align:left!important;padding-left:14px!important;letter-spacing:.15px;text-shadow:none!important;
+}
+.draggable-window .octane-card-shell.octane-card>.octane-card-header-shell .octane-card-close-button,
+.draggable-window .habbo-friend-list .hfl-close,
+.octane-navigator-air .octane-navigator-air__close,
+.ht-window>.ht-window-header .habbix-animated-close,
+.hep-window>.hep-window-header .habbix-animated-close{
+ background:#ffffff0c!important;background-image:none!important;border:1px solid #ffffff12!important;
+ border-radius:6px!important;box-shadow:none!important;color:#eee!important;
+}
+.draggable-window .octane-card-shell.octane-card>.octane-card-header-shell .octane-card-close-button:hover,
+.draggable-window .habbo-friend-list .hfl-close:hover,
+.octane-navigator-air .octane-navigator-air__close:hover{
+ background:#ffffff20!important;
+}
+/* Three independent lower docks keep their original anchors and visible gaps. */
+.habbix-continuous-rail{display:none!important}
+@media(min-width:761px) and (pointer:fine) and (hover:hover){
+ .octane-app-root .habbix-personal-dock.tb-open-shell,
+ .octane-app-root .habbix-event-dock.tb-open-shell,
+ .octane-app-root .habbix-social-dock.tb-nav-clip{
+  background:var(--habbix-surface)!important;background-image:none!important;border:1px solid #ffffff24!important;
+  border-image:none!important;border-radius:10px!important;box-shadow:0 4px 14px #0005!important;backdrop-filter:none!important;
+ }
+ .octane-app-root .habbix-social-dock>.tb-open-shell.tb-open-shell-right{
+  background:transparent!important;border:0!important;border-radius:9px!important;box-shadow:none!important;
+ }
+}
+/* Remove conflicting fixed-width AIR search framing. */
+.octane-navigator-air .octane-navigator-air__search{display:flex;align-items:center;width:100%!important;max-width:none!important;min-width:0;flex:0 0 auto!important;height:auto!important;min-height:36px!important;padding:0!important;margin:0 0 8px!important;gap:8px!important}
+.octane-navigator-air .octane-navigator-air__filter{flex:0 0 112px!important;width:112px!important;height:36px!important;min-height:36px!important}
+.octane-navigator-air .octane-navigator-air__filter-button{width:100%!important;height:36px!important;border:1px solid #ffffff20!important;border-image:none!important;border-radius:7px!important;background:#353535!important;color:#eee!important;font:600 12px HabbixKarla,Arial!important;padding:0 26px 0 10px!important}
+.octane-navigator-air .octane-navigator-air__filter-button img{top:10px!important;opacity:.8}
+.octane-navigator-air .octane-navigator-air__filter-list{top:40px!important;min-width:150px;padding:5px!important;border:1px solid #ffffff26!important;border-image:none!important;border-radius:8px!important;background:#303030!important;box-shadow:0 8px 20px #0006}
+.octane-navigator-air .octane-navigator-air__filter-list button{height:auto!important;min-height:30px;padding:6px 8px!important;color:#eee!important;border-radius:4px!important;font:12px HabbixKarla,Arial}
+.octane-navigator-air .octane-navigator-air__filter-list button:is(:hover,.is-selected){background:#b8423b!important}
+.octane-navigator-air .octane-navigator-air__search-field{flex:1 1 0!important;width:auto!important;min-width:0!important;height:36px!important;border:1px solid #ffffff20!important;border-image:none!important;border-radius:7px!important;background:#222!important;overflow:hidden}
+.octane-navigator-air .octane-navigator-air__search-field:focus-within{border-color:#d1665f!important}
+.octane-navigator-air .octane-navigator-air__search-input{box-sizing:border-box;height:34px!important;min-height:0!important;width:100%!important;padding:0 36px 0 10px!important;background:transparent!important;color:#eee!important;font:12px HabbixKarla,Arial!important}
+.octane-navigator-air .octane-navigator-air__search-input::placeholder{font-style:normal!important;color:#aaa!important}
+.octane-navigator-air .octane-navigator-air__search-clear{inset:3px 3px auto auto!important;width:28px!important;height:28px!important;display:flex;align-items:center;justify-content:center}
+.octane-navigator-air .octane-navigator-air__search-refresh{flex:0 0 32px!important;width:32px!important;height:34px!important;display:flex;align-items:center;justify-content:center}
+.octane-navigator-air .octane-navigator-air__results{width:100%!important;max-width:none!important;margin:0!important;padding:0 4px 0 0!important;scrollbar-width:thin;scrollbar-color:#666 #222;overflow-y:auto!important}
+.octane-navigator-air .octane-navigator-air__body{min-width:0!important;overflow:visible}
+@media(max-width:480px){.octane-navigator-air .octane-navigator-air__filter{flex-basis:90px!important;width:90px!important}.octane-navigator-air .octane-navigator-air__search-input{font-size:16px!important}}
+
+/* Reserve actual space for the relationship avatar rather than covering its name. */
+.hpx-relationships .octane-extended-profile__relationship{height:auto!important;min-height:36px!important;align-items:center}
+.hpx-relationships .octane-extended-profile__relationship-box{gap:6px;min-height:32px!important}
+.hpx-relationships .octane-extended-profile__relationship-name{flex:1;min-width:0;width:auto!important;text-align:left!important;font-size:11px!important}
+.hpx-relationships .octane-extended-profile__relationship-head{position:relative!important;inset:auto!important;transform:none!important;flex:0 0 30px;height:32px}
+/* Saved searches belong to the same neutral surface as the room list. */
+.octane-navigator-air .octane-navigator-air__quick-links{clip-path:none!important;border-radius:8px!important;overflow:hidden!important}
+.octane-navigator-air .octane-navigator-search-saves-result{width:100%!important;min-width:0!important;background:#262626!important;color:#eee}
+.octane-navigator-air .octane-navigator-search-saves-result__header{display:flex;align-items:center;gap:6px;width:100%!important;height:auto!important;min-height:42px;flex:0 0 auto!important;padding:8px;clip-path:none!important;background:#333!important;border-bottom:1px solid #ffffff16}
+.octane-navigator-air .octane-navigator-search-saves-result__header-icon{position:static;flex:0 0 18px}
+.octane-navigator-air .octane-navigator-search-saves-result__header-label{position:static;white-space:normal;line-height:15px;font:600 11px HabbixKarla,Arial;color:#eee}
+.octane-navigator-air .octane-navigator-search-saves-result__list{width:auto!important;margin:0!important;padding:5px!important;background:transparent!important;scrollbar-width:thin;scrollbar-color:#666 #262626}
+.octane-navigator-air .saved-search-row{width:100%!important;height:auto!important;min-height:36px!important;display:flex;align-items:center;gap:2px;margin-bottom:4px}
+.octane-navigator-air .saved-search-row__open{position:static;flex:1;min-width:0;width:auto!important;height:auto!important;min-height:36px!important;padding:6px;border-radius:5px;background:#ffffff06}
+.octane-navigator-air .saved-search-row__open:hover{background:#b8423b33}
+.octane-navigator-air .saved-search-row__label{white-space:normal;overflow-wrap:anywhere;color:#eee!important;font:12px/16px HabbixKarla,Arial}
+.octane-navigator-air .saved-search-row__delete{position:static;flex:0 0 22px;width:22px;height:28px;opacity:.7;pointer-events:auto;border-radius:4px}
+.octane-navigator-air .saved-search-row__delete:hover{opacity:1;background-color:#b8423b55}
+/* The left navigation stays mounted while it slides; the edge handle stays reachable. */
+.octane-app-root .habbix-main-dock{translate:0 0!important;transition:translate .3s cubic-bezier(.22,1,.36,1)!important}
+.octane-app-root .habbix-main-dock.is-collapsed{translate:calc(-100% - 12px) 0!important}
+.octane-app-root .habbix-dock-toggle{position:absolute!important;display:flex!important;align-items:center;justify-content:center;left:100%;top:50%;transform:translateY(-50%);width:26px;height:44px;min-width:26px;padding:0;border:1px solid #ffffff24;border-left:0;border-radius:0 7px 7px 0;background:#2b2b2b;color:#eee;box-shadow:3px 2px 8px #0003;pointer-events:auto;cursor:pointer;z-index:2}
+.habbix-dock-toggle>span{width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(-135deg);transition:transform .3s ease}
+.is-collapsed>.habbix-dock-toggle>span{transform:rotate(45deg)}
+.octane-app-root .habbix-dock-toggle:hover{background:#353535;color:#ee9b95}
+.octane-app-root .habbix-dock-toggle:focus-visible{outline:2px solid #d1665f;outline-offset:2px}
+@media(max-width:760px),(pointer:coarse) and (max-width:1024px){
+ .octane-app-root .habbix-mobile-nav>.habbix-dock-toggle{width:30px;min-width:30px;height:46px}
+}
+@media(prefers-reduced-motion:reduce){.octane-app-root :is(.habbix-main-dock,.habbix-mobile-nav),.habbix-dock-toggle>span{transition:none!important}}
+/* Live cards share the neutral window surface. */
+.octane-app-root .habbix-live-lotto,.octane-app-root .hep-live-stack .hep-auction-widget{background:#2b2b2b!important;border:1px solid #ffffff20!important;border-radius:10px!important;box-shadow:0 6px 18px #0005!important;padding:10px!important;color:#eee!important}
+.octane-app-root .habbix-live-lotto>header,.octane-app-root .hep-live-stack .hep-auction-widget>header{position:relative;box-sizing:border-box;display:flex;align-items:center;gap:7px;height:auto!important;min-height:36px!important;margin:-10px -10px 10px!important;padding:8px 10px!important;border:0!important;border-bottom:1px solid #ffffff16!important;border-radius:9px 9px 0 0;background:var(--habbix-title-tint),#252525!important}
+.octane-app-root .habbix-live-lotto>header>strong,.octane-app-root .hep-live-stack .hep-auction-widget>header>strong{color:#f5f5f5!important;font:700 11px HabbixKarla,Arial;letter-spacing:.25px;flex:1;min-width:0}
+.octane-app-root .habbix-live-lotto-pot,.octane-app-root .hep-live-stack :is(.hep-auction-prize,.hep-live-question,.hep-live-rewards){background:#222!important;border:1px solid #ffffff0c!important;border-radius:7px!important}
+.octane-app-root .hep-live-stack .hep-auction-widget>header>button{border:0;border-radius:5px;background:#793f42;color:white;flex:0 0 24px;width:24px;height:24px}
+.octane-app-root .hep-live-stack .hep-live-action{border-radius:6px;background:#b8423b;border-color:#c35a53;color:#fff}
+@media(min-width:1025px){
+}
+.octane-app-root .habbix-social-dock .friend-bar :is(.friend-bar-tab,.friend-bar-search):is(:hover,:focus-visible),
+.octane-app-root .habbo-friend-list .habbix-friends-tabs>button:is(:hover,:focus-visible),
+.draggable-window .octane-card-shell .octane-card-tab-item:is(:hover,:focus-visible),
+.octane-navigator-air .octane-navigator-air__tab:is(:hover,:focus-visible),
+:is(.draggable-window,.octane-app-root) :is(.ht-tabs,.hep-tabs,.hco-tabs)>button:is(:hover,:focus-visible){background:var(--habbix-accent)!important;border-color:#d97770!important;color:#fff!important;box-shadow:none!important}
+.octane-app-root .habbix-social-dock .friend-bar :is(.friend-bar-tab,.friend-bar-search){transition:background-color .16s,color .16s,border-color .16s}
+/* Profile and camera are part of the sliding rail, with a menu pointing to the head. */
+.octane-app-root .habbix-main-dock .tb-slot-memenu{display:flex;align-items:center;justify-content:center}
+.octane-app-root .habbix-main-dock .tb-memenu-avatar{position:relative!important;inset:auto!important;transform:none!important;margin:0!important;width:42px!important;height:42px!important;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:translate .2s ease}
+.octane-app-root .habbix-main-dock .tb-memenu-avatar:is(:hover,.is-open){translate:0 -2px}
+.octane-app-root .habbix-main-dock .habbix-toolbar-avatar{position:relative!important;inset:auto!important;width:40px!important;height:40px!important;transform:none!important}
+.octane-app-root .habbix-main-dock .tb-slot-memenu>.habbix-me-popover{left:calc(100% + 18px)!important;right:auto!important;top:auto!important;bottom:0!important;max-width:calc(100vw - 130px);transform-origin:left bottom}
+.octane-app-root .habbix-main-dock .habbix-me-popover::after{content:'';position:absolute;left:-5px;bottom:18px;width:9px;height:9px;rotate:45deg;background:#2b2b2b;border-left:1px solid #ffffff26;border-bottom:1px solid #ffffff26;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.octane-app-root .habbix-main-dock .tb-memenu-avatar,.octane-app-root .habbix-social-dock .friend-bar :is(.friend-bar-tab,.friend-bar-search){transition:none!important}}
+/* Fixed rail cells and menu actions prevent old horizontal toolbar offsets leaking in. */
+.octane-app-root .habbix-main-dock>.tb-open-shell{box-sizing:border-box;align-items:center!important;gap:5px!important}
+.octane-app-root .habbix-main-dock>.tb-open-shell>.tb-slot{box-sizing:border-box;position:relative!important;flex:0 0 46px!important;height:46px!important;min-height:46px!important;width:70px!important;min-width:70px!important;margin:0!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.octane-app-root .habbix-main-dock>.tb-open-shell>.tb-divider{display:none!important}
+.octane-app-root .habbix-main-dock>.tb-open-shell>.habbix-housekeeping-slot{margin-top:0!important;border-top:0}
+.octane-app-root .habbix-main-dock .habbix-me-menu,.octane-app-root .habbix-mobile-nav .habbix-me-menu{display:flex!important;flex-wrap:wrap!important;gap:6px!important;width:max-content;max-width:100%;padding:8px!important;border:1px solid #ffffff26!important;border-radius:9px!important;background:#2b2b2beb!important;overflow:visible!important;box-shadow:0 5px 16px #0005!important}
+.octane-app-root :is(.habbix-main-dock,.habbix-mobile-nav) .habbix-me-menu>:is(.navigation-item,.habbix-me-wheel){box-sizing:border-box;position:relative!important;inset:auto!important;flex:0 0 36px!important;width:36px!important;min-width:36px!important;height:36px!important;min-height:36px!important;max-width:36px!important;max-height:36px!important;margin:0!important;background-position:center!important;background-repeat:no-repeat!important;transform:none!important;transition:translate .18s ease}
+.octane-app-root :is(.habbix-main-dock,.habbix-mobile-nav) .habbix-me-menu>:is(.navigation-item,.habbix-me-wheel):hover{translate:0 -2px}
+.octane-app-root .habbix-main-dock .tb-slot-memenu>.habbix-me-popover{width:max-content!important;max-width:calc(100vw - 140px)!important;z-index:100!important}
+.octane-app-root .habbix-main-dock:has(.habbix-me-popover){z-index:90!important}
+@media(max-height:680px){.octane-app-root .habbix-main-dock>.tb-open-shell{gap:3px!important;padding:6px!important}.octane-app-root .habbix-main-dock>.tb-open-shell>.tb-slot{flex-basis:40px!important;height:40px!important;min-height:40px!important}.octane-app-root .habbix-main-dock .tb-icon{scale:.85!important}}
+@media(prefers-reduced-motion:reduce){.octane-app-root :is(.habbix-main-dock,.habbix-mobile-nav) .habbix-me-menu>:is(.navigation-item,.habbix-me-wheel){transition:none!important}}
+
+/* Direct shortcuts share the bottom rail; the profile menu keeps only secondary actions. */
+.octane-app-root .habbix-personal-shortcut{display:flex!important;align-items:center;justify-content:center;flex-shrink:0;width:40px;height:40px;padding:0;border:0;border-radius:7px;background:transparent;cursor:pointer;transition:background-color .16s,translate .16s}
+.octane-app-root .habbix-personal-shortcut>img{width:30px;height:30px;object-fit:contain;image-rendering:pixelated}
+.octane-app-root .habbix-personal-shortcut>.octane-icon{display:block;background-repeat:no-repeat;background-position:center;pointer-events:none}
+.octane-app-root .habbix-personal-shortcut:is(:hover,:focus-visible){background:#b8423b55;translate:0 -2px}
+.octane-app-root .habbix-personal-shortcut:focus-visible{outline:2px solid #d1665f;outline-offset:1px}
+@media(prefers-reduced-motion:reduce){.octane-app-root .habbix-personal-shortcut{transition:none;translate:none}}
+
+/* Titles need an aligned container, not only text-align on their text node. */
+.draggable-window .octane-card-shell>.octane-card-header-shell>.flex{justify-content:flex-start!important;min-width:0;padding-right:38px}
+.draggable-window .octane-card-shell .octane-card-title{display:block;min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.draggable-window .habbo-friend-list .hfl-title{justify-content:flex-start!important;padding-right:38px!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* All three relationships fit at normal desktop height; small screens retain scrolling. */
+.draggable-window .octane-card-shell.octane-card-frame-3.octane-extended-profile-window{height:510px!important;max-height:calc(100dvh - 110px)!important}
+
+/* Larger, evenly spaced desktop navigation. Compact heights keep all actions reachable. */
+.octane-app-root .habbix-main-dock:not(.hidden){width:108px!important;max-width:108px!important}
+.octane-app-root .habbix-main-dock>.tb-open-shell{width:108px!important;padding:9px!important;gap:7px!important;border-radius:12px!important}
+.octane-app-root .habbix-main-dock>.tb-open-shell>.tb-slot{width:88px!important;min-width:88px!important;height:58px!important;min-height:58px!important;flex-basis:58px!important;border-radius:8px!important}
+.octane-app-root .habbix-main-dock>.tb-open-shell>.habbix-housekeeping-slot{margin:0!important;border:0!important}
+.octane-app-root .habbix-main-dock>.tb-open-shell>.habbix-housekeeping-slot::before{content:none!important;display:none!important}
+@media(max-height:760px){
+ .octane-app-root .habbix-main-dock>.tb-open-shell{padding:7px 9px!important;gap:4px!important}
+ .octane-app-root .habbix-main-dock>.tb-open-shell>.tb-slot{height:46px!important;min-height:46px!important;flex-basis:46px!important}
+}
+
+/* Quiet dividers belong to the action groups, not the window titles. */
+.octane-app-root :is(.habbix-personal-separator,.habbix-social-separator,.habbix-tools-separator){
+ display:block!important;flex:0 0 1px!important;width:1px!important;min-width:1px!important;
+ height:28px!important;align-self:center;margin:0 7px!important;background:#ffffff29!important;
+ border:0!important;border-radius:0!important;pointer-events:none;
+}
+.octane-app-root .habbix-social-dock>.tb-open-shell.tb-open-shell-right{
+ gap:5px!important;
+}
+@media(max-height:600px){
+ .octane-app-root .habbix-main-dock>.tb-open-shell{padding:6px 9px!important;gap:3px!important}
+ .octane-app-root .habbix-main-dock>.tb-open-shell>.tb-slot{height:40px!important;min-height:40px!important;flex-basis:40px!important}
+}
+

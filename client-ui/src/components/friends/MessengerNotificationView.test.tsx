@@ -1,0 +1,31 @@
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { afterEach,beforeEach,expect,it,vi } from 'vitest';
+const state=vi.hoisted(()=>({threads:[] as any[],open:vi.fn()}));
+vi.mock('../../hooks',()=>({useMessenger:()=>({messageThreads:state.threads,activeThread:null})}));
+vi.mock('../../api',()=>({MessengerThreadChat:{CHAT:0},OpenMessengerChat:state.open}));
+import {MessengerNotificationView} from './MessengerNotificationView';
+const thread=(id:number,date:number,unread=1)=>({threadId:1,participant:{id:42,name:'Alpha'},unreadCount:unread,groups:[{chats:[{id,type:0,senderId:42,date:new Date(date),message:'Hallo'}]}]});
+beforeEach(()=>{state.threads=[];state.open.mockReset();vi.useFakeTimers();vi.setSystemTime(10000);});
+afterEach(()=>{cleanup();vi.useRealTimers();});
+it('ignores history and receipts, opens the sender and expires a new notice',()=>{
+ const {rerender}=render(<MessengerNotificationView/>);
+ state.threads=[thread(1,1000)];rerender(<MessengerNotificationView/>);
+ expect(screen.queryByRole('status')).toBeNull();
+ state.threads=[thread(2,11000)];rerender(<MessengerNotificationView/>);
+ expect(screen.getByRole('status')).toHaveTextContent('Alpha');
+ fireEvent.click(screen.getByRole('button',{name:'Nachricht von Alpha öffnen'}));
+ expect(state.open).toHaveBeenCalledWith(42);
+ state.threads=[thread(2,11000)];rerender(<MessengerNotificationView/>);
+ expect(screen.queryByRole('status')).toBeNull();
+ state.threads=[thread(3,12000)];rerender(<MessengerNotificationView/>);
+ expect(screen.getByRole('status')).toBeTruthy();
+ act(()=>vi.advanceTimersByTime(6500));
+ expect(screen.queryByRole('status')).toBeNull();
+});
+it('removes the notice after the conversation becomes read',()=>{
+ const {rerender}=render(<MessengerNotificationView/>);
+ state.threads=[thread(2,11000)];rerender(<MessengerNotificationView/>);
+ expect(screen.getByRole('status')).toBeTruthy();
+ state.threads=[thread(2,11000,0)];rerender(<MessengerNotificationView/>);
+ expect(screen.queryByRole('status')).toBeNull();
+});

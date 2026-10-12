@@ -1,0 +1,49 @@
+/* Phone-specific surfaces, with sprite artwork kept separate from button backgrounds. */
+html.habbix-mobile-client .habbix-mobile-sidebar{width:68px;top:calc(env(safe-area-inset-top,0px) + 78px);background:linear-gradient(180deg,#b8423b12,transparent 110px),#2b2b2bf5}
+html.habbix-mobile-client .habbix-mobile-navigation-handle{left:68px;width:30px;height:44px;font-size:23px}
+html.habbix-mobile-client .habbix-mobile-navigation-handle.is-collapsed{left:0}
+html.habbix-mobile-client .habbix-mobile-sidebar :is(.tb-bar-scroll,.habbix-mobile-extra-group,.habbix-mobile-nav-group){width:52px!important;gap:7px!important}
+html.habbix-mobile-client .habbix-mobile-sidebar :is(.tb-bar-scroll>div,.habbix-mobile-extra-group>div,.habbix-mobile-extra-group>button){width:52px!important;min-height:54px!important}
+html.habbix-mobile-client .habbix-mobile-sidebar :is(.tb-icon,.habbix-rail-tool,.habbix-mobile-hotel,.habbix-personal-shortcut){width:52px!important;height:54px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:3px!important;box-sizing:border-box;padding:4px!important;background-color:#242424!important;border:1px solid #ffffff08!important;border-radius:10px!important}
+html.habbix-mobile-client .habbix-mobile-sidebar .habbix-mobile-icon-art{flex:none!important;position:static!important;inset:auto!important;transform:none!important;translate:none!important;background-color:transparent;scale:.85;image-rendering:pixelated}
+html.habbix-mobile-client .habbix-mobile-sidebar small{font:500 9px HabbixKarla,Arial!important;color:#c4c4c4;line-height:10px!important;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html.habbix-mobile-client .habbix-mobile-sidebar .habbix-tipp-tool img{position:static!important;inset:auto!important;max-width:28px!important;max-height:28px!important;transform:none!important;translate:none!important}
+html.habbix-mobile-client .habbix-mobile-sidebar .habbix-mobile-game-pair{flex:none!important;flex-basis:auto!important;min-height:115px!important;gap:7px!important}
+html.habbix-mobile-client .habbix-mobile-sidebar :is(.tb-icon,.habbix-rail-tool):active{background-color:#b8423b45!important;border-color:#b8423b55!important}
+html.habbix-mobile-client[data-mobile-compact="true"] .habbix-mobile-sidebar small{display:none!important}
+html.habbix-mobile-client[data-mobile-compact="true"] .habbix-mobile-sidebar :is(.tb-icon,.habbix-rail-tool,.habbix-mobile-hotel,.habbix-personal-shortcut){height:44px!important}
+html.habbix-mobile-client[data-mobile-compact="true"] .habbix-mobile-sidebar :is(.tb-bar-scroll>div,.habbix-mobile-extra-group>div,.habbix-mobile-extra-group>button){min-height:44px!important}
+html.habbix-mobile-client[data-mobile-compact="true"] .habbix-mobile-sidebar .habbix-mobile-game-pair{min-height:95px!important}
+/* Client sheets own the screen while open. No controls float across a profile. */
+html.habbix-mobile-client.habbix-mobile-window-open :is(.habbix-mobile-navigation-handle,.habbix-mobile-sidebar,.habbix-mobile-settings-button,.habbix-mobile-notices,.habbix-infostand-anchor){visibility:hidden!important;pointer-events:none!important}
+html.habbix-mobile-client .draggable-window{top:calc(env(safe-area-inset-top,0px) + var(--habbix-mobile-top,0px) + 8px)!important;bottom:calc(env(safe-area-inset-bottom,0px) + 62px)!important;height:auto!important;max-height:calc(var(--habbix-mobile-height,100dvh) - 78px)!important;border-radius:14px!important}
+html.habbix-mobile-client .draggable-window>.octane-card-shell{height:100%!important;min-height:0!important;max-height:100%!important;overflow:hidden!important;display:flex!important;flex-direction:column!important;resize:none!important}
+html.habbix-mobile-client .draggable-window .octane-card-content-shell{flex:1!important;min-height:0!important;overflow:auto!important;scrollbar-width:thin;overscroll-behavior:contain}
+html.habbix-mobile-client .draggable-window .octane-card-header-shell{flex:none!important;min-height:48px!important;max-height:none!important;position:sticky!important;top:0}
+html.habbix-mobile-client .draggable-window [class*="resize-handle"],html.habbix-mobile-client .draggable-window .card-resize-handle{display:none!important}
+html.habbix-mobile-client .hpx-identity{padding:12px!important;gap:12px!important}.habbix-mobile-presets{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:0 16px 12px}
+.habbix-mobile-presets button{padding:10px;text-align:left;min-height:65px;border:1px solid #ffffff18;border-radius:10px;background:#232323;color:#eee}.habbix-mobile-presets button:active{background:#b8423b35;border-color:#b8423b}.habbix-mobile-presets strong{display:block;font-size:12px}.habbix-mobile-presets small{display:block;margin-top:4px;font-size:10px;color:#aaa;line-height:1.4}
+.habbix-mobile-settings header{padding:12px 16px}.habbix-mobile-settings h2{font-weight:600}.habbix-mobile-settings-options label{min-height:42px}
+.habbix-mobile-settings-options input[type="checkbox"]{appearance:none!important;-webkit-appearance:none!important;position:relative!important;flex:none;width:36px!important;height:21px!important;border-radius:20px!important;border:1px solid #ffffff26!important;background:#444!important;box-shadow:none!important;background-image:none!important;transition:background .18s}
+.habbix-mobile-settings-options input[type="checkbox"]::after{content:'';position:absolute;left:3px;top:3px;width:13px;height:13px;border-radius:50%;background:#ddd;transition:transform .18s}
+.habbix-mobile-settings-options input[type="checkbox"]:checked{background:#b8423b!important;border-color:#b8423b!important}.habbix-mobile-settings-options input[type="checkbox"]:checked::after{transform:translateX(15px);background:white}
+.habbix-mobile-settings-options input[type="checkbox"]:focus-visible{outline:2px solid #e49b96;outline-offset:3px}
+.habbix-mobile-settings{max-height:calc(var(--habbix-mobile-height,100dvh) - 24px)!important}.habbix-mobile-settings header,.habbix-mobile-settings footer{position:sticky;z-index:2}.habbix-mobile-settings header{top:0;background:linear-gradient(100deg,#b8423b35,transparent 85%),#2b2b2b}.habbix-mobile-settings footer{bottom:0;background:#2b2b2b}
+.habbix-mobile-notices{position:fixed;z-index:72;top:calc(env(safe-area-inset-top,0px) + 126px);left:80px;right:8px;max-height:160px;overflow:auto;scrollbar-width:none;pointer-events:auto}
+.habbix-mobile-notice-items{display:flex;flex-direction:column;gap:5px}.habbix-mobile-notices:not(.is-expanded) .habbix-mobile-notice-items>*:not(:first-child){display:none!important}
+.habbix-mobile-notices .notification-bubble-slot{width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
+.habbix-mobile-notices .octane-notification-bubble{width:100%!important;min-height:0!important;padding:9px!important;border:1px solid #ffffff24!important;border-radius:10px!important;background:linear-gradient(100deg,#b8423b25,transparent 85%),#2b2b2be8!important;box-shadow:0 4px 14px #0004!important;font:11px/1.4 HabbixKarla,Arial!important}
+.habbix-mobile-notices .notification-bubble-icon{width:24px!important;min-width:24px!important;flex:none!important}.habbix-mobile-notices .notification-bubble-icon img{max-width:22px!important;max-height:26px!important}
+.habbix-mobile-notices :is(p,span,strong){font-size:11px!important;line-height:1.4!important}.habbix-mobile-notices .notification-bubble-message{min-width:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.habbix-mobile-notices>button{display:flex;justify-content:space-between;width:100%;padding:7px 10px;margin-top:5px;background:#2b2b2be8;border:1px solid #ffffff20;border-radius:8px;color:#bbb;font:11px HabbixKarla,Arial;min-height:32px}
+.habbix-session-card{box-sizing:border-box;width:min(400px,calc(100vw - 32px));border:1px solid #ffffff24!important;border-radius:16px!important;background:linear-gradient(120deg,#b8423b20,transparent 70%),#2b2b2bf5!important;font-family:HabbixKarla,Arial!important;padding:28px!important;box-shadow:0 16px 55px #0006!important;gap:14px!important}
+.habbix-session-card a{background:#b8423b!important;border-radius:9px!important;min-height:40px;padding:10px 20px!important;display:flex;align-items:center}.habbix-session-card a:hover{background:#ce5750!important}
+@media(prefers-reduced-motion:reduce){.habbix-mobile-settings-options input,.habbix-mobile-settings-options input::after{transition:none!important}}
+
+html.habbix-mobile-client .habbix-mobile-sidebar .habbix-mobile-icon-art{position:absolute!important;left:50%!important;top:4px!important;inset:auto!important;left:50%!important;top:4px!important;transform:translateX(-50%) scale(.72)!important;transform-origin:top center;scale:1!important}
+html.habbix-mobile-client .habbix-mobile-sidebar .habbix-mobile-icon-art.icon-mentions{transform:translateX(-50%) scale(.48)!important}
+html.habbix-mobile-client .habbix-mobile-sidebar .habbix-mobile-icon-button>small{position:absolute;bottom:5px;left:2px;right:2px;text-align:center}
+html.habbix-mobile-client[data-mobile-compact="true"] .habbix-mobile-sidebar .habbix-mobile-icon-art{top:6px!important}
+.habbix-mobile-notices .octane-notification-bubble>strong{display:block}.habbix-mobile-notices .octane-notification-bubble>span{display:block}
+
+html.habbix-mobile-client .octane-app-root .draggable-window{position:fixed!important;left:8px!important;right:8px!important;top:calc(env(safe-area-inset-top,0px) + var(--habbix-mobile-top,0px) + 8px)!important;bottom:calc(env(safe-area-inset-bottom,0px) + 62px)!important;transform:none!important;translate:none!important;margin:0!important;width:calc(100vw - 16px)!important}

@@ -1,0 +1,56 @@
+/* Habbix windows: restrained dark chrome, a clear title and selected-tab marker. */
+:root{--habbix-window-bg:#2b2b2b;--habbix-window-edge:#ffffff1f;--habbix-accent:#d97770}
+.draggable-window .octane-card-shell{border:1px solid var(--habbix-window-edge)!important;border-image:none!important;border-radius:11px!important;background:var(--habbix-window-bg)!important;box-shadow:0 12px 32px #0006!important}
+.draggable-window .octane-card-shell>.octane-card-header-shell{background:#222222!important;background-image:none!important;border:0!important;border-radius:7px!important;box-shadow:inset 0 -1px #ffffff0a!important;color:#f3f3f3!important}
+.draggable-window .octane-card-shell>.octane-card-header-shell::before{display:none!important}
+.draggable-window .octane-card-shell .octane-card-title{text-align:left!important;padding-left:10px!important;letter-spacing:.15px;text-shadow:none!important}
+.draggable-window .octane-card-shell .octane-card-close-button{border-radius:6px!important;background:#ffffff0d!important;box-shadow:none!important;border:1px solid #ffffff14!important;transition:background .16s}
+.draggable-window .octane-card-shell .octane-card-close-button:hover{background:#8c454b!important}
+.draggable-window .octane-card-shell .octane-card-tab-item,.octane-navigator-air .octane-navigator-air__tab,.habbo-friend-list .habbix-friends-tabs>button{background:#262626!important;color:#b7b7b7!important;border:1px solid transparent!important;border-radius:6px!important;box-shadow:none!important;text-shadow:none!important;transition:background .16s,color .16s,box-shadow .16s}
+.draggable-window .octane-card-shell .octane-card-tab-item:hover,.octane-navigator-air .octane-navigator-air__tab:hover,.habbo-friend-list .habbix-friends-tabs>button:hover{background:#353535!important;color:#fff!important}
+.draggable-window .octane-card-shell .octane-card-tab-item-active,.octane-navigator-air .octane-navigator-air__tab.is-active,.habbo-friend-list .habbix-friends-tabs>button[aria-pressed="true"]{background:#3b292a!important;color:#f3c9c5!important;border-color:#d9777033!important;box-shadow:inset 0 -2px var(--habbix-accent)!important}
+.octane-navigator-air{border:1px solid var(--habbix-window-edge)!important;border-radius:11px!important;background:var(--habbix-window-bg)!important;box-shadow:0 12px 32px #0006!important}
+.octane-navigator-air .octane-navigator-air__caption{background:#222222!important;border-radius:7px!important;box-shadow:inset 0 -1px #ffffff0a!important}
+.octane-navigator-air .octane-navigator-air__title{text-align:left!important;padding-left:12px!important;color:#f3f3f3!important;text-shadow:none!important}
+.octane-navigator-air .octane-navigator-air__close{border-radius:6px!important;background:#ffffff0d!important;border:1px solid #ffffff14!important}
+.octane-navigator-air .octane-navigator-air__close:hover{background:#8c454b!important}
+.draggable-window .octane-card-content-shell{scrollbar-width:thin;scrollbar-color:#b8423b #262626}
+@keyframes habbix-window-reveal{from{opacity:0;translate:0 7px;scale:.99}to{translate:0 0;scale:1}}
+.draggable-window[data-window-ready="true"]{animation:habbix-window-reveal .2s cubic-bezier(.22,1,.36,1);transform-origin:center top}
+@media(prefers-reduced-motion:reduce){.draggable-window[data-window-ready="true"]{animation:none}.octane-card-tab-item,.octane-navigator-air__tab{transition:none!important}}
+
+/* Shared client surfaces, including custom event and price windows. */
+.octane-app-root :is(.ht-panel,.hep-panel),.draggable-window :is(.ht-panel,.hep-panel){background:var(--habbix-window-bg);border-color:var(--habbix-window-edge);border-radius:11px}
+:is(.draggable-window,.octane-app-root) :is(.ht-tabs,.hep-tabs,.hco-tabs)>button{background:#262626!important;border:1px solid transparent!important;border-radius:6px!important;color:#b7b7b7!important;box-shadow:none!important;transition:background .16s,color .16s}
+:is(.draggable-window,.octane-app-root) :is(.ht-tabs,.hep-tabs,.hco-tabs)>button:is([aria-selected="true"],[aria-pressed="true"]){background:#3b292a!important;border-color:#d9777033!important;color:#f3c9c5!important;box-shadow:inset 0 -2px var(--habbix-accent)!important}
+.hco-menu{background:#262626!important;border:1px solid #ffffff20!important;border-radius:10px!important;padding:8px;box-shadow:0 10px 28px #0006!important}
+/* Room chat stays compact; only its edge and focus treatment follow the windows. */
+#toolbar-chat-input-container .swf-chat-input{border-radius:8px!important;border:1px solid #ffffff1c!important;box-shadow:0 3px 10px #0003!important}
+#toolbar-chat-input-container .swf-chat-input:focus-within{border-color:#d977706b!important}
+/* Private messages: text, GIF and microphone share one input surface. */
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer{padding:10px!important;background:#222222;border-top:1px solid #ffffff0b}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-input{display:flex!important;align-items:center;gap:4px!important;padding:5px!important;min-height:46px!important;background:#353535!important;border:1px solid #ffffff1c!important;border-radius:12px!important;box-shadow:none!important;transition:border-color .15s}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-input:focus-within{border-color:#d9777080!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-input>input{flex:1!important;min-width:0!important;width:0!important;padding:6px 8px!important;margin:0!important;background:transparent!important;border:0!important;box-shadow:none!important;outline:0!important;color:#f2f2f2!important;font:400 13px/22px HabbixKarla,Arial,sans-serif!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-input>input::placeholder{color:#acacac!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-media-tools{margin:0!important;gap:2px!important;position:static!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-media-tools button{height:34px!important;width:34px!important;min-width:34px!important;border-radius:8px!important;color:#d97770!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-input>button{height:34px!important;min-width:58px!important;border:0!important;border-radius:8px!important;background:#b8423b!important;color:#f8f8f8!important;padding:0 10px!important;flex:none}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-recording{padding:0 5px!important;gap:8px!important;border:0!important;background:transparent!important;min-height:34px!important;height:34px!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-recording .hmx-media-send{height:32px!important;background:#b8423b!important;border-radius:8px!important}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-recording-wave{height:28px;min-width:20px}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer .is-live .hmx-recording-wave i{background:#d97770}
+.habbix-chat-panel .hmx-messenger .hmx-unified-composer button:focus-visible{outline:2px solid #f3c9c5;outline-offset:1px}
+@media(max-width:760px){.habbix-chat-panel .hmx-messenger .hmx-unified-composer .hmx-input>input{font-size:16px!important}.habbix-chat-panel .hmx-messenger .hmx-unified-composer{padding:8px!important}}
+.habbix-unread-badge{display:inline-flex!important;align-items:center;justify-content:center;min-width:17px;height:17px;padding:0 4px;margin-left:5px;border:1px solid #f49393!important;border-radius:5px;background:#b74650!important;color:#fff!important;font:bold 10px/1 HabbixKarla,Arial!important;box-sizing:border-box;white-space:nowrap}
+.draggable-window .habbo-friend-list{border:1px solid var(--habbix-window-edge)!important;border-radius:11px!important;background:var(--habbix-window-bg)!important;box-shadow:0 12px 32px #0006!important}
+.draggable-window .habbo-friend-list .hfl-titlebar{background:#222222!important;border-radius:7px!important;border:0!important}
+.draggable-window .habbo-friend-list .hfl-title{text-align:left!important;padding-left:10px;color:#f2f2f2!important}
+.habbix-chat-unread{position:absolute;right:0;top:0;z-index:3;pointer-events:none;margin:0}
+.habbix-requests-empty{margin:0;padding:28px 16px;text-align:center;color:#b7b7b7;font-size:13px}
+.habbix-message-notice{position:fixed;top:calc(var(--habbix-wallet-top,12px) + var(--habbix-wallet-height,86px) + 10px);right:var(--habbix-edge,12px);width:254px;max-width:calc(100vw - 24px);display:flex;align-items:flex-start;background:#2b2b2bf5;border:1px solid #ffffff26;border-left:3px solid #d97770;border-radius:9px;box-shadow:0 8px 24px #0004;z-index:76;animation:habbix-window-reveal .2s ease-out;color:#f3f3f3}
+.habbix-message-notice-open{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;text-align:left;padding:10px 12px;background:transparent;border:0;color:inherit;cursor:pointer;font:12px HabbixKarla,Arial}
+.habbix-message-notice-open small{color:#d97770;font-size:9px}.habbix-message-notice-open span{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c2c2c2}
+.habbix-message-notice-close{background:transparent;border:0;color:#c2c2c2;padding:7px 10px;font-size:18px;cursor:pointer}
+@media(max-width:760px),(pointer:coarse) and (max-width:1024px){.habbix-message-notice{right:8px;top:calc(84px + var(--habbix-live-lotto-height,0px) + 8px);width:240px}body:not(:has(.habbix-live-lotto)) .habbix-message-notice{top:92px}}
+@media(prefers-reduced-motion:reduce){.habbix-message-notice{animation:none}}

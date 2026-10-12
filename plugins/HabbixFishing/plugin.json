@@ -1,0 +1,5 @@
+{
+  "name": "HabbixFishing",
+  "author": "Habbix",
+  "main": "de.habbix.fishing.FishingPlugin"
+}

@@ -1,0 +1,136 @@
+/* Keep these surfaces independent of the legacy light card and SWF messenger rules. */
+.hcn-window,.hcn-window>.octane-card-content-shell,.hmx-messenger{--habbo-text:#eee;--habbo-text-muted:#aaa;--octane-card-text:#eee;--octane-card-muted:#aaa;color:#eee}
+.hcn-window .octane-card-content-shell :is(h3,header,summary,label,button){color:#eee!important;text-shadow:none!important}
+.hcn-window .octane-card-content-shell :is(input[type=text],input[type=color]){color:#eee!important;box-shadow:none!important}
+.hcn-window .hcn-preview{display:flex;align-items:center;position:relative;min-height:72px;height:auto;padding:12px 4px;background:transparent;border:0;overflow:visible;color:#eee!important}
+.hcn-window .hcn-preview-bubble{position:relative;display:flex;align-items:center;gap:6px;max-width:100%;min-height:32px;padding:3px 8px 3px 3px;background:#222222;border:1px solid #555;border-radius:5px;box-shadow:0 2px 3px #0004}
+.hcn-window .hcn-preview-bubble:after{content:'';position:absolute;left:30px;bottom:-5px;width:8px;height:8px;background:#222222;border-right:1px solid #555;border-bottom:1px solid #555;transform:rotate(45deg)}
+.hcn-window .hcn-preview-avatar{position:relative;display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px;overflow:hidden;background:#393939;border-radius:3px}
+.hcn-window .hcn-preview .avatar-image{position:relative!important;inset:auto!important;display:flex!important;align-items:center;justify-content:center;width:auto!important;height:auto!important;transform:none!important;background:none!important}
+.hcn-window .hcn-preview .avatar-image img{display:block;max-width:26px!important;max-height:28px!important;width:auto!important;height:auto!important;image-rendering:pixelated}
+.hcn-window .hcn-preview-message{color:#eee!important;line-height:18px;font-size:11px;overflow-wrap:anywhere;min-width:0}
+.hcn-window .hcn-effect summary{padding-right:40px}.hcn-window .hcn-range output{color:#d97770!important}
+
+.habbix-chat-panel #habbix-friends-chat-host{min-height:0;height:100%;width:100%}
+.hmx-messenger{height:100%;min-height:0;display:flex;flex-direction:row;overflow:hidden;background:#1b1b1b;border:1px solid #ffffff0d;border-radius:4px;font:400 13px/1.4 HabbixKarla,Arial,sans-serif}
+.hmx-messenger *{box-sizing:border-box}.hmx-messenger button{font:inherit;color:#eee!important;background:#171717;border:1px solid #ffffff12;border-radius:3px;cursor:pointer;box-shadow:none;border-image:none;text-shadow:none}.hmx-messenger button:hover{background:#343434;border-color:#ffffff28}.hmx-messenger button:focus-visible,.hmx-messenger input:focus-visible{outline:1px solid #d97770;outline-offset:1px}.hmx-messenger button:disabled{opacity:.4;cursor:default}
+.hmx-header{display:flex;align-items:center;gap:8px;flex:0 0 58px;padding:8px;background:#161616;border-bottom:1px solid #ffffff0d}
+.hmx-header .hmx-back{display:flex;align-items:center;justify-content:center;gap:0;flex:0 0 24px;width:24px;height:28px;padding:0;border:0;background:transparent}.hmx-back img{width:12px;height:auto;image-rendering:pixelated}.hmx-back img+img{margin-left:-6px}
+.hmx-messenger .hmx-avatar,.hmx-messenger .message-avatar{position:relative;display:flex;align-items:center;justify-content:center;flex:0 0 38px;width:38px;height:38px;padding:0;border:3px solid #777;border-radius:50%;background:#1e1e1e;overflow:hidden}
+.hmx-messenger .message-avatar{width:42px;height:42px;flex-basis:42px;border-color:#777}
+.hmx-messenger :is(.hmx-avatar,.message-avatar) .avatar-image{position:relative!important;inset:auto!important;display:flex!important;align-items:center;justify-content:center;width:auto!important;height:auto!important;margin:0!important;background:none!important;transform:none!important}
+.hmx-messenger :is(.hmx-avatar,.message-avatar) .avatar-image img{display:block;max-width:34px!important;max-height:36px!important;width:auto!important;height:auto!important;image-rendering:pixelated}
+.hmx-peer{display:flex;flex:1;min-width:0;flex-direction:column;gap:1px}.hmx-peer strong{color:#f3f3f3;font-size:14px;line-height:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.hmx-peer small{color:#999;font-size:12px;line-height:16px}.hmx-peer small.online{color:#55b34b}
+.hmx-actions{display:flex;gap:4px}.hmx-actions button{display:grid;place-items:center;height:28px;min-width:28px;padding:4px 6px}.hmx-actions img{width:auto;height:auto;max-width:22px;max-height:21px;image-rendering:pixelated}
+.hmx-messages{position:relative;flex:1;min-height:0;overflow:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px;scrollbar-width:thin;scrollbar-color:#454545 #191919}
+.hmx-messenger .messenger-message-row{display:flex;align-items:flex-start;gap:6px;width:100%;min-height:0;flex:0 0 auto;margin:0;padding:0}.hmx-messenger .messenger-message-row.own{justify-content:flex-end}
+.hmx-messenger .messenger-message-body{display:flex;flex:0 1 auto;flex-direction:column;align-items:flex-start;width:auto;max-width:calc(100% - 60px);min-width:0;padding:0}.hmx-messenger .own .messenger-message-body{align-items:flex-end}
+.hmx-messenger .messenger-message-name{color:#c9c9c9;font:600 11px/16px HabbixKarla,Arial,sans-serif;margin:0 0 2px;max-width:100%;overflow-wrap:anywhere}
+.habbix-chat-panel .hmx-messenger .messenger-message-bubble{display:block;position:relative;width:fit-content;max-width:100%;min-width:40px;padding:8px 10px;border:1px solid #ffffff1a!important;border-image:none!important;border-radius:4px!important;background:#323232!important;background-image:none!important;color:#eee!important;box-shadow:none!important;overflow-wrap:anywhere;font:400 13px/1.4 HabbixKarla,Arial,sans-serif}
+.habbix-chat-panel .hmx-messenger .own .messenger-message-bubble{background:#3b292a!important;border-color:#b8423b!important}.hmx-messenger .messenger-message-bubble:after{display:none!important}.hmx-message-meta{display:flex;justify-content:flex-end;align-items:center;gap:5px;margin-top:4px}.hmx-messenger .messenger-message-time{color:#a8a8a8;font:400 10px/13px HabbixKarla,Arial,sans-serif}.hmx-read{color:#59b7fa;font-size:10px}.hmx-sent{color:#a8a8a8;font-size:10px}.hmx-messenger .messenger-message-failed{color:#f0a6a6}.hmx-messenger .messenger-message-failed-mark{margin-right:5px;font-weight:700}.hmx-messenger .messenger-translation-block+.messenger-translation-block{margin-top:7px}
+.hmx-input{display:flex;align-items:center;gap:5px;flex:0 0 53px;padding:8px;background:#262626;border-top:1px solid #ffffff12}.hmx-input input{height:35px;flex:1;min-width:0;border:1px solid #ffffff25!important;border-radius:5px!important;background:#414141!important;color:#eee!important;box-shadow:none!important;padding:8px 11px;font:600 12px HabbixKarla,Arial,sans-serif}.hmx-input input::placeholder{color:#aaa;opacity:1}.hmx-input button{height:35px;min-width:76px;padding:0 10px;background:#713c38;border-color:#b8423b;font-size:12px;font-weight:700}.hmx-input button:disabled{background:#293d30;color:#868686!important;opacity:.6}
+.hmx-typing{padding:3px 12px;background:#1b1b1b;color:#aaa;font-size:10px;min-height:18px}.hmx-empty{margin:auto;color:#8c8c8c;text-align:center}.hmx-conversations{padding:10px;overflow:auto;flex:1;scrollbar-width:thin}.hmx-conversations h3{font-size:13px;color:#eee;margin:0 0 10px}.hmx-conversation{display:flex;align-items:center;gap:10px;width:100%;padding:8px;margin:0 0 5px;text-align:left}.hmx-unread{margin-left:auto;background:#b8423b;border-radius:4px;padding:2px 6px;color:#fff}.hmx-messenger .messenger-status-notification,.hmx-messenger .messenger-notification{margin:8px 0;text-align:center;color:#999;font-size:11px}.hmx-messenger .messenger-notification img{max-width:20px;display:inline-block;margin-right:5px;image-rendering:pixelated}
+
+.hmx-friend-search{display:flex;align-items:center;gap:5px;margin:0 0 8px}.hmx-friend-search .habbix-friends-search{flex:1;min-width:0;margin:0!important}.hmx-friend-search>button{flex-shrink:0;padding:7px 10px;background:#262626;border:1px solid #ffffff20;border-radius:3px;color:#ddd;font:600 11px HabbixKarla,Arial,sans-serif;cursor:pointer}
+
+/* Both panes participate in layout; scrolling never hides the other pane. */
+.hmx-sidebar{display:flex;flex-direction:column;flex:0 0 46%;max-width:280px;min-width:0;min-height:0;background:#1b1b1b;border-right:1px solid #414141}
+.hmx-list-heading{display:flex;align-items:center;flex:0 0 46px;padding:0 10px;border-bottom:1px solid #ffffff0d}
+.hmx-list-heading h3{margin:0;color:#eee;font-size:15px;font-weight:700}
+.hmx-sidebar .hmx-conversations{min-height:0;padding:8px;overflow-y:auto;overflow-x:hidden;scrollbar-color:#454545 #191919}
+.hmx-messenger .hmx-conversation{min-height:61px;border:1px solid #353535;border-radius:9px;padding:8px;gap:8px;margin-bottom:7px;background:#171717}
+.hmx-messenger .hmx-conversation:hover{background:#3b292a;border-color:#b8423b}
+.hmx-messenger .hmx-conversation.is-active{background:#3b292a;border-color:#b8423b}
+.hmx-contact-avatar{position:relative;flex:0 0 40px}
+.hmx-contact-avatar .hmx-avatar{width:40px;height:40px;flex-basis:40px}
+.hmx-online-dot{position:absolute;right:0;bottom:0;width:9px;height:9px;border:2px solid #222222;border-radius:50%;background:#55b34b}
+.hmx-conversation-copy{display:flex;flex:1;flex-direction:column;min-width:0;gap:2px}
+.hmx-conversation-copy strong,.hmx-conversation-copy small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hmx-conversation-copy strong{font-size:14px;color:#eee}.hmx-conversation-copy small{font-size:12px;color:#999999}
+.hmx-conversation-meta{display:flex;flex:0 0 auto;flex-direction:column;align-items:flex-end;gap:4px;color:#999999;font-size:10px}
+.hmx-conversation-meta time{white-space:nowrap}.hmx-conversation-meta .hmx-unread{padding:0 5px;border-radius:8px;font-size:10px;line-height:16px}
+.hmx-list-empty{color:#999;font-size:12px;padding:4px;overflow-wrap:anywhere}.hmx-failed{color:#e69e9e}
+.hmx-chat-pane{display:flex;flex:1;flex-direction:column;min-width:0;min-height:0;overflow:hidden;background:#1b1b1b}
+.hmx-chat-pane>.hmx-empty{padding:12px}.hmx-chat-pane .hmx-header{gap:6px}.hmx-chat-pane .hmx-input{padding:7px;gap:5px}.hmx-chat-pane .hmx-input button{min-width:57px;padding:0 7px}
+.hmx-chat-pane .hmx-messages{padding:10px 8px}
+@media(max-width:520px){
+ .hmx-sidebar{flex-basis:38%}.hmx-sidebar .hmx-conversations{padding:4px}
+ .hmx-messenger .hmx-conversation{padding:6px;gap:5px;flex-wrap:wrap}.hmx-contact-avatar{flex-basis:28px}
+ .hmx-contact-avatar .hmx-avatar{width:28px;height:28px;flex-basis:28px;border-width:2px}
+ .hmx-contact-avatar .avatar-image img{max-width:24px!important;max-height:24px!important}
+ .hmx-conversation-copy strong{font-size:12px}.hmx-conversation-meta{flex-direction:row;width:100%;justify-content:flex-end}
+ .hmx-header .hmx-back{display:none}.hmx-header .hmx-avatar{width:30px;height:30px;flex-basis:30px}
+ .hmx-peer strong{font-size:12px}.hmx-actions{gap:2px}.hmx-actions button{min-width:23px;padding:3px}
+ .hmx-messenger .message-avatar{width:28px;height:28px;flex-basis:28px}.hmx-messenger .messenger-message-body{max-width:calc(100% - 34px)}
+}
+
+/* The native friend tabs used a green/gold bitmap and shifted upward when selected. */
+.tb-open-shell-right .friend-bar .friend-bar-friend>.friend-bar-tab{top:0!important;border:1px solid #ffffff14!important;border-image:none!important;border-radius:4px!important;padding-left:40px!important;transition:background-color .15s,border-color .15s}
+.tb-open-shell-right .friend-bar .friend-bar-friend>.friend-bar-tab .friend-bar-text{width:auto!important;padding:0!important;text-align:left!important;color:#eee!important}
+.tb-open-shell-right .friend-bar .friend-bar-friend:is(.is-selected,.is-chat-open,.has-unread-chat)>.friend-bar-tab,
+.tb-open-shell-right .friend-bar .friend-bar-friend>.friend-bar-tab:is(:hover,:focus-visible){background:#b8423b!important;border-color:#b8423b!important}
+.tb-open-shell-right .friend-bar .friend-bar-friend.is-selected .friend-bar-actions{bottom:46px!important;left:0!important;right:0!important;top:auto!important;width:100%!important;height:36px!important;min-height:36px!important;border:1px solid #b8423b!important;border-image:none!important;border-radius:4px!important;background:#713c38!important;box-shadow:0 3px 8px #0005!important}
+.tb-open-shell-right .friend-bar .friend-bar-friend.is-selected .friend-bar-actions-buttons{position:static!important;display:flex!important;align-items:center!important;justify-content:center!important;height:100%!important;gap:10px!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.tb-open-shell-right .friend-bar .friend-bar-friend>.friend-bar-tab{transition:none}}
+/* Occupied friend slots stay turquoise, independently of mouse or open chat. */
+.tb-open-shell-right .friend-bar .friend-bar-friend>.friend-bar-tab{background:#b8423b!important;border-color:#b8423b!important}
+.tb-open-shell-right .friend-bar .friend-bar-friend>.friend-bar-tab:is(:hover,:focus-visible){background:#b8423b!important}
+.habbo-friend-list .hfl-friend.selected,.habbo-friend-list .hfl-friend.selected:hover{background:#713c38!important;border-color:#b8423b!important;box-shadow:inset 3px 0 #d97770!important}
+.hri-selection-actions{display:flex;align-items:center;gap:5px;flex:0 0 auto;flex-wrap:wrap;margin-top:8px;font:600 12px HabbixKarla,Arial,sans-serif}
+.hri-selection-actions>span{flex:1;min-width:120px;color:#aaa;font-size:11px}
+:is(.hri-dialog,.hri-inbox,.hri-selection-actions) button{background:#222222;border:1px solid #ffffff18;border-radius:3px;color:#eee;cursor:pointer;font:600 12px HabbixKarla,Arial,sans-serif;padding:6px 10px;transition:background-color .15s}
+:is(.hri-dialog,.hri-inbox,.hri-selection-actions) button:hover{background:#3a3a3a}
+:is(.hri-dialog,.hri-inbox,.hri-selection-actions) button:focus-visible{outline:2px solid #d97770;outline-offset:1px}
+:is(.hri-dialog,.hri-inbox,.hri-selection-actions) button:disabled{opacity:.4;cursor:default}
+:is(.hri-dialog,.hri-inbox,.hri-selection-actions) .hri-primary{background:#b8423b;border-color:#b8423b}
+:is(.hri-dialog,.hri-inbox,.hri-selection-actions) .hri-primary:hover:not(:disabled){background:#b8423b}
+.hri-selection-actions .hri-danger{background:#783d43}
+.hri-dialog{display:flex;flex-direction:column;width:450px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 72px);box-sizing:border-box;padding:10px;background:#2b2b2b;border:1px solid #ffffff12;border-radius:4px;box-shadow:0 6px 20px #0006;color:#eee;font:600 13px/1.4 HabbixKarla,Arial,sans-serif}
+.hri-titlebar{position:relative;display:flex;align-items:center;justify-content:center;flex:0 0 30px;margin-bottom:7px;border-radius:3px;background:#222222;cursor:move}
+.hri-titlebar button{position:absolute;right:3px;top:3px;display:grid;place-items:center;width:24px;height:24px;padding:0;background:#783d43;border:0;font:700 18px Arial}
+.hri-body{display:flex;flex-direction:column;min-height:0;gap:5px;overflow:auto;scrollbar-width:thin;scrollbar-color:#555 #222222}
+.hri-recipients{max-height:160px;overflow:auto;min-height:45px;padding:0 10px;margin:0 0 3px;background:#282828;border:1px solid #ffffff0c;border-radius:8px;scrollbar-width:thin}
+.hri-recipient{display:flex;align-items:center;gap:10px;min-height:51px;border-bottom:1px solid #ffffff0c}
+.hri-recipient:last-child{border-bottom:0}.hri-recipient>span:nth-child(2){flex:1;min-width:0;overflow-wrap:anywhere}.hri-recipient small{display:block;color:#999;font-size:10px}
+.hri-recipient>button{width:24px;height:24px;padding:0;background:#453639;color:#c9b5b5;font:700 18px Arial}
+.hri-avatar{display:flex;position:relative;align-items:center;justify-content:center;flex:0 0 34px;width:34px;height:34px;border:3px solid #555;border-radius:50%;overflow:hidden;background:#1b1b1b;box-sizing:border-box}
+.hri-avatar .avatar-image{position:relative!important;inset:auto!important;width:auto!important;height:auto!important;transform:none!important;margin:0!important;background:none!important}
+.hri-avatar .avatar-image img{display:block;max-width:28px!important;max-height:30px!important;width:auto!important;height:auto!important;image-rendering:pixelated}
+.hri-body label{font-size:12px}.hri-body textarea{display:block;box-sizing:border-box;width:100%;min-height:60px;max-height:150px;resize:vertical;padding:8px 10px;border:1px solid #4a4a4a;border-radius:4px;background:#272727;color:#eee;font:400 12px/1.4 HabbixKarla,Arial,sans-serif}
+.hri-body textarea::placeholder{color:#999}.hri-body textarea:focus{outline:1px solid #d97770}
+.hri-counter{color:#999;font-size:10px}.hri-hint{margin:3px 0;padding:4px 10px;border:1px solid #713c38;border-radius:7px;background:#3b292a;color:#b6b6b6;font-size:11px;font-weight:400}
+.hri-actions{display:flex;gap:5px;margin-top:2px;flex-shrink:0}.hri-actions button{flex:1;min-height:29px}
+.hri-inbox{color:#eee;font:400 13px/1.4 HabbixKarla,Arial,sans-serif;padding:6px;min-height:240px;background:#262626;border-radius:3px}
+.hri-inbox h3{display:flex;align-items:center;gap:7px;margin:0 0 12px;font-size:13px;font-weight:700}.hri-inbox h3 span{padding:1px 5px;background:#414141;border-radius:3px;font-size:10px}
+.hri-inbox-empty{color:#999;text-align:center;margin:36px 10px}.hri-invitation{padding:10px;margin-bottom:8px;background:#222222;border:1px solid #ffffff12;border-radius:5px}
+.hri-invitation header{display:flex;gap:8px;align-items:center}.hri-invitation header strong{flex:1;min-width:0;overflow-wrap:anywhere}.hri-invitation time{color:#999;font-size:10px}.hri-invitation header button{padding:2px 6px;color:#ccc}
+.hri-invitation p{margin:10px 0;color:#ddd;white-space:pre-wrap;overflow-wrap:anywhere}.hri-invitation footer{display:flex;gap:5px}
+
+/* Native light speech bubble preview, independent of the dark editor. */
+.hcn-window .hcn-preview-bubble{align-items:stretch;gap:0;padding:0;min-height:44px;width:255px;max-width:100%;background:#dcdcdc;border:1px solid #111;border-radius:7px;box-shadow:inset 0 4px #fff}
+.hcn-window .hcn-preview-avatar{width:27px;height:auto;min-height:44px;flex:0 0 27px;align-items:start;padding-top:4px;border-radius:6px 0 0 6px;background:#555;border-right:1px solid #888}
+.hcn-window .hcn-preview-avatar .avatar-image img{max-width:24px!important;max-height:30px!important}
+.hcn-window .hcn-preview-message{padding:8px 5px 3px;color:#171717!important;font:400 14px/16px Arial,sans-serif;letter-spacing:.3px}
+.hcn-window .hcn-preview-message b{font-weight:700}.hcn-window .hcn-preview-bubble:after{left:50%;background:#dcdcdc;border-color:#111;bottom:-5px}
+.habbo-friend-list.hmx-expanded{width:820px;height:550px;max-width:calc(100vw - 20px)!important;max-height:calc(100dvh - 72px)!important}
+.hmx-room-invitation{display:flex;flex-direction:column;gap:6px}.hmx-messenger .hmx-invite-room{display:block;margin-top:5px;padding:5px 9px;background:#b8423b;border:1px solid #b8423b;color:#fff}
+
+.habbix-camera-zoom{position:absolute;inset:0;pointer-events:none;z-index:5}.habbix-camera-zoom output{position:absolute;top:12px;left:50%;transform:translateX(-50%);padding:5px 12px;background:#3b292ae6;border-radius:15px;color:#fff;font:700 12px HabbixKarla,Arial}.habbix-camera-zoom button{position:absolute;left:12px;bottom:16px;pointer-events:auto;width:30px;height:30px;padding:0;border:1px solid #d97770;border-radius:50%;background:#b8423b;color:white;font:700 22px Arial;cursor:pointer}.habbix-camera-zoom button:nth-child(2){bottom:54px}.habbix-camera-zoom button:disabled{opacity:.4}.habbix-camera-zoom button:hover:not(:disabled){background:#d97770}
+
+/* Measured private chat layout: selection replaces the list inside the same window. */
+.hmx-sidebar[hidden]{display:none!important}
+.hmx-messenger.has-conversation .hmx-chat-pane{width:100%;flex-basis:100%}
+.hmx-chat-pane .hmx-header{height:59px;flex-basis:59px;padding:8px;background:rgba(0,0,0,.3);border-bottom:1px solid #ffffff1a}
+.hmx-messenger .hmx-header .hmx-avatar{width:42px;height:42px;flex-basis:42px;border:2px solid #2b2b2b}
+.hmx-messenger .hmx-actions{gap:6px}.hmx-messenger .hmx-actions button{border-radius:4px;transition:background-color .2s,transform .2s}.hmx-messenger .hmx-actions button:hover{background:#b8423b26;transform:translateY(-1px)}
+.hmx-chat-pane .hmx-messages{padding:10px 12px;gap:5px}
+.hmx-messenger .messenger-message-row{margin-bottom:5px}
+.hmx-messenger .message-avatar{width:42px;height:42px;flex-basis:42px;border-color:#2b2b2b;margin-top:1px}
+.habbix-chat-panel .hmx-messenger .messenger-message-bubble{background:rgba(255,255,255,.08)!important;border:1px solid #ffffff1a!important;border-radius:8px!important;font-size:14.4px;line-height:1.4}
+.habbix-chat-panel .hmx-messenger .own .messenger-message-bubble{background:rgba(70,130,180,.3)!important;border-color:rgba(70,130,180,.4)!important}
+.hmx-chat-pane .hmx-input{padding:8px 12px;gap:8px;background:rgba(43,43,43,.3)}
+.hmx-input input{height:33px!important;font-size:13px!important;font-weight:400!important;border-radius:6px!important;background:rgba(255,255,255,.1)!important;border-color:#ffffff33!important}
+.hmx-input input:focus{background:rgba(255,255,255,.15)!important;border-color:#4682b480!important}
+.hmx-chat-pane .hmx-back{display:flex!important}
+.hmx-messenger .hmx-read{color:#59b7fa}
+@media(prefers-reduced-motion:reduce){.hmx-messenger .hmx-actions button{transition:none}}

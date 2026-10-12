@@ -1,0 +1,24 @@
+import {StrictMode} from 'react';
+import {act,cleanup,fireEvent,render,screen} from '@testing-library/react';
+import {afterEach,expect,it,vi} from 'vitest';
+const mock=vi.hoisted(()=>({receive:null as any,send:vi.fn()}));
+vi.mock('@octane/renderer',()=>({RoomDataParser:{PASSWORD_STATE:2},RoomSettingsDataEvent:class{},RoomBannedUsersComposer:class{},SaveRoomSettingsComposer:class{args:any[];constructor(...args:any[]){this.args=args;}}}));
+vi.mock('../../../../api',()=>({CreateLinkEvent:vi.fn(),LocalizeText:(key:string)=>key,SendMessageComposer:mock.send}));
+vi.mock('../../../../hooks',()=>({useMessageEvent:(_:any,handler:any)=>{mock.receive=handler;}}));
+vi.mock('../../../../common',()=>({OctaneCardView:({children}:any)=><div>{children}</div>,OctaneCardContentView:({children}:any)=><div>{children}</div>,OctaneCardTabsView:({children}:any)=><div>{children}</div>,OctaneCardTabsItemView:({children}:any)=><span>{children}</span>,OctaneCardHeaderView:()=>null}));
+vi.mock('./NavigatorRoomSettingsBasicTabView',()=>({NavigatorRoomSettingsBasicTabView:({roomData,handleChange}:any)=><><output>{roomData.userCount}</output><button onClick={()=>handleChange('name','Neuer Name')}>Name ändern</button></>}));
+vi.mock('./NavigatorRoomSettingsAccessTabView',()=>({NavigatorRoomSettingsAccessTabView:()=>null}));
+vi.mock('./NavigatorRoomSettingsRightsTabView',()=>({NavigatorRoomSettingsRightsTabView:()=>null}));
+vi.mock('./NavigatorRoomSettingsVipChatTabView',()=>({NavigatorRoomSettingsVipChatTabView:()=>null}));
+vi.mock('./NavigatorRoomSettingsModTabView',()=>({NavigatorRoomSettingsModTabView:()=>null}));
+import {NavigatorRoomSettingsView} from './NavigatorRoomSettingsView';
+afterEach(()=>{cleanup();vi.clearAllMocks();});
+it('shows the configured room limit and sends each edit once under StrictMode',()=>{
+ render(<StrictMode><NavigatorRoomSettingsView/></StrictMode>);
+ act(()=>mock.receive({getParser:()=>({data:{roomId:42,name:'Raum',description:'',maximumVisitors:20,maximumVisitorsLimit:100,tags:[],chatSettings:{},roomModerationSettings:{}}})}));
+ expect(screen.getByRole('status')).toHaveTextContent('20');
+ mock.send.mockClear();fireEvent.click(screen.getByRole('button',{name:'Name ändern'}));
+ expect(mock.send).toHaveBeenCalledTimes(1);
+ expect(mock.send.mock.calls[0][0].args.slice(0,2)).toEqual([42,'Neuer Name']);
+ expect(mock.send.mock.calls[0][0].args[5]).toBe(20);
+});

@@ -1,0 +1,101 @@
+.habbix-rail-tool {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #393939;
+    border-radius: 6px;
+    background: #252525;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 140ms ease, border-color 140ms ease;
+}
+.habbix-rail-tool::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 2px;
+    background: #b8423b;
+    opacity: 0;
+    transition: width 140ms ease, opacity 140ms ease;
+}
+.habbix-rail-tool:hover,
+.habbix-rail-tool:focus-visible { background: #3b292a; border-color: #b8423b; }
+.habbix-rail-tool:hover::before,
+.habbix-rail-tool:focus-visible::before { width: 4px; opacity: 1; }
+.habbix-rail-tool img {
+    display: block;
+    width: 25px;
+    max-height: 30px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 1px 1px #0009);
+    pointer-events: none;
+}
+.habbix-eventplan-tool img { width: 32px; max-height: 32px; }
+.habbix-controller-slot,
+.habbix-controller-slot .habbix-rail-tool { background: transparent !important; border-color: transparent; }
+.habbix-tools-separator {
+    align-self: center;
+    flex: 0 0 1px;
+    width: 1px;
+    height: 22px;
+    margin: 0;
+    background: rgba(255,255,255,.08);
+    box-shadow: none;
+}
+.habbix-room-owner-avatar .avatar-image {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+.habbix-room-owner-avatar .avatar-image img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 18px !important;
+    max-height: 18px !important;
+    object-fit: contain;
+}
+@media (prefers-reduced-motion: reduce) {
+    .habbix-rail-tool, .habbix-rail-tool::before { transition: none; }
+}
+.hsm-stat-information[hidden] { display:none !important; }
+.hsm-user-stats { padding:10px; background:#252525; border-radius:4px; }
+.hsm-stats-heading { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.hsm-stats-heading .avatar-image { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; overflow:hidden; background:#181818; }
+.hsm-stats-heading .avatar-image img { max-width:26px!important; max-height:26px!important; }
+.hsm-stats-heading button { margin-left:auto; background:#713c38; border:1px solid #b8423b; border-radius:3px; color:#eee; padding:4px 8px; font-size:11px; cursor:pointer; }
+.hsm-user-stats dl { margin:0; display:flex; flex-direction:column; gap:0; }
+.hsm-user-stats dl>div { display:flex; justify-content:space-between; gap:16px; padding:7px 0; border-bottom:1px solid #ffffff0c; }
+.hsm-user-stats dt { color:#aaa; font-size:12px; }
+.hsm-user-stats dd { margin:0; font-size:12px; font-weight:600; }
+.hsm-user-stats dd.is-unavailable { color:#888; font-weight:400; }
+
+/* Right toolbar: the controller lifts one pixel; the combined buttons only change shade. */
+.habbix-rail-tool{width:38px;height:38px;flex-basis:38px;border:0;border-radius:6px;background:rgba(38,38,38,.9);box-shadow:none;transition:background-color .2s}
+.habbix-rail-tool::before{display:none}
+.habbix-rail-tool:hover,.habbix-rail-tool:focus-visible{background:rgba(55,55,55,.95);border:0;transform:none;box-shadow:none}
+.habbix-rail-tool:active{background:rgba(184,66,59,.4)}
+.habbix-rail-tool.habbix-controller-tool{width:32px;height:30px;flex-basis:32px;background:transparent!important;border:0;box-shadow:none;filter:none;overflow:visible;transition:transform .1s,background-color .2s}
+.habbix-eventplan-tool img{width:32px;height:30px;object-fit:contain;filter:none;transition:none}
+.habbix-rail-tool.habbix-controller-tool:hover,.habbix-rail-tool.habbix-controller-tool:focus-visible{background:transparent!important;transform:translate(-1px,-1px);filter:drop-shadow(2px 2px 0 #000c);box-shadow:none}
+.habbix-rail-tool.habbix-controller-tool:active{transform:none;filter:none}
+.tb-open-shell .tb-slot-compass{height:40px!important;min-height:40px!important;align-self:center;border-radius:6px!important}
+.tb-slot-compass .habbix-compass{height:40px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.habbix-rail-tool,.habbix-rail-tool.habbix-controller-tool{transition:none}}
+
+/* Preserve the square source aspect ratio despite the generic toolbar image cap. */
+.habbix-rail-tool.habbix-tipp-tool img{position:absolute;width:44px;height:44px;max-width:none;max-height:none;left:-6px;top:-7px;object-fit:contain;image-rendering:pixelated;filter:none;pointer-events:none}
+
+/* Supplied hotel logo: transparent artwork with a gentle float. */
+.habbix-main-dock .habbix-compass img.habbix-hotel-logo,.habbix-hotel-logo{width:36px;height:36px;max-width:none;object-fit:contain;image-rendering:pixelated;pointer-events:none;animation:habbix-hotel-float 3.2s ease-in-out infinite;transform-origin:50% 80%}
+.habbix-compass:hover .habbix-hotel-logo{filter:drop-shadow(0 2px 2px #0006)}
+.habbix-mobile-hotel{width:36px;height:36px;display:grid;place-items:center;border:0;background:transparent;border-radius:7px;cursor:pointer;padding:0}
+.habbix-mobile-hotel .habbix-hotel-logo{width:31px;height:31px}
+.habbix-mobile-hotel:focus-visible,.habbix-compass:focus-visible{outline:2px solid var(--habbix-accent-text);outline-offset:1px}
+@keyframes habbix-hotel-float{0%,55%,100%{transform:translateY(0) rotate(0)}22%{transform:translateY(-3px) rotate(-4deg)}38%{transform:translateY(-1px) rotate(2deg)}}
+@media(prefers-reduced-motion:reduce){.habbix-hotel-logo,.habbix-main-dock .habbix-compass img.habbix-hotel-logo{animation:none}}

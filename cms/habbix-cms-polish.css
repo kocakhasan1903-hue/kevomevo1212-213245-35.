@@ -1,0 +1,35 @@
+/* Public CMS surfaces share the profile's charcoal palette and existing turquoise accent. */
+.habboje-app,.hotel-app{--habbix-cms-surface:#292929;--habbix-cms-field:#222;--habbix-cms-border:#ffffff20;--habbix-cms-accent:#2ca9a3;color:#eee;color-scheme:dark}
+#root .habboje-app :is(.hotel-panel,.primary-card,.secondary-card,.me-panel,.me-card,.staff-panel,.profile-panel,.profile-section,.reference-panel,.shop-panel,.auth-entry-card,.me-news-panel,.daily-lotto,.me-live-rooms,.month-panel){background:var(--habbix-cms-surface)!important;border:1px solid var(--habbix-cms-border)!important;border-radius:10px!important;box-shadow:0 4px 14px #0002!important;color:#eee!important}
+#root .habboje-app :is(.modal-content,.hmp-confirm,.ht-detail,.shop-confirm,.staff-field,.profile-editor){background:#292929!important;color:#eee!important;border:1px solid #ffffff26!important;border-radius:12px!important;box-shadow:0 15px 40px #0006!important}
+#root .habboje-app :is(.modal-header,.modal-footer){background:#252525!important;border-color:#ffffff20!important;color:#eee!important}
+#root .habboje-app :is(.hotel-panel,.card,.modal-content,.profile-panel,.staff-panel,.studio-editor) :is(input:not([type=checkbox]):not([type=radio]):not([type=color]),textarea,select){background:#222!important;color:#eee!important;border:1px solid #ffffff26!important;border-radius:7px!important;box-shadow:none!important}
+#root .habboje-app :is(input,textarea)::placeholder{color:#aaa!important;opacity:1}
+#root .habboje-app :is(button,a,input,textarea,select):focus-visible{outline:2px solid #76c6c1!important;outline-offset:2px}
+#root .habboje-app :is(.cc-checkin,.me-checkin,.hotel-button.gold,.btn-kubbo-success,.auth-entry button[type=submit],.me-section-title>button,.profile-editor-actions button[type=submit],.hmp-primary){background:#279f99!important;border:1px solid #54bdb7!important;border-radius:8px!important;color:#fff!important;box-shadow:inset 0 1px #ffffff20,0 3px 8px #0002!important;text-shadow:none!important}
+#root .habboje-app :is(.cc-checkin,.me-checkin,.hotel-button.gold,.btn-kubbo-success,.auth-entry button[type=submit],.hmp-primary):hover{background:#30afa9!important;filter:none!important;transform:none!important}
+#root .habboje-app :is(.shop-tabs,.hmp-tabs,.profile-tabs,.staff-currency-tabs,.housekeeping-menu) button:is(.active,[aria-selected=true],[aria-pressed=true]){background:#2c4544!important;border-color:#438b87!important;color:#d6efed!important;box-shadow:none!important}
+/* A close control always gets one neutral square hit box, without a red sprite behind the X. */
+#root :is(.habboje-app,.hotel-app) :is(button[aria-label*="schließen" i],button[aria-label*="ausblenden" i],button[title*="schließen" i],.modal-header>.close,.modal-header>.btn-close,.profile-wall-delete,.hmp-window-header>button,.frank-bubble>button){box-sizing:border-box!important;display:inline-grid!important;place-items:center!important;flex:0 0 30px!important;width:30px!important;height:30px!important;min-width:30px!important;min-height:30px!important;max-width:30px!important;max-height:30px!important;padding:0!important;border:1px solid #ffffff26!important;border-radius:7px!important;background:#353535!important;background-image:none!important;box-shadow:none!important;filter:none!important;color:#eee!important;font:500 22px/1 Arial,sans-serif!important;opacity:1!important;text-shadow:none!important;transform:none!important;overflow:hidden!important;cursor:pointer}
+#root :is(.habboje-app,.hotel-app) :is(button[aria-label*="schließen" i],button[aria-label*="ausblenden" i],.modal-header>.close,.modal-header>.btn-close,.profile-wall-delete,.hmp-window-header>button):hover{background:#454545!important;color:#fff!important}
+#root :is(.habboje-app,.hotel-app) .btn-close{position:relative}
+#root :is(.habboje-app,.hotel-app) .btn-close::after{content:'×';display:block;color:#eee;font:500 22px/1 Arial}
+#root .habboje-app :is(.hotel-welcome,.frank-bubble){border:1px solid #ffffff18!important;border-radius:9px!important;background:#303030!important;color:#ddd!important}
+#root .habboje-app :is(.hotel-welcome,.frank-bubble)>button{margin-left:auto}
+#root .habboje-app :is(.hk-table-scroll,.staff-content,.shop-admin,.hmp-panel) :is(td,th){border-color:#ffffff18!important;color:#ddd}
+#root .habboje-app :is(.hmp-window,.hmp-panel,.hmp-cms){background:#292929!important;border-color:#ffffff26!important;border-radius:10px!important}
+#root .habboje-app .hmp-panel .hmp-tabs button[aria-selected=true],#root .habboje-app .hmp-panel .hmp-own-tabs button[aria-pressed=true]{background:#2c4544!important;border-color:#438b87!important}
+#root .habboje-app .hmp-panel .hmp-seller{color:#b2d5d2!important}
+#root .habboje-app .hmp-content::-webkit-scrollbar-thumb{background:#666!important}
+#root .habboje-app :is(.profile-scroll,.hk-table-scroll,.hmp-content,.modal-body){scrollbar-color:#666 #242424}
+html:has(.habboje-client),body:has(.habboje-client){overscroll-behavior:none!important;overflow:hidden!important;height:100%!important}
+.habboje-client{height:100dvh!important;overscroll-behavior:none!important;touch-action:none}
+.habboje-client iframe{display:block;width:100%;height:100%;border:0;overscroll-behavior:none!important}
+@media(max-width:700px){#root .habboje-app :is(.modal-content,.hmp-confirm,.ht-detail){max-width:calc(100vw - 20px)!important;max-height:calc(100dvh - 40px)!important;overflow:auto}#root .habboje-app :is(.hotel-panel,.card,.modal-content,.profile-editor) :is(input,textarea,select){font-size:16px!important}.habboje-app button[aria-label*="schließen" i]{width:36px!important;height:36px!important;max-width:36px!important;max-height:36px!important;flex-basis:36px!important}}
+@media(prefers-reduced-motion:reduce){#root .habboje-app :is(button,a,.modal-content){animation:none!important;transition:none!important}}
+
+/* Classic hotel surfaces: no competing green CTA or red close sprite. */
+#root .habboje-app .cc-shell .cc-account .cc-checkin{background:#279f99!important;border:1px solid #54bdb7!important;color:#fff!important;box-shadow:inset 0 1px #ffffff20!important;transform:none!important}
+#root .habboje-app .cc-shell .cc-account .cc-checkin:hover,#root .habboje-app .cc-shell .cc-account .cc-checkin:focus-visible{background:#30afa9!important;border-color:#76c6c1!important;color:#fff!important;box-shadow:none!important}
+#root .habboje-app .cc-shell .cc-account .cc-checkin:active{background:#258b86!important;border-color:#54bdb7!important}
+#root .habboje-app .hotel-welcome button[aria-label*="schließen" i]{background:#353535!important;border:1px solid #ffffff26!important;color:#eee!important}

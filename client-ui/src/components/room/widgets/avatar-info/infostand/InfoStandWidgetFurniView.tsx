@@ -1,0 +1,1110 @@
+import { AnimatedCloseButton } from '../../../../../common/AnimatedCloseButton';
+import { GetUserProfile } from '../../../../../api';
+import {
+    CrackableDataType,
+    CreateLinkEvent,
+    FurnitureFloorUpdateEvent,
+    GetRoomEngine,
+    GetSoundManager,
+    GroupInformationComposer,
+    GroupInformationEvent,
+    NowPlayingEvent,
+    RoomControllerLevel,
+    RoomObjectCategory,
+    RoomObjectOperationType,
+    RoomObjectVariable,
+    RoomRemoveBackgroundComposer,
+    RoomWidgetEnumItemExtradataParameter,
+    RoomWidgetFurniInfoUsagePolicyEnum,
+    SetObjectDataMessageComposer,
+    SongInfoReceivedEvent,
+    StringDataType,
+    UpdateFurniturePositionComposer
+} from '@octane/renderer';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { FaEraser, FaRegCopy } from 'react-icons/fa';
+import { GrFormNextLink, GrRotateLeft, GrRotateRight } from 'react-icons/gr';
+import {
+    AvatarInfoFurni,
+    CopyToClipboard,
+    GetConfigurationValue,
+    GetGroupInformation,
+    IPhotoData,
+    isSafeExternalUrl,
+    LocalizeText,
+    localizeWithFallback,
+    SendMessageComposer
+} from '../../../../../api';
+import {
+    Column,
+    Flex,
+    LayoutBadgeImageView,
+    LayoutCurrencyIcon,
+    LayoutLimitedEditionCompactPlateView,
+    LayoutRarityLevelView,
+    LayoutRoomObjectImageView,
+    PIXEL_ART_RENDERING,
+    Text,
+} from '../../../../../common';
+import { useFurniPickupGuard, useHasPermission, useMessageEvent, useOctaneEvent, useRareValues, useRoom, useWiredTools } from '../../../../../hooks';
+import { OctaneInput } from '../../../../../layout';
+import { ImagePositionEditorView } from './ImagePositionEditorView';
+
+interface InfoStandWidgetFurniViewProps {
+    avatarInfo: AvatarInfoFurni;
+    onClose: () => void;
+}
+
+const PICKUP_MODE_NONE: number = 0;
+const PICKUP_MODE_EJECT: number = 1;
+const PICKUP_MODE_FULL: number = 2;
+
+const removeLandscapeLabel = () => {
+    const localized = LocalizeText('infostand.button.remove_landscape');
+
+    return !localized || localized === 'infostand.button.remove_landscape' ? 'Remove Landscape' : localized;
+};
+
+function formatPlantDuration(totalSeconds: number): string {
+    const seconds = Math.max(0, Math.floor(totalSeconds));
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+
+    if (hours > 0) return `${hours}h ${minutes}m`;
+    if (minutes > 0) return `${minutes}m ${secs}s`;
+
+    return `${secs}s`;
+}
+
+function getValidRoomObjectDirection(roomObject: any, isPositive: boolean) {
+    if (!roomObject || !roomObject.model) return 0;
+
+    let allowedDirections: number[] = [];
+
+    if (roomObject.type === 'monster_plant') {
+        allowedDirections = roomObject.model.getValue('pet_allowed_directions');
+    } else {
+        allowedDirections = roomObject.model.getValue('furniture_allowed_directions');
+    }
+
+    let direction = roomObject.getDirection().x;
+
+    if (allowedDirections && allowedDirections.length) {
+        let index = allowedDirections.indexOf(direction);
+
+        if (index < 0) {
+            index = 0;
+
+            for (let i = 0; i < allowedDirections.length; i++) {
+                if (direction <= allowedDirections[i]) break;
+
+                index++;
+            }
+
+            index = index % allowedDirections.length;
+        }
+
+        if (isPositive) {
+            index = (index + 1) % allowedDirections.length;
+        } else {
+            index = (index - 1 + allowedDirections.length) % allowedDirections.length;
+        }
+
+        direction = allowedDirections[index];
+    }
+
+    return direction;
+}
+
+export const InfoStandWidgetFurniView: FC<InfoStandWidgetFurniViewProps> = (props) => {
+    const { avatarInfo = null, onClose = null } = props;
+    const { roomSession = null } = useRoom();
+    const { openInspectionForFurni, showInspectButton } = useWiredTools();
+    const isModerator = useHasPermission('acc_anyroomowner');
+    const { getValue: getRareValue } = useRareValues();
+    const rareValue = useMemo(() => (avatarInfo ? getRareValue(avatarInfo.spriteId) : null), [avatarInfo, getRareValue]);
+
+    const externalImagePhotoUrl = useMemo(() => {
+        if (!avatarInfo || !roomSession) return null;
+
+        const roomObject = GetRoomEngine().getRoomObject(roomSession.roomId, avatarInfo.id, avatarInfo.category);
+
+        if (!roomObject || roomObject.type.indexOf('external_image') !== 0) return null;
+
+        try {
+            const photoData = JSON.parse(roomObject.model.getValue<string>(RoomObjectVariable.FURNITURE_DATA)) as IPhotoData;
+            const photoUrl = photoData?.w ?? null;
+
+            return photoUrl && isSafeExternalUrl(photoUrl) ? photoUrl : null;
+        } catch {
+            return null;
+        }
+    }, [avatarInfo, roomSession]);
+    const itemLocationEnabled = GetConfigurationValue<boolean>('furni.location.enabled', true);
+    const itemLocationRequireAccess = GetConfigurationValue<boolean>('furni.location.require.access', true);
+    const [pickupMode, setPickupMode] = useState(0);
+    const [canMove, setCanMove] = useState(false);
+    const [canRotate, setCanRotate] = useState(false);
+    const [canUse, setCanUse] = useState(false);
+    const { pickupRoomObject } = useFurniPickupGuard();
+    const [canRemoveBackground, setCanRemoveBackground] = useState(false);
+    const [furniKeys, setFurniKeys] = useState<string[]>([]);
+    const [furniValues, setFurniValues] = useState<string[]>([]);
+    const [customKeys, setCustomKeys] = useState<string[]>([]);
+    const [customValues, setCustomValues] = useState<string[]>([]);
+    const [isCrackable, setIsCrackable] = useState(false);
+    const [crackableHits, setCrackableHits] = useState(0);
+    const [crackableTarget, setCrackableTarget] = useState(0);
+    const [isPlant, setIsPlant] = useState(false);
+    const [plantWaterSeconds, setPlantWaterSeconds] = useState(0);
+    const [plantDeathSeconds, setPlantDeathSeconds] = useState(0);
+    const [plantDead, setPlantDead] = useState(false);
+    const plantClassnames = GetConfigurationValue<string[]>('furni.plant.classnames', []) ?? [];
+    const [godMode, setGodMode] = useState(false);
+    const [canSeeFurniId, setCanSeeFurniId] = useState(false);
+    const [groupName, setGroupName] = useState<string>(null);
+    const [isJukeBox, setIsJukeBox] = useState<boolean>(false);
+    const [isSongDisk, setIsSongDisk] = useState<boolean>(false);
+    const [isBranded, setIsBranded] = useState<boolean>(false);
+    const [showPositionEditor, setShowPositionEditor] = useState<boolean>(false);
+    const [songId, setSongId] = useState<number>(-1);
+    const [songName, setSongName] = useState<string>('');
+    const [songCreator, setSongCreator] = useState<string>('');
+    const [itemLocation, setItemLocation] = useState<{ x: number; y: number; z: number }>({ x: -1, y: -1, z: -1 });
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [furniLocationZ, setFurniLocationZ] = useState<number>(null);
+    const [furniDirection, setFurniDirection] = useState(0);
+    const [furniState, setFurniState] = useState(0);
+
+    // The room object moves, turns and changes state without a message this view
+    // listens to (drag in the room, use, wired), so follow it while it is selected.
+    // A reading is shown only once it held still for two polls: a drag or a wired
+    // slide passes through many positions and only the final one is worth showing.
+    useEffect(() => {
+        if (!avatarInfo || !roomSession) return;
+
+        const category = avatarInfo.isWallItem ? RoomObjectCategory.WALL : RoomObjectCategory.FLOOR;
+        let candidate = '';
+        let held = 0;
+
+        const sync = (immediate: boolean) => {
+            const roomObject = GetRoomEngine().getRoomObject(roomSession.roomId, avatarInfo.id, category);
+
+            if (!roomObject) return;
+
+            const location = roomObject.getLocation();
+            const direction = Math.round((roomObject.getDirection()?.x ?? 0) / 45);
+            const state = Number(roomObject.getState(0) ?? 0);
+            const reading = `${location.x}|${location.y}|${location.z}|${direction}|${state}`;
+
+            held = reading === candidate ? held + 1 : 1;
+            candidate = reading;
+
+            if (!immediate && held < 2) return;
+
+            setItemLocation((prev) => (prev.x === location.x && prev.y === location.y && prev.z === location.z ? prev : { x: location.x, y: location.y, z: location.z }));
+            setFurniDirection(direction);
+            setFurniState(state);
+        };
+
+        sync(true);
+
+        const interval = setInterval(() => sync(false), 150);
+
+        return () => clearInterval(interval);
+    }, [avatarInfo, roomSession]);
+    const showOwnerProfileIcon = useMemo(() => {
+        const ownerName = (avatarInfo?.ownerName || '').trim().toLowerCase();
+
+        return !!avatarInfo && avatarInfo.ownerId > 0 && ownerName !== 'builders club';
+    }, [avatarInfo]);
+
+    const sendUpdate = useCallback(
+        (deltaX: number, deltaY: number, newZ: number = 0, deltaDirection: number = 0) => {
+            if (!avatarInfo) return;
+
+            const roomId = GetRoomEngine().activeRoomId;
+            const roomObject = GetRoomEngine().getRoomObject(roomId, avatarInfo.id, avatarInfo.category);
+
+            if (!roomObject) return;
+
+            const newX = roomObject.getLocation().x + deltaX;
+            const newY = roomObject.getLocation().y + deltaY;
+            const currentDirection = roomObject.getDirection().x;
+
+            const newDirection = deltaDirection !== 0 ? getValidRoomObjectDirection(roomObject, deltaDirection > 0) / 45 : currentDirection / 45;
+
+            SendMessageComposer(new UpdateFurniturePositionComposer(avatarInfo.id, newX, newY, Math.round(newZ * 10000), newDirection));
+        },
+        [avatarInfo]
+    );
+
+    const handleHeightChange = useCallback(
+        (event: React.ChangeEvent<HTMLInputElement>) => {
+            let newZ = parseFloat(event.target.value);
+
+            if (isNaN(newZ) || newZ < 0) newZ = 0;
+            else if (newZ > 40) newZ = 40;
+
+            setFurniLocationZ(newZ);
+            sendUpdate(0, 0, newZ, 0);
+        },
+        [sendUpdate]
+    );
+
+    const handleHeightBlur = useCallback(
+        (event: React.FocusEvent<HTMLInputElement>) => {
+            let newZ = parseFloat(event.target.value);
+
+            if (isNaN(newZ) || newZ < 0) newZ = 0;
+            else if (newZ > 40) newZ = 40;
+
+            newZ = parseFloat(newZ.toFixed(4));
+            setFurniLocationZ(newZ);
+            sendUpdate(0, 0, newZ, 0);
+        },
+        [sendUpdate]
+    );
+
+    const adjustHeight = useCallback(
+        (amount: number) => {
+            let newZ = (furniLocationZ ?? 0) + amount;
+
+            if (newZ < 0) newZ = 0;
+            else if (newZ > 40) newZ = 40;
+
+            newZ = parseFloat(newZ.toFixed(4));
+            setFurniLocationZ(newZ);
+            sendUpdate(0, 0, newZ, 0);
+        },
+        [furniLocationZ, sendUpdate]
+    );
+
+    useOctaneEvent<NowPlayingEvent>(
+        NowPlayingEvent.NPE_SONG_CHANGED,
+        (event) => {
+            setSongId(event.id);
+        },
+        isJukeBox || isSongDisk
+    );
+
+    useOctaneEvent<NowPlayingEvent>(
+        SongInfoReceivedEvent.SIR_TRAX_SONG_INFO_RECEIVED,
+        (event) => {
+            if (event.id !== songId) return;
+
+            const songInfo = GetSoundManager().musicController.getSongInfo(event.id);
+
+            if (!songInfo) return;
+
+            setSongName(songInfo.name);
+            setSongCreator(songInfo.creator);
+        },
+        isJukeBox || isSongDisk
+    );
+
+    useEffect(() => {
+        let pickupMode = PICKUP_MODE_NONE;
+        let canMove = false;
+        let canRotate = false;
+        let canUse = false;
+        let furniKeyss: string[] = [];
+        let furniValuess: string[] = [];
+        let customKeyss: string[] = [];
+        let customValuess: string[] = [];
+        let isCrackable = false;
+        let crackableHits = 0;
+        let crackableTarget = 0;
+        let isPlant = false;
+        let plantWaterSeconds = 0;
+        let plantDeathSeconds = 0;
+        let plantDead = false;
+        let godMode = false;
+        let canSeeFurniId = false;
+        let furniIsJukebox = false;
+        let furniIsSongDisk = false;
+        let furniSongId = -1;
+
+        const roomObjForLocation = GetRoomEngine().getRoomObject(
+            roomSession.roomId,
+            avatarInfo.id,
+            avatarInfo.isWallItem ? RoomObjectCategory.WALL : RoomObjectCategory.FLOOR
+        );
+        const location = roomObjForLocation?.getLocation();
+
+        if (location) {
+            setItemLocation({ x: location.x, y: location.y, z: location.z });
+            setFurniLocationZ(location.z);
+        }
+
+        const isValidController = avatarInfo.roomControllerLevel >= RoomControllerLevel.GUEST;
+
+        let removeBackgroundAllowed = false;
+
+        if (isValidController || avatarInfo.isOwner || avatarInfo.isRoomOwner || avatarInfo.isAnyRoomController) {
+            canMove = true;
+            canRotate = !avatarInfo.isWallItem;
+            if (avatarInfo.roomControllerLevel >= RoomControllerLevel.MODERATOR) godMode = true;
+
+            if (avatarInfo.isWallItem) {
+                const maskType = roomObjForLocation?.model?.getValue<string>(RoomObjectVariable.FURNITURE_PLANE_MASK_TYPE);
+
+                if (maskType && maskType.length) removeBackgroundAllowed = true;
+            }
+        }
+
+        if (avatarInfo.isAnyRoomController) {
+            canSeeFurniId = true;
+        }
+
+        if (
+            avatarInfo.usagePolicy === RoomWidgetFurniInfoUsagePolicyEnum.EVERYBODY ||
+            (avatarInfo.usagePolicy === RoomWidgetFurniInfoUsagePolicyEnum.CONTROLLER && isValidController) ||
+            (avatarInfo.extraParam === RoomWidgetEnumItemExtradataParameter.JUKEBOX && isValidController) ||
+            (avatarInfo.extraParam === RoomWidgetEnumItemExtradataParameter.USABLE_PRODUCT && isValidController)
+        )
+            canUse = true;
+
+        if (avatarInfo.extraParam) {
+            if (avatarInfo.extraParam === RoomWidgetEnumItemExtradataParameter.CRACKABLE_FURNI) {
+                const stuffData = avatarInfo.stuffData as CrackableDataType;
+
+                canUse = true;
+
+                if (roomObjForLocation && plantClassnames.indexOf(roomObjForLocation.type) >= 0) {
+                    isPlant = true;
+                    const rawDeath = stuffData?.target ?? 0;
+                    plantDead = rawDeath < 0;
+                    plantWaterSeconds = Math.max(0, stuffData?.hits ?? 0);
+                    plantDeathSeconds = plantDead ? 0 : rawDeath;
+                } else {
+                    isCrackable = true;
+                    crackableHits = stuffData?.hits ?? 0;
+                    crackableTarget = stuffData?.target ?? 0;
+                }
+            } else if (avatarInfo.extraParam === RoomWidgetEnumItemExtradataParameter.JUKEBOX) {
+                const playlist = GetSoundManager().musicController.getRoomItemPlaylist();
+
+                if (playlist) {
+                    furniSongId = playlist.currentSongId;
+                }
+
+                furniIsJukebox = true;
+            } else if (avatarInfo.extraParam.indexOf(RoomWidgetEnumItemExtradataParameter.SONGDISK) === 0) {
+                furniSongId = parseInt(avatarInfo.extraParam.substr(RoomWidgetEnumItemExtradataParameter.SONGDISK.length));
+
+                furniIsSongDisk = true;
+            }
+
+            if (godMode) {
+                const extraParam = avatarInfo.extraParam.substr(RoomWidgetEnumItemExtradataParameter.BRANDING_OPTIONS.length);
+
+                if (extraParam) {
+                    const parts = extraParam.split('\t');
+
+                    for (const part of parts) {
+                        const value = part.split('=');
+
+                        if (value && value.length === 2) {
+                            furniKeyss.push(value[0]);
+                            furniValuess.push(value[1]);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (godMode) {
+            const roomObject = GetRoomEngine().getRoomObject(
+                roomSession.roomId,
+                avatarInfo.id,
+                avatarInfo.isWallItem ? RoomObjectCategory.WALL : RoomObjectCategory.FLOOR
+            );
+
+            if (roomObject) {
+                const customVariables = roomObject.model.getValue<string[]>(RoomObjectVariable.FURNITURE_CUSTOM_VARIABLES);
+                const furnitureData = roomObject.model.getValue<{ [index: string]: string }>(RoomObjectVariable.FURNITURE_DATA);
+
+                if (customVariables && customVariables.length) {
+                    for (const customVariable of customVariables) {
+                        customKeyss.push(customVariable);
+                        customValuess.push(furnitureData[customVariable] || '');
+                    }
+                }
+            }
+        }
+
+        if (avatarInfo.isOwner || avatarInfo.isAnyRoomController) pickupMode = PICKUP_MODE_FULL;
+        else if (avatarInfo.isRoomOwner || avatarInfo.roomControllerLevel >= RoomControllerLevel.GUILD_ADMIN) pickupMode = PICKUP_MODE_EJECT;
+
+        if (avatarInfo.isStickie) pickupMode = PICKUP_MODE_NONE;
+
+        setPickupMode(pickupMode);
+        setCanMove(canMove);
+        setCanRotate(canRotate);
+        setCanUse(canUse);
+        setCanRemoveBackground(removeBackgroundAllowed);
+        setFurniKeys(furniKeyss);
+        setFurniValues(furniValuess);
+        setCustomKeys(customKeyss);
+        setCustomValues(customValuess);
+        setIsCrackable(isCrackable);
+        setCrackableHits(crackableHits);
+        setCrackableTarget(crackableTarget);
+        setIsPlant(isPlant);
+        setPlantWaterSeconds(plantWaterSeconds);
+        setPlantDeathSeconds(plantDeathSeconds);
+        setPlantDead(plantDead);
+        setGodMode(godMode);
+        setCanSeeFurniId(canSeeFurniId);
+        setGroupName(null);
+        setIsJukeBox(furniIsJukebox);
+        setIsSongDisk(furniIsSongDisk);
+        setSongId(furniSongId);
+        setIsBranded(!!avatarInfo.extraParam && avatarInfo.extraParam.indexOf(RoomWidgetEnumItemExtradataParameter.BRANDING_OPTIONS) === 0);
+
+        if (avatarInfo.groupId) SendMessageComposer(new GroupInformationComposer(avatarInfo.groupId, false));
+    }, [roomSession, avatarInfo]);
+
+    useMessageEvent<GroupInformationEvent>(GroupInformationEvent, (event) => {
+        const parser = event.getParser();
+
+        if (!avatarInfo || avatarInfo.groupId !== parser.id || parser.flag) return;
+
+        if (groupName) setGroupName(null);
+
+        setGroupName(parser.title);
+    });
+
+    useMessageEvent<FurnitureFloorUpdateEvent>(FurnitureFloorUpdateEvent, (event) => {
+        const parser = event.getParser();
+        const item = parser.item;
+
+        if (!avatarInfo || item.itemId !== avatarInfo.id) return;
+
+        setItemLocation({ x: item.x, y: item.y, z: item.z });
+        setFurniLocationZ(item.z);
+
+        if (isPlant) {
+            const data = item.data as CrackableDataType;
+
+            if (data) {
+                const rawDeath = data.target ?? 0;
+                const dead = rawDeath < 0;
+
+                setPlantDead(dead);
+                setPlantWaterSeconds(Math.max(0, data.hits ?? 0));
+                setPlantDeathSeconds(dead ? 0 : rawDeath);
+            }
+        }
+    });
+
+    useEffect(() => {
+        const songInfo = GetSoundManager().musicController.getSongInfo(songId);
+
+        setSongName(songInfo?.name ?? '');
+        setSongCreator(songInfo?.creator ?? '');
+    }, [songId]);
+
+    useEffect(() => {
+        if (!isPlant || plantDead) return;
+
+        const handle = setInterval(() => {
+            setPlantWaterSeconds((seconds) => (seconds > 0 ? seconds - 1 : 0));
+            setPlantDeathSeconds((seconds) => (seconds > 0 ? seconds - 1 : 0));
+        }, 1000);
+
+        return () => clearInterval(handle);
+    }, [isPlant, plantDead]);
+
+    const onFurniSettingChange = useCallback(
+        (index: number, value: string) => {
+            const clone = Array.from(furniValues);
+
+            clone[index] = value;
+
+            setFurniValues(clone);
+        },
+        [furniValues]
+    );
+
+    const onCustomVariableChange = useCallback(
+        (index: number, value: string) => {
+            const clone = Array.from(customValues);
+
+            clone[index] = value;
+
+            setCustomValues(clone);
+        },
+        [customValues]
+    );
+
+    const getFurniSettingsAsString = useCallback(() => {
+        if (furniKeys.length === 0 || furniValues.length === 0) return '';
+
+        let data = '';
+
+        let i = 0;
+
+        while (i < furniKeys.length) {
+            const key = furniKeys[i];
+            const value = furniValues[i];
+
+            data = data + (key + '=' + value + '\t');
+
+            i++;
+        }
+
+        return data;
+    }, [furniKeys, furniValues]);
+
+    const getBrandingOffset = useCallback(
+        (key: string): number => {
+            const index = furniKeys.indexOf(key);
+            if (index < 0) return 0;
+            const value = parseInt(furniValues[index]);
+            return isNaN(value) ? 0 : value;
+        },
+        [furniKeys, furniValues]
+    );
+
+    const hasBrandingOffsets = isBranded && furniKeys.indexOf('offsetX') >= 0;
+
+    const savePositionEditor = useCallback(
+        (x: number, y: number, z: number, scale: number, alpha: number) => {
+            const map = new Map<string, string>();
+            const clone = Array.from(furniValues);
+            let hasScale = false;
+            let hasAlpha = false;
+
+            for (let i = 0; i < furniKeys.length; i++) {
+                const key = furniKeys[i];
+                let value = furniValues[i];
+
+                if (key === 'offsetX') value = String(x);
+                else if (key === 'offsetY') value = String(y);
+                else if (key === 'offsetZ') value = String(z);
+                else if (key === 'scale') {
+                    value = String(scale);
+                    hasScale = true;
+                } else if (key === 'alpha') {
+                    value = String(alpha);
+                    hasAlpha = true;
+                }
+
+                clone[i] = value;
+                map.set(key, value);
+            }
+
+            if (!hasScale) map.set('scale', String(scale));
+            if (!hasAlpha) map.set('alpha', String(alpha));
+
+            GetRoomEngine().modifyRoomObjectDataWithMap(avatarInfo.id, avatarInfo.category, RoomObjectOperationType.OBJECT_SAVE_STUFF_DATA, map);
+            setFurniValues(clone);
+        },
+        [avatarInfo, furniKeys, furniValues]
+    );
+
+    const processButtonAction = useCallback(
+        (action: string) => {
+            if (!action || action === '') return;
+
+            let objectData: string = null;
+
+            switch (action) {
+                case 'buy_one':
+                    CreateLinkEvent(`catalog/open/offerId/${avatarInfo.purchaseOfferId}`);
+                    return;
+                case 'move':
+                    GetRoomEngine().processRoomObjectOperation(avatarInfo.id, avatarInfo.category, RoomObjectOperationType.OBJECT_MOVE);
+                    break;
+                case 'rotate':
+                    GetRoomEngine().processRoomObjectOperation(avatarInfo.id, avatarInfo.category, RoomObjectOperationType.OBJECT_ROTATE_POSITIVE);
+                    break;
+                case 'pickup':
+                    pickupRoomObject(
+                        avatarInfo.id,
+                        avatarInfo.category,
+                        pickupMode === PICKUP_MODE_FULL ? RoomObjectOperationType.OBJECT_PICKUP : RoomObjectOperationType.OBJECT_EJECT
+                    );
+                    break;
+                case 'use':
+                    GetRoomEngine().useRoomObject(avatarInfo.id, avatarInfo.category);
+                    break;
+                case 'remove_background':
+                    SendMessageComposer(new RoomRemoveBackgroundComposer());
+                    break;
+                case 'save_branding_configuration': {
+                    const mapData = new Map<string, string>();
+                    const dataParts = getFurniSettingsAsString().split('\t');
+
+                    if (dataParts) {
+                        for (const part of dataParts) {
+                            const [key, value] = part.split('=', 2);
+
+                            mapData.set(key, value);
+                        }
+                    }
+
+                    GetRoomEngine().modifyRoomObjectDataWithMap(avatarInfo.id, avatarInfo.category, RoomObjectOperationType.OBJECT_SAVE_STUFF_DATA, mapData);
+                    break;
+                }
+                case 'save_custom_variables': {
+                    const map = new Map();
+
+                    for (let i = 0; i < customKeys.length; i++) {
+                        const key = customKeys[i];
+                        const value = customValues[i];
+
+                        if (key && key.length && value && value.length) map.set(key, value);
+                    }
+
+                    SendMessageComposer(new SetObjectDataMessageComposer(avatarInfo.id, map));
+                    break;
+                }
+            }
+        },
+        [avatarInfo, pickupMode, customKeys, customValues, getFurniSettingsAsString, pickupRoomObject]
+    );
+
+    const getGroupBadgeCode = useCallback(() => {
+        const stringDataType = avatarInfo.stuffData as StringDataType;
+
+        if (!stringDataType || !(stringDataType instanceof StringDataType)) return null;
+
+        return stringDataType.getValue(2);
+    }, [avatarInfo]);
+
+    if (!avatarInfo) return null;
+
+    const furniTypeId = roomSession
+        ? (GetRoomEngine()
+              .getRoomObject(roomSession.roomId, avatarInfo.id, avatarInfo.isWallItem ? RoomObjectCategory.WALL : RoomObjectCategory.FLOOR)
+              ?.model?.getValue<number>(RoomObjectVariable.FURNITURE_TYPE_ID) ?? '?')
+        : '?';
+    const showLocation = itemLocation.x > -1 && itemLocationEnabled && (!itemLocationRequireAccess || canMove);
+    const showIds = godMode && canSeeFurniId;
+    const showEditFurni = godMode && isModerator;
+    const showBuildtools = godMode && !avatarInfo.isWallItem && canMove;
+
+    return (
+        <Column alignItems="end" gap={1} className="habbix-furni-infostand">
+            <Column className="habbix-furni-card">
+                <Column className="habbix-furni-content" gap={1} overflow="visible">
+                    <div className="habbix-furni-heading">
+                        <Flex alignItems="center" gap={1} justifyContent="between">
+                            <Text small wrap variant="white">
+                                {avatarInfo.name}
+                            </Text>
+                            <AnimatedCloseButton className="habbix-furni-close" aria-label="Möbelinfo schließen" onClick={onClose}>×</AnimatedCloseButton>
+                        </Flex>
+                        <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                    </div>
+                    {!isBranded && (
+                        <div className="flex flex-col gap-1">
+                            <Flex gap={1} position="relative">
+                                {avatarInfo.stuffData.isUnique && (
+                                    <div className="absolute inset-e-0">
+                                        <LayoutLimitedEditionCompactPlateView
+                                            uniqueNumber={avatarInfo.stuffData.uniqueNumber}
+                                            uniqueSeries={avatarInfo.stuffData.uniqueSeries}
+                                        />
+                                    </div>
+                                )}
+                                {avatarInfo.stuffData.rarityLevel > -1 && (
+                                    <div className="absolute inset-e-0">
+                                        <LayoutRarityLevelView level={avatarInfo.stuffData.rarityLevel} />
+                                    </div>
+                                )}
+                                <Flex center fullWidth className="habbix-furni-image">
+                                    {externalImagePhotoUrl ? (
+                                        <div className="bg-white p-[3px] pb-[9px] rounded-[2px] border border-[#00000080] shadow-[1px_2px_3px_rgba(0,0,0,0.5)]">
+                                            <img
+                                                alt=""
+                                                draggable={false}
+                                                src={externalImagePhotoUrl}
+                                                style={{ width: 64, height: 64, objectFit: 'contain', imageRendering: PIXEL_ART_RENDERING }}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <LayoutRoomObjectImageView
+                                            category={avatarInfo.category}
+                                            objectId={avatarInfo.id}
+                                            roomId={roomSession.roomId}
+                                            style={{
+                                                maxWidth: 204,
+                                                maxHeight: 100,
+                                                backgroundSize: 'contain',
+                                                backgroundPosition: 'center',
+                                                backgroundRepeat: 'no-repeat',
+                                                imageRendering: PIXEL_ART_RENDERING
+                                            }}
+                                        />
+                                    )}
+                                </Flex>
+                            </Flex>
+                            <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                        </div>
+                    )}
+                    {avatarInfo.purchaseOfferId > 0 && <div className="habbix-furni-buy-row"><button type="button" className="habbix-furni-buy" onClick={()=>processButtonAction('buy_one')}>{LocalizeText('infostand.button.buy')}</button></div>}
+                    <div className="habbix-furni-owner-row"><span>BESITZER:</span><button type="button" disabled={!showOwnerProfileIcon} onClick={()=>GetUserProfile(avatarInfo.ownerId)}>{avatarInfo.ownerName}</button></div>
+                    {(isJukeBox || isSongDisk) && (
+                        <div className="flex flex-col gap-1">
+                            <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                            {songId === -1 && (
+                                <Text small wrap variant="white">
+                                    {LocalizeText('infostand.jukebox.text.not.playing')}
+                                </Text>
+                            )}
+                            {!!songName.length && (
+                                <div className="flex items-center gap-1">
+                                    <div className="icon disk-icon" />
+                                    <Text small wrap variant="white">
+                                        {songName}
+                                    </Text>
+                                </div>
+                            )}
+                            {!!songCreator.length && (
+                                <div className="flex items-center gap-1">
+                                    <div className="icon disk-creator" />
+                                    <Text small wrap variant="white">
+                                        {songCreator}
+                                    </Text>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                    <div className="flex flex-col gap-1">
+                        {isCrackable && (
+                            <>
+                                <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                                <Text small wrap variant="white">
+                                    {LocalizeText(
+                                        'infostand.crackable_furni.hits_remaining',
+                                        ['hits', 'target'],
+                                        [(crackableHits ?? 0).toString(), (crackableTarget ?? 0).toString()]
+                                    )}
+                                </Text>
+                            </>
+                        )}
+                        {isPlant && (
+                            <>
+                                <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                                {plantDead ? (
+                                    <Text small wrap variant="danger">
+                                        {LocalizeText('infostand.plant.dead')}
+                                    </Text>
+                                ) : (
+                                    <div className="flex flex-col gap-1">
+                                        <Flex alignItems="center" gap={1} justifyContent="between">
+                                            <Text small wrap variant="white">
+                                                {LocalizeText('infostand.plant.rewater')}
+                                            </Text>
+                                            <Text small wrap variant={plantWaterSeconds > 0 ? 'white' : 'success'}>
+                                                {plantWaterSeconds > 0
+                                                    ? formatPlantDuration(plantWaterSeconds)
+                                                    : LocalizeText('infostand.plant.ready')}
+                                            </Text>
+                                        </Flex>
+                                        <Flex alignItems="center" gap={1} justifyContent="between">
+                                            <Text small wrap variant="white">
+                                                {LocalizeText('infostand.plant.dies')}
+                                            </Text>
+                                            <Text small wrap variant={plantDeathSeconds > 0 ? 'white' : 'danger'}>
+                                                {plantDeathSeconds > 0
+                                                    ? formatPlantDuration(plantDeathSeconds)
+                                                    : LocalizeText('infostand.plant.needswater')}
+                                            </Text>
+                                        </Flex>
+                                    </div>
+                                )}
+                            </>
+                        )}
+                        {avatarInfo.groupId > 0 && (
+                            <>
+                                <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                                <Flex pointer alignItems="center" gap={2} onClick={() => GetGroupInformation(avatarInfo.groupId)}>
+                                    <LayoutBadgeImageView badgeCode={getGroupBadgeCode()} isGroup={true} />
+                                    <Text underline variant="white">
+                                        {groupName}
+                                    </Text>
+                                </Flex>
+                            </>
+                        )}
+                        {(showLocation || showIds) && <div className="habbix-furni-stats">
+                            {showIds&&<><div><span>ITEM ID:</span><button type="button" title="Item ID kopieren" onClick={()=>void CopyToClipboard(String(avatarInfo.id))}>{avatarInfo.id} <FaRegCopy/></button></div><div><span>HABBOITEM ID:</span><button type="button" title="HabboItem ID kopieren" onClick={()=>void CopyToClipboard(String(furniTypeId))}>{furniTypeId} <FaRegCopy/></button></div></>}
+                            {showLocation&&<div><span>POSITION:</span><strong>X: {itemLocation.x} Y: {itemLocation.y} Z: {itemLocation.z.toFixed(2)}</strong></div>}
+                        </div>}
+                        {rareValue && rareValue.points > 0 && (
+                            <>
+                                <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                                <Flex alignItems="center" gap={2}>
+                                    <Text small variant="white">
+                                        {LocalizeText('rarevalues.infostand.label')}
+                                    </Text>
+                                    <Flex alignItems="center" gap={1}>
+                                        <Text small variant="white">
+                                            {rareValue.points}
+                                        </Text>
+                                        <LayoutCurrencyIcon type={rareValue.pointsType} />
+                                    </Flex>
+                                </Flex>
+                            </>
+                        )}
+                        {(showEditFurni || showBuildtools) && (
+                            <>
+                                <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                                <button type="button" className="habbix-furni-edit-toggle" aria-expanded={dropdownOpen} onClick={()=>setDropdownOpen(v=>!v)}><span>{dropdownOpen?'⌃':'⌄'}</span> Möbel bearbeiten</button>
+                                {dropdownOpen&&showEditFurni&&<button type="button" className="habbix-furni-edit-open" onClick={()=>{CreateLinkEvent('furni-editor/show');if(furniTypeId!=='?')window.dispatchEvent(new CustomEvent('furni-editor:open',{detail:{spriteId:furniTypeId}}));}}>Edit Furni</button>}
+                                {showBuildtools && (
+                                    <>
+                                        {dropdownOpen && (
+                                            <div className="flex flex-col gap-[4px] w-full"><strong className="habbix-buildtools-title">Open Buildtools</strong><div className="flex gap-[4px] w-full">
+                                                <div className="flex-1 bg-[#3D5D63] rounded-[6px] border border-white p-[2px] flex flex-col gap-1">
+                                                    <Text small variant="white">
+                                                        {LocalizeText('group.edit.badge.position')}
+                                                    </Text>
+                                                    <div className="flex flex-col items-center gap-[2px]">
+                                                        <div className="flex gap-[0.6em]">
+                                                            <div
+                                                                className="bg-[#E55959] text-white w-[25px] h-[25px] border border-white cursor-pointer rounded-[3px] flex justify-center items-center transition-[filter] duration-300 hover:brightness-150 rotate-[225deg]"
+                                                                onClick={() => sendUpdate(-1, 0, furniLocationZ ?? 0, 0)}
+                                                            >
+                                                                <GrFormNextLink size="1.7em" />
+                                                            </div>
+                                                            <div
+                                                                className="bg-[#E55959] text-white w-[25px] h-[25px] border border-white cursor-pointer rounded-[3px] flex justify-center items-center transition-[filter] duration-300 hover:brightness-150 rotate-[315deg]"
+                                                                onClick={() => sendUpdate(0, -1, furniLocationZ ?? 0, 0)}
+                                                            >
+                                                                <GrFormNextLink size="1.7em" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="flex gap-[0.6em]">
+                                                            <div
+                                                                className="bg-[#E55959] text-white w-[25px] h-[25px] border border-white cursor-pointer rounded-[3px] flex justify-center items-center transition-[filter] duration-300 hover:brightness-150 rotate-[135deg]"
+                                                                onClick={() => sendUpdate(0, 1, furniLocationZ ?? 0, 0)}
+                                                            >
+                                                                <GrFormNextLink size="1.7em" />
+                                                            </div>
+                                                            <div
+                                                                className="bg-[#E55959] text-white w-[25px] h-[25px] border border-white cursor-pointer rounded-[3px] flex justify-center items-center transition-[filter] duration-300 hover:brightness-150 rotate-[45deg]"
+                                                                onClick={() => sendUpdate(1, 0, furniLocationZ ?? 0, 0)}
+                                                            >
+                                                                <GrFormNextLink size="1.7em" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <Text small variant="white">
+                                                        {LocalizeText('infostand.button.rotate')}
+                                                    </Text>
+                                                    <div className="flex justify-center gap-[0.6em]">
+                                                        <div
+                                                            className="bg-[#D1A245] text-black w-[28px] h-[28px] border-2 border-[#eee] cursor-pointer rounded-full flex justify-center items-center transition-[filter] duration-300 hover:brightness-150"
+                                                            onClick={() => sendUpdate(0, 0, furniLocationZ ?? 0, -1)}
+                                                        >
+                                                            <GrRotateLeft size="1.4em" />
+                                                        </div>
+                                                        <div
+                                                            className="bg-[#D1A245] text-black w-[28px] h-[28px] border-2 border-[#eee] cursor-pointer rounded-full flex justify-center items-center transition-[filter] duration-300 hover:brightness-150"
+                                                            onClick={() => sendUpdate(0, 0, furniLocationZ ?? 0, 1)}
+                                                        >
+                                                            <GrRotateRight size="1.4em" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex-1 bg-[#3D5D63] rounded-[6px] border border-white p-[2px] flex flex-col gap-1">
+                                                    <Text small variant="white">
+                                                        {LocalizeText('stack.magic.tile.height.label')}
+                                                    </Text>
+                                                    <input
+                                                        spellCheck={false}
+                                                        type="number"
+                                                        className="w-full text-xs bg-[#1a1a2a] text-white border border-[#ffffff44] rounded px-1 py-0.5"
+                                                        value={furniLocationZ !== null ? furniLocationZ.toString() : ''}
+                                                        onChange={handleHeightChange}
+                                                        onBlur={handleHeightBlur}
+                                                        min={0}
+                                                        max={40}
+                                                        step={0.1}
+                                                    />
+                                                    <div className="flex justify-center gap-1">
+                                                        <div className="flex flex-col items-center gap-[2px]">
+                                                            <div
+                                                                className="bg-[#247FD1] text-white w-[24px] h-[24px] border border-white cursor-pointer rounded-[3px] leading-none flex justify-center items-center transition-[filter] duration-300 hover:brightness-150"
+                                                                onClick={() => adjustHeight(1)}
+                                                            >
+                                                                ↑
+                                                            </div>
+                                                            <Text small variant="white" align="center">
+                                                                █
+                                                            </Text>
+                                                            <div
+                                                                className="bg-[#44A750] text-white w-[24px] h-[24px] border border-white cursor-pointer rounded-[3px] leading-none flex justify-center items-center transition-[filter] duration-300 hover:brightness-150"
+                                                                onClick={() => adjustHeight(-1)}
+                                                            >
+                                                                ↓
+                                                            </div>
+                                                        </div>
+                                                        <div className="flex flex-col items-center gap-[2px]">
+                                                            <div
+                                                                className="bg-[#247FD1] text-white w-[24px] h-[24px] border border-white cursor-pointer rounded-[3px] leading-none flex justify-center items-center transition-[filter] duration-300 hover:brightness-150"
+                                                                onClick={() => adjustHeight(0.1)}
+                                                            >
+                                                                ↑
+                                                            </div>
+                                                            <Text small variant="white" align="center">
+                                                                ▄
+                                                            </Text>
+                                                            <div
+                                                                className="bg-[#44A750] text-white w-[24px] h-[24px] border border-white cursor-pointer rounded-[3px] leading-none flex justify-center items-center transition-[filter] duration-300 hover:brightness-150"
+                                                                onClick={() => adjustHeight(-0.1)}
+                                                            >
+                                                                ↓
+                                                            </div>
+                                                        </div>
+                                                        <div className="flex flex-col items-center gap-[2px]">
+                                                            <div
+                                                                className="bg-[#247FD1] text-white w-[24px] h-[24px] border border-white cursor-pointer rounded-[3px] leading-none flex justify-center items-center transition-[filter] duration-300 hover:brightness-150"
+                                                                onClick={() => adjustHeight(0.01)}
+                                                            >
+                                                                ↑
+                                                            </div>
+                                                            <Text small variant="white" align="center">
+                                                                _
+                                                            </Text>
+                                                            <div
+                                                                className="bg-[#44A750] text-white w-[24px] h-[24px] border border-white cursor-pointer rounded-[3px] leading-none flex justify-center items-center transition-[filter] duration-300 hover:brightness-150"
+                                                                onClick={() => adjustHeight(-0.01)}
+                                                            >
+                                                                ↓
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        )}
+                                    </>
+                                )}
+                                {furniKeys.length > 0 && (
+                                    <>
+                                        <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                                        <div className="flex flex-col gap-1">
+                                            {furniKeys.map((key, index) => {
+                                                return (
+                                                    <Flex key={index} alignItems="center" gap={1}>
+                                                        <Text small wrap align="end" className="col-span-4" variant="white">
+                                                            {key}
+                                                        </Text>
+                                                        <OctaneInput
+                                                            type="text"
+                                                            className="text-black"
+                                                            style={{ color: '#000' }}
+                                                            value={furniValues[index]}
+                                                            onChange={(event) => onFurniSettingChange(index, event.target.value)}
+                                                        />
+                                                    </Flex>
+                                                );
+                                            })}
+                                        </div>
+                                    </>
+                                )}
+                            </>
+                        )}
+                        {customKeys.length > 0 && (
+                            <>
+                                <hr className="m-0 bg-[#0003] border-0 opacity-[.5] h-px" />
+                                <div className="flex flex-col gap-1">
+                                    {customKeys.map((key, index) => {
+                                        return (
+                                            <Flex key={index} alignItems="center" gap={1}>
+                                                <Text small wrap align="end" className="col-span-4" variant="white">
+                                                    {key}
+                                                </Text>
+                                                <OctaneInput
+                                                    type="text"
+                                                    className="text-black"
+                                                    style={{ color: '#000' }}
+                                                    value={customValues[index]}
+                                                    onChange={(event) => onCustomVariableChange(index, event.target.value)}
+                                                />
+                                            </Flex>
+                                        );
+                                    })}
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </Column>
+            </Column>
+            <Flex gap={1} justifyContent="end" className="habbix-furni-actions">
+                {showInspectButton && (
+                    <button type="button" onClick={() => openInspectionForFurni(avatarInfo.id, avatarInfo.category)}>
+                        Inspect
+                    </button>
+                )}
+                {canMove && (
+                    <button type="button" onClick={(event) => processButtonAction('move')}>
+                        {LocalizeText('infostand.button.move')}
+                    </button>
+                )}
+                {canRotate && (
+                    <button type="button" onClick={(event) => processButtonAction('rotate')}>
+                        {LocalizeText('infostand.button.rotate')}
+                    </button>
+                )}
+                {pickupMode !== PICKUP_MODE_NONE && (
+                    <button type="button" onClick={(event) => processButtonAction('pickup')}>
+                        {isPlant && plantDead
+                            ? LocalizeText('generic.delete')
+                            : LocalizeText(pickupMode === PICKUP_MODE_EJECT ? 'infostand.button.eject' : 'infostand.button.pickup')}
+                    </button>
+                )}
+                {canUse && (
+                    <button type="button" onClick={(event) => processButtonAction('use')}>
+                        {LocalizeText('infostand.button.use')}
+                    </button>
+                )}
+                {canRemoveBackground && (
+                    <button type="button" onClick={(event) => processButtonAction('remove_background')}>
+                        <Flex alignItems="center" gap={1}>
+                            <FaEraser className="fa-icon" />
+                            {removeLandscapeLabel()}
+                        </Flex>
+                    </button>
+                )}
+                {hasBrandingOffsets && (
+                    <button type="button" onClick={() => setShowPositionEditor(true)}>
+                        {LocalizeText('image.position.editor.button')}
+                    </button>
+                )}
+                {furniKeys.length > 0 && furniValues.length > 0 && furniKeys.length === furniValues.length && (
+                    <button type="button" onClick={() => processButtonAction('save_branding_configuration')}>
+                        {LocalizeText('save')}
+                    </button>
+                )}
+                {customKeys.length > 0 && customValues.length > 0 && customKeys.length === customValues.length && (
+                    <button type="button" onClick={() => processButtonAction('save_custom_variables')}>
+                        {LocalizeText('save')}
+                    </button>
+                )}
+            </Flex>
+            {showPositionEditor && (
+                <ImagePositionEditorView
+                    roomId={roomSession.roomId}
+                    objectId={avatarInfo.id}
+                    isWallItem={avatarInfo.isWallItem}
+                    initialX={getBrandingOffset('offsetX')}
+                    initialY={getBrandingOffset('offsetY')}
+                    initialZ={getBrandingOffset('offsetZ')}
+                    initialScale={getBrandingOffset('scale') || 100}
+                    initialAlpha={furniKeys.indexOf('alpha') >= 0 ? getBrandingOffset('alpha') : 100}
+                    onClose={() => setShowPositionEditor(false)}
+                    onSave={savePositionEditor}
+                />
+            )}
+        </Column>
+    );
+};
+

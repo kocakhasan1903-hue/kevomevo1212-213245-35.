@@ -1,0 +1,19 @@
+.octane-hotel-view:has(.habbix-hotel-landing){inset:0!important;width:100%!important;height:calc(100% - 60px)!important;overflow:auto!important;background:#202020!important}
+.octane-hotel-view:has(.habbix-hotel-landing)>:not(.habbix-hotel-landing){display:none!important}
+.habbix-hotel-landing{min-height:100%;width:100%;background-position:center;background-size:cover;background-repeat:no-repeat;display:flex;align-items:center;justify-content:center;padding:110px 28px 60px;box-sizing:border-box;color:#fff;font-family:HabbixKarla,Arial,sans-serif}
+.hhl-content{width:1200px;max-width:100%;display:grid;grid-template-columns:420px minmax(0,1fr);gap:24px;align-items:start}
+.hhl-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}
+.hhl-photo{height:200px;position:relative;border-radius:7px;overflow:hidden;background-size:cover;background-position:center;background-color:#222b;box-shadow:0 2px 8px #0003}
+.hhl-photo:nth-child(3){grid-column:1/-1}
+.hhl-photo-caption{position:absolute;inset:auto 16px 14px;display:flex;flex-direction:column;gap:10px;text-shadow:0 1px 3px #000}
+.hhl-photo-date{display:flex;justify-content:space-between;align-items:start;gap:12px;font-size:12px}.hhl-photo-date strong{letter-spacing:1px;font-weight:800;max-width:105px}.hhl-photo-date time{font-weight:600;text-align:right}
+.hhl-photo-author,.hhl-photo-room{border:0;background:transparent;color:#fff;text-align:left;padding:0;cursor:pointer;font:600 12px HabbixKarla,Arial,sans-serif}.hhl-photo-author{display:flex;align-items:center;gap:10px}.hhl-photo-author>span:last-child{display:flex;flex-direction:column;gap:4px;min-width:0}.hhl-photo-author small{font-size:11px;font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hhl-avatar{position:relative;display:block;width:48px;height:48px;flex-shrink:0;box-sizing:border-box;border-radius:50%;overflow:hidden;background-position:center;background-size:cover;background-color:#222;image-rendering:pixelated}.hhl-avatar>.avatar-image{position:absolute!important;inset:0!important;left:0!important;width:100%!important;height:100%!important}.hhl-photo .hhl-avatar{width:40px;height:40px}
+.hhl-leaders h2{font:800 18px HabbixKarla,Arial,sans-serif;letter-spacing:.5px;margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid #ffffff20}
+.hhl-leader-grid{display:grid;grid-template-rows:repeat(5,70px);grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:8px 12px}
+.hhl-leader{display:flex;align-items:center;gap:9px;border:1px solid #ffffff10;border-radius:4px;padding:9px;color:#fff;background:#2020208c;text-align:left;cursor:pointer;min-width:0;transition:background-color .16s,box-shadow .16s}
+.hhl-leader:hover{background:#343434bb;box-shadow:0 2px 7px #0003}.hhl-rank{font-size:11px;font-weight:700}.hhl-user{display:flex;flex-direction:column;gap:4px;min-width:0;font-size:12px}.hhl-user strong{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.hhl-user small{font-size:12px;font-weight:600}
+.hhl-photo-empty{display:flex;flex-direction:column;justify-content:center;padding:16px;box-sizing:border-box;gap:8px;font-size:12px;background:#202020b3}.hhl-photo-empty span{color:#ddd}
+@media(max-width:1050px){.hhl-content{grid-template-columns:340px minmax(0,1fr)}.hhl-leader-grid{grid-template-rows:repeat(8,70px)}.hhl-avatar{width:40px;height:40px}.hhl-user small{font-size:11px}}
+@media(max-width:750px){.hhl-content{grid-template-columns:1fr}.habbix-hotel-landing{padding:90px 16px 30px}.hhl-photos{max-width:420px;width:100%;margin:auto}.hhl-leader-grid{grid-template-rows:none;grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.hhl-leader{transition:none}}

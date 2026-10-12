@@ -1,0 +1,110 @@
+/* Phone layout: viewport sheets and two compact touch rails. */
+@media(pointer:coarse) and (hover:none){
+ :root{--habbix-mobile-height:100dvh;--habbix-mobile-top:0px;--habbix-safe-bottom:env(safe-area-inset-bottom,0px)}
+ .draggable-window{position:fixed!important;left:8px!important;top:calc(var(--habbix-mobile-top) + env(safe-area-inset-top,0px) + 8px)!important;transform:none!important;translate:none!important;width:calc(100vw - 16px)!important;max-width:calc(100vw - 16px)!important;max-height:calc(var(--habbix-mobile-height) - env(safe-area-inset-top,0px) - 24px)!important}
+ .draggable-window>.octane-card-shell{width:100%!important;min-width:0!important;max-width:100%!important;max-height:calc(var(--habbix-mobile-height) - env(safe-area-inset-top,0px) - 24px)!important;resize:none!important;box-sizing:border-box;border-radius:10px!important;overflow:auto!important}
+ .draggable-window .octane-card-content-shell{min-width:0!important;min-height:0!important;overflow:auto;overscroll-behavior:contain}
+ .octane-card-header-shell{position:sticky;top:0;z-index:2;flex-shrink:0}
+ .octane-card-close-button{min-width:32px!important;min-height:32px!important}
+ .habbix-voice-channels{left:8px!important;top:calc(env(safe-area-inset-top,0px) + 8px)!important;width:142px!important;max-width:calc(100vw - 16px)!important}
+ .habbix-voice-channels.is-open{width:min(320px,calc(100vw - 16px))!important;z-index:90}
+ .hvc-body{max-height:calc(100dvh - 220px);overflow:auto;overscroll-behavior:contain}
+ .octane-purse-container{top:calc(env(safe-area-inset-top,0px) + 8px)!important;right:8px!important}
+ .habbix-wallet-bar{grid-template-columns:minmax(74px,auto) 46px auto;grid-template-rows:24px 24px;gap:3px!important;padding:5px!important;font-size:10px!important;max-width:210px!important}
+ .habbix-wallet-bar>span{min-height:24px!important;padding:2px 4px!important}
+ .habbix-wallet-actions{padding-left:3px;gap:2px}.habbix-wallet-actions button{width:24px;height:22px}.habbix-wallet-actions img{width:20px;height:20px}
+ .habbix-mobile-nav{position:fixed!important;bottom:calc(var(--habbix-safe-bottom) + 6px)!important;width:calc(100vw - 16px)!important;min-height:50px;border-radius:10px;background:#303030!important;box-shadow:0 4px 14px #0005}
+ .tb-bar-scroll{gap:8px!important;min-height:44px;scrollbar-width:none;touch-action:pan-x}.tb-bar-scroll>div{flex-shrink:0}.tb-bar-scroll::-webkit-scrollbar{display:none}
+ .habbix-mobile-tools{position:fixed!important;left:8px!important;right:8px!important;top:auto!important;bottom:calc(var(--habbix-safe-bottom) + 66px)!important;transform:none!important;flex-direction:row!important;justify-content:flex-start;gap:10px!important;padding:5px 8px!important;border-radius:10px;overflow-x:auto;max-height:44px;background:#262626ed!important;scrollbar-width:none;touch-action:pan-x}
+ .habbix-mobile-tools>div,.habbix-mobile-tools>button{flex-shrink:0}
+ .tb-frame{position:fixed!important;left:8px!important;right:8px!important;bottom:calc(var(--habbix-safe-bottom) + 120px)!important;transform:none!important;width:calc(100vw - 16px)!important;max-width:none!important}
+ .tb-frame input,.hmx-input input,.hmx-input textarea{font-size:16px!important;min-width:0!important}
+ .habbix-me-popover{left:0!important;right:auto!important;max-width:calc(100vw - 32px)!important}.habbix-me-menu{gap:8px!important;max-width:100%!important}
+ .octane-room-tools-container.habbix-room-tools{bottom:calc(var(--habbix-safe-bottom) + 170px)!important;max-width:calc(100vw - 16px)!important;left:8px!important}
+ .octane-rightside-notifications,.habbix-live-lotto,.hep-live-stack,body:has(.habbix-live-lotto) .hep-live-stack{top:calc(env(safe-area-inset-top,0px) + 86px)!important;left:8px!important;right:8px!important;width:auto!important;max-width:calc(100vw - 16px)!important}
+ body:has(.habbix-live-lotto) .octane-rightside-notifications{top:250px!important}
+ .fp-body{padding:8px!important;overflow:auto;min-height:0}.fp-controls{gap:8px!important;flex-wrap:wrap}.fp-panels{grid-template-columns:1fr!important;flex:none!important}.fp-panel{height:260px}.fp-control-group{gap:4px}.fp-group-label{font-size:12px}.fp-footer{flex-wrap:wrap;gap:6px}
+ .habbix-chat-panel .hmx-message{max-width:92%!important}.hmx-audio-player{max-width:100%!important}.hmx-input{gap:5px!important;padding:8px!important}.hmx-input>button{padding:8px!important}.hmx-media-tools button{min-width:32px;min-height:32px}
+ .octane-avatar-editor .avatar-editor-main{min-width:0!important;overflow:auto}
+ html.habbix-keyboard-open .habbix-mobile-nav,html.habbix-keyboard-open .habbix-mobile-tools{visibility:hidden;pointer-events:none}
+ html.habbix-keyboard-open .tb-frame{bottom:calc(100dvh - var(--habbix-mobile-height) - var(--habbix-mobile-top) + 8px)!important}
+}
+@media(pointer:coarse) and (hover:none) and (max-height:500px){.habbix-wallet-bar{grid-template-rows:22px 22px}.fp-panels{grid-template-columns:1fr 1fr!important}.fp-panel{height:210px}}
+@media(pointer:coarse) and (hover:none) and (max-width:380px){.habbix-voice-channels{width:118px!important}.habbix-wallet-bar{grid-template-columns:72px 40px auto;max-width:192px!important}.hvc-header{font-size:10px!important}}
+
+/* Native mobile toolbar assets need explicit sizing; Tailwind translate is independent of transform. */
+@media(pointer:coarse) and (hover:none){
+ .tb-frame{translate:none!important;margin:0!important;height:44px!important;padding:0!important;box-sizing:border-box}
+ .tb-frame>.octane-chat-input-container{width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;box-sizing:border-box}
+ .tb-frame .swf-chat-input{width:100%!important;min-width:0!important;box-sizing:border-box}
+ .habbix-mobile-nav{height:50px!important;min-height:50px!important;margin:0!important;padding:3px 6px!important;box-sizing:border-box}
+ .habbix-mobile-nav .tb-bar-scroll{height:44px!important;gap:2px!important;padding:0!important;align-items:center}
+ .habbix-mobile-nav .tb-bar-scroll>div{display:flex;align-items:center;justify-content:center;width:44px!important;min-width:44px!important;height:44px!important;min-height:44px!important;overflow:visible}
+ .habbix-mobile-nav .tb-icon,.habbix-mobile-tools .tb-icon{scale:.72!important;transform-origin:center}
+ .habbix-mobile-tools{gap:0!important;height:44px!important;min-height:44px!important;padding:0 4px!important;align-items:center;box-sizing:border-box;scroll-padding:8px}
+ .habbix-mobile-tools>div,.habbix-mobile-tools>button{display:flex;align-items:center;justify-content:center;min-width:40px!important;width:40px!important;height:40px!important}
+ .habbix-mobile-tools .habbix-rail-tool{min-width:40px!important;width:40px!important;height:40px!important;padding:0!important}
+ .habbix-mobile-tools .habbix-rail-tool img{width:26px!important;height:26px!important;max-width:26px!important;max-height:26px!important;object-fit:contain}
+ .habbix-mobile-nav :is(.tb-memenu-bg,.tb-memenu-circle){display:none!important}
+ .habbix-mobile-nav .tb-memenu-avatar{position:relative!important;left:auto!important;top:auto!important;transform:none!important;translate:none!important;width:36px!important;height:36px!important;overflow:hidden;border-radius:7px;background:#222222}
+ .habbix-mobile-nav .habbix-toolbar-avatar{width:36px!important;height:36px!important;position:relative!important;inset:auto!important;transform:none!important}
+ .habbix-mobile-nav .tb-memenu-avatar .avatar-image{margin:0!important}
+ .habbix-mobile-nav .tb-slot-memenu>.habbix-me-popover{left:0!important;top:auto!important;bottom:calc(100% + 10px)!important;max-width:calc(100vw - 32px)!important}
+ .habbix-mobile-nav .habbix-me-menu{flex-wrap:wrap!important}
+ .habbix-mobile-nav .tb-bar-scroll{overflow-y:hidden!important}
+ .habbix-mobile-nav:has(.habbix-me-popover) .tb-bar-scroll{overflow:visible!important}
+}
+@media(pointer:coarse) and (hover:none){
+ .octane-app-root .habbix-voice-channels{width:140px!important}
+ .octane-app-root .habbix-voice-channels.is-open{width:min(320px,calc(100vw - 16px))!important}
+ .octane-app-root .habbix-voice-channels .hvc-header{min-height:32px!important;height:32px!important;padding:5px 8px!important;font-size:11px!important}
+ .octane-app-root .habbix-voice-channels .hvc-header svg{width:15px!important;height:15px!important}
+ .octane-app-root .habbix-wallet-counter strong{font-size:10px!important;line-height:18px!important}
+}
+@media(pointer:coarse) and (hover:none) and (max-width:380px){.octane-app-root .habbix-voice-channels{width:118px!important}}
+
+/* Keep the phone's primary navigation on the left, like the desktop. */
+@media(pointer:coarse) and (hover:none){
+ .habbix-mobile-nav{left:6px!important;right:auto!important;top:50%!important;bottom:auto!important;translate:none!important;transform:translateY(-50%)!important;width:44px!important;max-width:44px!important;height:auto!important;min-height:0!important;max-height:calc(100dvh - 230px)!important;padding:3px!important;border-radius:9px!important}
+ .habbix-mobile-nav .tb-bar-scroll{flex-direction:column!important;width:36px!important;height:auto!important;min-height:0!important;gap:2px!important;overflow-x:hidden!important;overflow-y:auto!important;touch-action:pan-y}
+ .habbix-mobile-nav .tb-bar-scroll>div{width:36px!important;min-width:36px!important;height:38px!important;min-height:38px!important}
+ .habbix-mobile-nav .tb-slot-memenu>.habbix-me-popover{left:calc(100% + 8px)!important;bottom:0!important;top:auto!important;max-width:calc(100vw - 70px)!important}
+ .habbix-mobile-nav:has(.habbix-me-popover) .tb-bar-scroll{overflow:visible!important}
+ .habbix-mobile-tools{bottom:calc(var(--habbix-safe-bottom) + 6px)!important}
+ .tb-frame{bottom:calc(var(--habbix-safe-bottom) + 60px)!important}
+ .octane-room-tools-container.habbix-room-tools{bottom:calc(var(--habbix-safe-bottom) + 110px)!important}
+}
+@media(pointer:coarse) and (hover:none){.octane-app-root .habbix-mobile-nav{translate:none!important;left:6px!important}.octane-app-root .habbix-voice-channels{width:140px!important}}
+
+/* Mobile overrides must also win against animated desktop chrome. */
+@media(pointer:coarse) and (hover:none){
+ .octane-app-root .habbix-mobile-nav{display:block!important;overflow:visible!important}
+ .octane-app-root .habbix-mobile-nav .tb-bar-scroll{display:flex!important;flex:none!important;min-width:36px!important;max-height:calc(100dvh - 236px)!important}
+ .octane-app-root .habbix-mobile-nav .tb-bar-scroll>div{opacity:1!important;transform:none!important;flex:none!important;visibility:visible!important}
+ .octane-app-root .habbix-live-lotto{top:calc(env(safe-area-inset-top,0px) + 84px)!important;left:auto!important;right:8px!important;transform:none!important;translate:none!important;width:160px!important;max-width:160px!important;z-index:73!important;padding:7px!important;font-size:11px!important}
+ .octane-app-root .habbix-live-lotto header{font-size:11px!important;min-height:22px!important}
+ .octane-app-root .habbix-live-lotto-pot{padding:6px!important}
+ .octane-app-root .habbix-lotto-prizes strong{font-size:13px!important;gap:4px!important}
+ .octane-app-root .habbix-lotto-prizes strong img{width:15px!important;height:15px!important}
+ .octane-app-root .habbix-lotto-prizes strong span{font-size:10px!important}
+ .octane-app-root .habbix-live-lotto-countdown{height:20px!important;font-size:11px!important}
+ .octane-app-root .hep-live-stack,body:has(.habbix-live-lotto) .octane-app-root .hep-live-stack{top:calc(env(safe-area-inset-top,0px) + 84px)!important;left:56px!important;right:auto!important;transform:none!important;translate:none!important;width:calc(100vw - 232px)!important;min-width:0!important;margin:0!important;padding:0!important;max-height:calc(100dvh - 240px)!important}
+ .octane-app-root .octane-rightside-notifications,body:has(.habbix-live-lotto) .octane-app-root .octane-rightside-notifications{top:calc(env(safe-area-inset-top,0px) + 250px)!important;left:56px!important;right:8px!important;width:auto!important;max-width:calc(100vw - 64px)!important;max-height:100px!important;overflow-y:auto;scrollbar-width:thin}
+ .octane-app-root .octane-rightside-notifications>*{padding:8px!important;font-size:11px!important;line-height:1.35!important;min-height:0!important;max-width:100%!important;box-sizing:border-box}
+ .octane-app-root .octane-rightside-notifications :is(h3,h4,p,span){font-size:11px!important;line-height:1.35!important}
+}
+
+/* Compact placement is deliberately scoped to phone/tablet viewports. */
+@media(pointer:coarse) and (hover:none){
+ .octane-app-root .octane-purse-container{top:calc(env(safe-area-inset-top,0px) + 8px)!important;right:8px!important}
+ .octane-app-root .hep-live-stack,body:has(.habbix-live-lotto) .octane-app-root .hep-live-stack{left:auto!important;right:8px!important;top:84px!important;width:min(260px,calc(100vw - 72px))!important;max-height:calc(100dvh - 300px)!important}
+ body:has(.habbix-live-lotto) .octane-app-root .hep-live-stack{top:calc(96px + var(--habbix-live-lotto-height,128px))!important;max-height:calc(100dvh - 300px - var(--habbix-live-lotto-height,128px))!important}
+ .octane-app-root .octane-rightside-notifications,body:has(.habbix-live-lotto) .octane-app-root .octane-rightside-notifications{top:auto!important;bottom:calc(env(safe-area-inset-bottom,0px) + 116px)!important;left:56px!important;right:8px!important;width:auto!important;max-height:96px!important}
+}
+
+/* Keep live announcements clear of the measured wallet, including larger text. */
+@media(pointer:coarse) and (hover:none){
+ .octane-app-root .habbix-live-lotto,.octane-app-root .hep-live-stack{top:calc(env(safe-area-inset-top,0px) + 20px + var(--habbix-wallet-height,64px))!important}
+ body:has(.habbix-live-lotto) .octane-app-root .hep-live-stack{top:calc(env(safe-area-inset-top,0px) + 32px + var(--habbix-wallet-height,64px) + var(--habbix-live-lotto-height,128px))!important}
+ .habbix-message-notice,body:not(:has(.habbix-live-lotto)) .habbix-message-notice{top:auto!important;bottom:calc(env(safe-area-inset-bottom,0px) + 112px)!important}
+}

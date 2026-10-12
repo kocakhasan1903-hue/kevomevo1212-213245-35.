@@ -1,0 +1,121 @@
+.habbix-animated-close{transition:rotate .14s ease,scale .14s ease,background-color .14s ease,filter .14s ease!important;transform-origin:center;border:0;cursor:pointer}
+.habbix-animated-close:hover{rotate:8deg;scale:1.08;filter:brightness(1.15)}
+.habbix-animated-close.is-closing{animation:habbix-close-click .12s ease-in forwards}
+@keyframes habbix-close-click{to{rotate:90deg;scale:.8;opacity:.5}}
+@media(prefers-reduced-motion:reduce){.habbix-animated-close{transition:none!important}.habbix-animated-close:hover{rotate:0deg;scale:1}.habbix-animated-close.is-closing{animation:none}}
+
+.octane-room-tools-container.habbix-room-tools{bottom:130px!important;gap:0!important;max-width:calc(100vw - 20px);font-family:HabbixKarla,"Segoe UI",Arial,sans-serif}
+.habbix-room-tools .octane-room-tools.habbix-room-card{width:max-content!important;min-width:250px;max-width:330px;min-height:0!important;padding:8px 10px!important;gap:4px!important;border:1px solid #ffffff14;border-left:0;border-radius:0 5px 5px 0;background:#262626eb!important;box-shadow:none!important;margin-left:18px;color:#eee}
+.habbix-room-tools .room-tools-collapse-toggle{width:18px!important;height:100%!important;top:0!important;transform:none!important;border:1px solid #ffffff14!important;border-radius:0!important;background:#1e1e1ee6!important;font:18px HabbixKarla,"Segoe UI",Arial,sans-serif!important}
+.octane-room-tools-container.habbix-room-tools.is-collapsed{width:18px!important;height:auto!important}
+.habbix-room-tools.is-collapsed .habbix-room-card{visibility:hidden;pointer-events:none}
+.habbix-room-tools.is-collapsed .room-tools-collapse-toggle{height:28px!important;top:50%!important;transform:translateY(-50%)!important;border-radius:0 4px 4px 0!important}
+.habbix-room-title{font-size:18px;line-height:22.5px;font-weight:700;overflow-wrap:anywhere}
+.habbix-room-owner{display:flex;align-items:center;gap:8px;background:transparent;border:0;padding:0;color:#eee;font:600 12px HabbixKarla,"Segoe UI",Arial,sans-serif;text-align:left;cursor:pointer;min-height:24px}
+.habbix-room-owner-avatar{display:flex;align-items:center;justify-content:center;width:24px;height:24px;flex:none;border:3px solid #fff;border-radius:50%;overflow:hidden;background:#1e1e1e}
+.habbix-room-owner-avatar :is(.avatar-image,.user-profile-icon){width:18px!important;height:18px!important;flex:none;margin:0!important;background-position:center!important;background-size:contain!important}
+.habbix-room-description{font-size:18px;line-height:24px;color:#7d7d7d;overflow-wrap:anywhere}
+.habbix-room-actions{display:flex;align-items:center;gap:4px;flex-wrap:wrap;border-top:1px solid #ffffff0d;margin-top:4px;padding-top:6px}
+.habbix-room-actions button{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid #ffffff14;border-radius:4px;background:#1e1e1ef2;padding:0;cursor:pointer;color:white}
+.habbix-room-actions button:hover:not(:disabled){background:#713c38;border-color:#b8423b}
+.habbix-room-actions button:disabled{opacity:.5;cursor:default}
+.habbix-room-actions .habbix-room-like{margin-left:auto}
+.habbix-room-actions .icon-like-room{width:24px;height:24px;background:center / contain no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAABHNCSVQICAgIfAhkiAAAAF96VFh0UmF3IHByb2ZpbGUgdHlwZSBBUFAxAAAImeNKT81LLcpMVigoyk/LzEnlUgADYxMuE0sTS6NEAwMDCwMIMDQwMDYEkkZAtjlUKNEABZiYm6UBoblZspkpiM8FAE+6FWgbLdiMAAABA0lEQVRIieXVMRKDIBAF0B/GSUUBTbxAGg/jnbyTh0mTC5gGC6uMRYoMjKysEMGkyC9lZ98uOiPw5Zy4g6o6d6Hn8/zs9tSxINdgbyjsgUtMSgVjhn55rnXdTtPoNUypW6IOtFioAY3WdQsgqc7CFhWxaUMxZuhT66RU3jMBvLejByUjpXI36G2YMvWnoT2FneDoWENE6orn/8DmAMPr6YFa19fSGu0pAGAcHx03UWZcL2us3mHJLUO9HHjAlqvtPDAwWQ7acDe1+h8qdXHTGDPcAdxyMHJz4T9+BrqJseBONIptggyKANwA/hfJYVGQogQGhWJYEhhCucSwZDAGp0A/ywsd6ois4lMJAgAAAABJRU5ErkJggg==")}
+.habbix-room-card .room-tools-zoom-row{border-bottom:0!important;border-top:1px solid #ffffff12;padding:5px 0 0!important;font-size:11px}
+
+.octane-card-shell.octane-room-info.habbix-room-info-window{width:min(394px,calc(100vw - 20px))!important;max-height:calc(100dvh - 74px)!important;height:auto!important;padding:10px!important;background:#2b2b2b!important;border:0!important;font-family:HabbixKarla,"Segoe UI",Arial,sans-serif!important}
+.habbix-room-info-window .octane-card-header-shell{height:32px!important;min-height:32px!important;max-height:32px!important;margin:0 0 8px!important}
+.habbix-room-info-window .octane-room-info__content{display:flex;flex-direction:column;gap:12px!important;background:#2a2a2a!important;border-radius:4px;padding:12px!important;color:#eee!important;max-height:calc(100dvh - 134px)!important;scrollbar-width:thin;scrollbar-color:#b8423b #222222}
+.habbix-room-info-summary{display:flex;gap:12px;align-items:flex-start;min-width:0}
+.habbix-room-info-details{flex:1;min-width:0}
+.habbix-room-info-window .octane-room-info__thumbnail{width:78px!important;height:78px!important;min-width:78px!important;align-self:flex-start;border:2px solid #444!important;border-radius:8px!important;background-size:cover!important}
+.habbix-room-info-window .octane-room-info__heading{gap:8px;align-items:flex-start;justify-content:flex-start;margin-bottom:12px}
+.habbix-room-info-window h3{font-size:18px;line-height:22px;font-weight:700;color:#eee;margin:0;overflow-wrap:anywhere}
+.habbix-room-info-window .octane-room-info__home{height:32px;width:32px;flex:none;border:1px solid #ffffff1a;border-radius:5px;background-color:#2b2b2b!important;background-size:24px auto}
+.habbix-room-info-window .octane-room-info__home{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAABVklEQVR42mNgQID/WDBdwf90E6v/lc4+/+en5/0PUFSluyPAliI7AMkR5GLSHACyHBQKyCGwqDsKjOtTTcGYGL61Fuv/7FDSQxDsAJDFIAeA+CEOwnAMMhSEieXDMCmOgKcBcn2OzIeFAikhAQ92cnyMKwRICQmq+ByZjxwKxDiCIh8TCgFCjqCqz5H5sFCAOQKbA3C6mloY5CB8jgC7ksICBy8GmY/sCKyhAMLnO3hogol2xP8zzGCMzRcwOWwYr/oXG/5XRSpiOIKwA/ZcgmgE0kQ5AJd6oANAoUCMI1AMBGmAYWIcgFM91AHYHIHXAeg+IhTHhEIAmyPwOwBPnMIxkeqxOhhfGkDHIE0gGtZGQMbI8lgxbgcwkOWAVXYOcDxyHQBSO7JDYMAcUOnk9X9dfg4cg/hUdQByaUZNTKwD6OYIgk0zWjuCqAYqLR1BdDOdxhgMAL3l8IUKXrJuAAAAAElFTkSuQmCC")!important}
+.habbix-room-info-window .octane-room-info__meta{display:flex;align-items:center;gap:6px;margin:6px 0;font:12px HabbixKarla,"Segoe UI",Arial,sans-serif;color:#eee}
+.habbix-room-info-window .octane-room-info__meta>span{color:#aaa;font-size:11px;font-weight:600}
+.habbix-room-info-window .octane-room-info__description{color:#939393!important;font-size:12px;line-height:17px}
+.habbix-room-info-link-section{display:flex;border-block:1px solid #ffffff0d;padding:10px 0}
+.habbix-room-info-action-row{display:flex;gap:8px}
+.habbix-room-info-window .octane-room-info__action{display:flex;align-items:center;justify-content:center;gap:8px;flex:1;min-width:0;width:auto!important;min-height:36px!important;height:auto!important;line-height:16px!important;padding:8px!important;background:#282828!important;color:#eee!important;border:1px solid #ffffff12!important;border-radius:5px!important;font:600 12px HabbixKarla,"Segoe UI",Arial,sans-serif!important;box-shadow:none!important;cursor:pointer}
+.habbix-room-info-window .octane-room-info__action:hover{background:#713c38!important;border-color:#b8423b!important}
+.habbix-room-info-window .octane-room-info__action.is-danger{background:#613e3e!important;border-color:#875050!important;color:#e8baba!important}
+.habbix-room-info-bottom{border-top:1px solid #ffffff0d;padding-top:12px}
+.habbix-room-info-bottom button{min-height:44px!important}
+.habbix-room-info-advanced{font-size:11px;color:#aaa;border-top:1px solid #ffffff0a;padding-top:8px}
+.habbix-room-info-advanced summary{cursor:pointer}
+.habbix-room-info-advanced .octane-room-info__actions{gap:5px;margin-top:8px}
+
+.habbix-furni-infostand{font-family:HabbixKarla,"Segoe UI",Arial,sans-serif!important;gap:10px!important;pointer-events:auto}
+.habbix-furni-card{width:250px;max-width:calc(100vw - 20px);max-height:calc(100dvh - 180px);background:#2b2b2bff;border:1px solid #ffffff0c;border-radius:5px;box-shadow:0 4px 12px #0005;position:relative;z-index:30;overflow:auto;scrollbar-width:thin;scrollbar-color:#b8423b #222222}
+.habbix-furni-content{padding:10px!important;gap:8px!important;overflow:visible!important;font-size:12px;color:white}
+.habbix-furni-heading{padding:10px 12px;background:#262626;border-radius:3px}
+.habbix-furni-heading .text-white{font:600 12.6px HabbixKarla,"Segoe UI",Arial,sans-serif!important}
+.habbix-furni-heading hr,.habbix-furni-content hr{display:none}
+.habbix-furni-close{display:flex;align-items:center;justify-content:center;width:20px;height:20px;flex:none;color:white;font:700 14px HabbixKarla,"Segoe UI",Arial,sans-serif;background:#7e3d40;border:0;border-radius:3px;padding:0}
+.habbix-furni-image{min-height:68px!important;max-height:124px!important;height:auto;padding:12px;overflow:hidden}
+.habbix-furni-buy-row{display:flex;justify-content:flex-end}
+.habbix-furni-buy{font:500 10px HabbixKarla,"Segoe UI",Arial,sans-serif;color:#f3c9c5;background:#713c38;border:1px solid #b8423b;border-radius:3px;padding:3px 12px;cursor:pointer}
+.habbix-furni-owner-row{display:flex;justify-content:space-between;align-items:center;padding:5px 4px;border-top:1px solid #ffffff0a;font-size:11px}
+.habbix-furni-owner-row>span,.habbix-furni-stats span{font-weight:500;color:#aaa;font-size:11px}
+.habbix-furni-owner-row button,.habbix-furni-stats button{display:flex;align-items:center;gap:6px;background:transparent;border:0;color:#eee;padding:2px 4px;font:600 11px HabbixKarla,"Segoe UI",Arial,sans-serif;cursor:pointer}
+.habbix-furni-owner-row button{text-decoration:underline}.habbix-furni-owner-row button:disabled{cursor:default;text-decoration:none}
+.habbix-furni-stats{display:flex;flex-direction:column;gap:6px;padding:8px 12px;background:#18181840;border-radius:3px}
+.habbix-furni-stats>div{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;font-size:11px}
+.habbix-furni-stats strong{font-size:10px;white-space:nowrap;font-weight:600}
+.habbix-furni-stats button:hover{background:#ffffff0b;color:#d97770;border-radius:3px}
+.habbix-furni-edit-toggle,.habbix-furni-edit-open{display:flex;align-items:center;gap:6px;width:100%;padding:6px 8px;background:#2b2b2b66;border:1px solid #ffffff12;border-radius:3px;color:#eee;font:500 11px HabbixKarla,"Segoe UI",Arial,sans-serif;cursor:pointer}
+.habbix-furni-edit-toggle:hover,.habbix-furni-edit-open:hover{background:#713c38;border-color:#b8423b}
+.habbix-furni-actions{gap:6px!important;flex-wrap:wrap!important;max-width:calc(100vw - 20px)}
+.habbix-furni-actions button{height:27px!important;min-height:27px!important;padding:6px 12px!important;color:#eee!important;background:#1a1a1acc!important;border:1px solid #ffffff1a!important;box-shadow:none!important;border-radius:3px!important;font:500 11px/13px HabbixKarla,"Segoe UI",Arial,sans-serif!important}
+.habbix-furni-actions button:hover{background:#713c38!important;border-color:#b8423b!important}
+
+/* Room photographs use the native screenshot upload after explicit selection. */
+.habbix-room-info-photo-button{padding:0;border:0;background:none;border-radius:8px;flex:none;cursor:pointer}
+.habbix-room-info-photo-button:hover .octane-room-info__thumbnail,.habbix-room-info-photo-button:focus-visible .octane-room-info__thumbnail{border-color:#d97770!important;box-shadow:0 0 0 2px #d9777033}
+.habbix-room-info-window .octane-room-info__home{transition:background-color .15s,box-shadow .15s,transform .15s}
+.habbix-room-info-window .octane-room-info__home.is-home{box-shadow:inset 0 0 0 1px #d97770;background-color:#713c38!important}
+.habbix-room-info-window .octane-room-info__home:hover,.habbix-room-info-window .octane-room-info__home:focus-visible{background-color:#713c38!important;animation:habbix-home-bounce .4s ease-out}
+.habbix-room-info-window .octane-room-info__home:active{transform:scale(.92)}
+.habbix-wallet-bar button[aria-label="Zur Website"]:hover img,.habbix-wallet-bar button[aria-label="Zur Website"]:focus-visible img{animation:habbix-home-bounce .4s ease-out}
+@keyframes habbix-home-bounce{0%,100%{transform:translateY(0)}45%{transform:translateY(-3px)}70%{transform:translateY(1px)}}
+.habbix-room-camera{width:min(344px,calc(100vw - 20px));max-height:calc(100dvh - 76px);overflow:auto;padding:10px;background:#2b2b2b;color:#eee;border-radius:6px;box-shadow:0 6px 20px #0006;font-family:Karla,Arial,sans-serif;font-size:12px}
+.habbix-room-camera-header{position:relative;min-height:32px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;background:#222222;border-radius:3px;cursor:move}
+.habbix-room-camera-header button{position:absolute;right:4px;top:4px;width:24px;height:24px;border:1px solid #965656;border-radius:3px;background:#773d3d;color:white;cursor:pointer}
+.habbix-room-camera-viewfinder{position:relative;width:100%;aspect-ratio:1;overflow:hidden;border:2px solid #191919;border-radius:4px;background:#171717}
+.habbix-room-camera-viewfinder canvas,.habbix-room-camera-viewfinder>img{display:block;width:100%;height:100%;object-fit:cover;image-rendering:pixelated;pointer-events:none}
+.habbix-room-camera-zoom{position:absolute;bottom:8px;right:8px;display:flex;gap:6px;align-items:center;background:#222222dd;padding:4px;border-radius:4px}
+.habbix-room-camera button:disabled{opacity:.45;cursor:default}
+.habbix-room-camera-zoom button{height:24px;width:24px;background:#2b2b2b;color:white;border:1px solid #666;border-radius:3px;cursor:pointer}
+.habbix-room-camera p{margin:8px 0;color:#aaa;font-size:11px}
+.habbix-room-camera p[role=alert]{color:#ffaaa8}
+.habbix-room-camera-roll{display:flex;gap:5px;min-height:0;margin-bottom:8px}
+.habbix-room-camera-roll button{width:calc((100% - 20px)/5);aspect-ratio:1;border:2px solid #555;border-radius:4px;padding:0;overflow:hidden;cursor:pointer;background:#222222}
+.habbix-room-camera-roll button.is-selected{border-color:#d97770;box-shadow:0 0 0 1px #d9777055}
+.habbix-room-camera-roll img{display:block;width:100%;height:100%;object-fit:cover}
+.habbix-room-camera-actions{display:flex;flex-wrap:wrap;gap:5px}
+.habbix-room-camera-actions button{flex:1;white-space:nowrap;min-height:30px;padding:4px 8px;background:#262626;color:#eee;border:1px solid #555;border-radius:4px;cursor:pointer}
+.habbix-room-camera-actions button.is-primary{flex-basis:100%;background:#b8423b;border-color:#b8423b}
+.habbix-buildtools-title{font-size:11px;margin-top:6px}
+@media(prefers-reduced-motion:reduce){.habbix-room-info-window .octane-room-info__home,.habbix-wallet-bar button[aria-label="Zur Website"] img{animation:none!important;transition:none!important}}
+
+/* Room settings use the same dark controls as the room information window. */
+.octane-card-shell.octane-room-settings.habbix-room-settings{--room-settings-bg:#2b2b2b;--room-settings-panel:#282828;--room-settings-line:#494949;--room-settings-text:#eee;--room-settings-muted:#aaa;width:min(460px,calc(100vw - 24px))!important;height:min(570px,calc(100dvh - 90px))!important;min-width:0!important;max-height:calc(100dvh - 90px)!important;padding:10px!important;box-sizing:border-box;color:#eee!important;font:12px/1.4 HabbixKarla,Arial,sans-serif!important;overflow:hidden!important}
+.habbix-room-settings .octane-card-header-shell{position:relative!important;inset:auto!important;flex:none!important;min-width:0!important;width:100%!important;height:32px!important;min-height:32px!important;max-height:32px!important;margin:0!important}
+.habbix-room-settings .octane-card-tabs-shell{position:relative!important;inset:auto!important;display:flex!important;flex:0 0 auto!important;gap:5px!important;padding:8px 0!important;width:100%!important;min-width:0!important;overflow:visible!important}
+.habbix-room-settings .octane-card-tabs-shell>*{flex:1 1 0!important;min-width:0!important;margin:0!important;padding:6px 3px!important;white-space:normal!important;text-align:center}
+.habbix-room-settings .octane-card-content-shell{position:relative!important;inset:auto!important;flex:1 1 0!important;min-height:0!important;min-width:0!important;width:100%!important;max-width:100%!important;padding:8px!important;overflow-x:hidden!important;overflow-y:auto!important;background:#282828!important;color:#eee!important;border:1px solid #3e3e3e!important;border-radius:4px;scrollbar-width:thin;scrollbar-color:#595959 #222222}
+.habbix-room-settings .octane-card-content-shell :is(label,span,p,h3,.text-dark){color:#ddd!important;text-shadow:none!important}
+.habbix-room-settings .octane-card-content-shell :is(input:not([type=checkbox]):not([type=radio]),textarea,select){box-sizing:border-box;max-width:100%;min-width:0!important;width:100%;border:1px solid #494949!important;border-radius:3px!important;background:#1b1b1b!important;color:#eee!important;font:12px/1.4 HabbixKarla,Arial,sans-serif!important;padding:6px!important;min-height:30px}
+.habbix-room-settings .octane-card-content-shell label{font-size:12px!important;overflow-wrap:anywhere}
+.habbix-room-settings .octane-room-settings-section,.habbix-room-settings .list-container{background:#222222!important;color:#eee!important;border-color:#494949!important}
+.habbix-room-settings .octane-room-settings-section>:first-child{color:#eee!important}
+.habbix-room-settings .octane-card-content-shell::-webkit-scrollbar{width:7px;height:7px}
+.habbix-room-settings .octane-card-content-shell::-webkit-scrollbar-track{background:#222222;border:0}
+.habbix-room-settings .octane-card-content-shell::-webkit-scrollbar-thumb{background:#555;border:1px solid #222222;border-radius:4px}
+.habbix-room-settings .octane-card-content-shell::-webkit-scrollbar-button{display:none;width:0;height:0}
+
+
+
+.habbix-room-favourite-heart{width:20px;height:18px;fill:#454545;stroke:#5a5a5a;stroke-width:1;transition:fill .15s,transform .15s}.habbix-room-like[aria-pressed=true] .habbix-room-favourite-heart{fill:#e34e63;stroke:#ff8797}.habbix-room-like:hover .habbix-room-favourite-heart{transform:scale(1.08)}.habbix-room-like:active .habbix-room-favourite-heart{transform:scale(.92)}

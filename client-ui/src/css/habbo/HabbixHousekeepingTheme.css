@@ -1,0 +1,130 @@
+/* Keep staff tools on the same charcoal surfaces as the rest of the client.
+   Scoped here so legacy light utility classes cannot leak into this panel. */
+.octane-app-root .octane-housekeeping {
+    --hk-surface: #292929;
+    --hk-panel: #242424;
+    --hk-field: #202020;
+    --hk-border: #ffffff26;
+    --hk-text: #eeeeee;
+    --hk-muted: #b5b5b5;
+    color: var(--hk-text);
+    color-scheme: dark;
+    background: var(--hk-surface) !important;
+}
+.octane-app-root .octane-housekeeping .octane-card-content-shell {
+    background: var(--hk-surface) !important;
+    color: var(--hk-text) !important;
+}
+.octane-app-root .octane-housekeeping :is(
+    [class~="bg-white"], [class*="bg-white/"],
+    [class~="bg-zinc-50"], [class*="bg-zinc-50/"],
+    [class~="bg-zinc-100"], [class*="bg-zinc-100/"],
+    [class~="bg-zinc-200"], [class~="bg-zinc-300"],
+    [class~="bg-sky-50"], [class*="bg-sky-50/"],
+    [class~="bg-sky-100"], [class*="bg-sky-100/"],
+    [class~="bg-violet-50"], [class*="bg-violet-50/"], [class~="bg-violet-100"]
+) { background: var(--hk-panel) !important; }
+.octane-app-root .octane-housekeeping [class*="bg-gradient-"] {
+    background: var(--hk-panel) !important;
+}
+.octane-app-root .octane-housekeeping :is([class*="border-zinc-"], [class*="border-sky-"], [class*="border-violet-"]) {
+    border-color: var(--hk-border) !important;
+}
+.octane-app-root .octane-housekeeping :is([class~="text-black"], [class~="text-zinc-900"], [class~="text-zinc-800"], [class~="text-zinc-700"]) {
+    color: var(--hk-text) !important;
+}
+.octane-app-root .octane-housekeeping :is([class~="text-zinc-600"], [class~="text-zinc-500"], [class~="text-zinc-400"], [class~="text-zinc-300"]) {
+    color: var(--hk-muted) !important;
+}
+.octane-app-root .octane-housekeeping :is([class*="text-sky-"], [class*="text-violet-"]) {
+    color: #d9d9d9 !important;
+}
+.octane-app-root .octane-housekeeping :is([class~="bg-sky-600"], [class~="bg-sky-800"], [class~="bg-violet-600"]) {
+    background: #b8423b !important;
+    color: #fff !important;
+}
+/* Positive/warning/destructive states retain meaning without bright panels. */
+.octane-app-root .octane-housekeeping :is([class~="bg-emerald-50"], [class*="bg-emerald-50/"], [class~="bg-emerald-100"]) {
+    background: #29382f !important;
+}
+.octane-app-root .octane-housekeeping [class*="text-emerald-"] { color: #a4d9b1 !important; }
+.octane-app-root .octane-housekeeping [class*="border-emerald-"] { border-color: #46634d !important; }
+.octane-app-root .octane-housekeeping :is([class~="bg-amber-50"], [class*="bg-amber-50/"], [class~="bg-amber-100"]) {
+    background: #393329 !important;
+}
+.octane-app-root .octane-housekeeping [class*="text-amber-"] { color: #e2c493 !important; }
+.octane-app-root .octane-housekeeping [class*="border-amber-"] { border-color: #66543b !important; }
+.octane-app-root .octane-housekeeping :is([class~="bg-rose-50"], [class*="bg-rose-50/"], [class~="bg-rose-100"]) {
+    background: #3c2b2b !important;
+}
+.octane-app-root .octane-housekeeping [class*="text-rose-"] { color: #efaaa5 !important; }
+.octane-app-root .octane-housekeeping [class*="border-rose-"] { border-color: #70504e !important; }
+.octane-app-root .octane-housekeeping :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea, option) {
+    background: var(--hk-field) !important;
+    color: var(--hk-text) !important;
+    border-color: #ffffff26 !important;
+    box-shadow: none !important;
+}
+.octane-app-root .octane-housekeeping :is(input,textarea)::placeholder { color: #999 !important; opacity: 1; }
+.octane-app-root .octane-housekeeping :is(input[type="checkbox"],input[type="radio"]) { accent-color: #b8423b; }
+.octane-app-root .octane-housekeeping :is(input,textarea,select):focus-visible {
+    outline: 2px solid #aaa !important;
+    outline-offset: 1px;
+    border-color: #999 !important;
+    --tw-ring-color: transparent !important;
+}
+.octane-app-root .octane-housekeeping :is(button,a):focus-visible { outline: 2px solid #aaa; outline-offset: 2px; }
+.octane-app-root .octane-housekeeping :is([class*="hover:bg-"]):hover:not(:disabled):not([aria-current="page"]) {
+    background: #3a3a3a !important;
+    color: #eee !important;
+}
+.octane-app-root .octane-housekeeping [class*="ring-"] { --tw-ring-color: #ffffff26 !important; }
+.octane-app-root .octane-housekeeping .hk-sidebar { background: #242424 !important; border-color: #ffffff26 !important; }
+.octane-app-root .octane-housekeeping .hk-sidebar [aria-current="page"] {
+    background: #3b3030 !important;
+    color: #fff !important;
+    box-shadow: inset 3px 0 #b8423b !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+}
+.octane-app-root .octane-housekeeping .octane-hk-popover {
+    background: #292929 !important;
+    color: #eee !important;
+    box-shadow: 0 8px 24px #0007 !important;
+}
+.octane-app-root .octane-housekeeping .hk-btn {
+    color: var(--hk-btn-text) !important;
+    background: var(--hk-btn-bottom) !important;
+    border-color: var(--hk-btn-border) !important;
+    box-shadow: inset 0 1px #ffffff0a !important;
+}
+.octane-app-root .octane-housekeeping .hk-btn--primary {
+    --hk-btn-border: #c9534a; --hk-btn-bottom: #b8423b; --hk-btn-text: #fff;
+}
+.octane-app-root .octane-housekeeping .hk-btn--neutral {
+    --hk-btn-border: #555; --hk-btn-bottom: #363636; --hk-btn-text: #eee;
+}
+.octane-app-root .octane-housekeeping .hk-btn--success {
+    --hk-btn-border: #4f7658; --hk-btn-bottom: #334f3a; --hk-btn-text: #d3ead8;
+}
+.octane-app-root .octane-housekeeping .hk-btn--warning {
+    --hk-btn-border: #7b623f; --hk-btn-bottom: #51412d; --hk-btn-text: #f0dbb6;
+}
+.octane-app-root .octane-housekeeping .hk-btn--danger {
+    --hk-btn-border: #955b57; --hk-btn-bottom: #6a3532; --hk-btn-text: #ffe0dc;
+}
+.octane-app-root .octane-housekeeping .hk-btn:disabled {
+    background: #303030 !important; border-color: #444 !important; color: #909090 !important; box-shadow: none !important;
+}
+.octane-app-root .octane-housekeeping .hk-segmented { background: #202020 !important; border-color: #ffffff26 !important; }
+.octane-app-root .octane-housekeeping .hk-segmented__item { color: #bcbcbc; }
+.octane-app-root .octane-housekeeping .hk-segmented__item:hover:not(.is-active) { background: #363636; color: #eee; }
+.octane-app-root .octane-housekeeping .hk-segmented__item.is-active { background: #3b3030 !important; color: #fff; box-shadow: inset 0 -2px #b8423b !important; }
+.octane-app-root .octane-housekeeping .hk-segmented__count { background: #414141; color: #ddd; }
+.octane-app-root .octane-housekeeping .hk-segmented__item.is-active .hk-segmented__count { background: #b8423b; color: #fff; }
+.octane-app-root .octane-housekeeping :is(.hk-btn,.hk-segmented__item):focus-visible { outline: 2px solid #aaa; }
+.octane-app-root .octane-housekeeping :is(thead,th) { background: #202020 !important; color: #c9c9c9 !important; }
+.octane-app-root .octane-housekeeping :is(td,th) { border-color: #ffffff18 !important; }
+.octane-app-root .octane-housekeeping { scrollbar-color: #616161 #242424; }
+.octane-app-root .octane-housekeeping * { scrollbar-color: #616161 #242424; }
+.octane-app-root .octane-housekeeping *::-webkit-scrollbar-thumb { background: #616161 !important; border-color: #242424 !important; }
+.octane-app-root .octane-housekeeping *::-webkit-scrollbar-track { background: #242424 !important; }

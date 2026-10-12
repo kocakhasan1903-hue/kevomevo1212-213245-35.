@@ -1,0 +1,142 @@
+.hpl{--price-accent:#d97770;--price-panel:#2b2b2b;--price-inset:#242424;--price-line:#ffffff12;position:relative;min-width:0;color:#e9e9e9;font-family:inherit;font-size:13px;line-height:1.5;container:prices / inline-size}
+.hpl *{box-sizing:border-box}
+.hpl :is(button,input,select){font:inherit;color:inherit;box-shadow:none}
+.hpl button{cursor:pointer;border:1px solid var(--price-line);background:var(--price-inset);border-radius:5px;padding:8px 12px;transition:background .15s,border-color .15s}
+.hpl button:hover:not(:disabled){background:#393939;border-color:#d9777066}
+.hpl button:disabled{opacity:.4;cursor:default}
+.hpl :is(button,input,select):focus-visible{outline:2px solid var(--price-accent);outline-offset:2px}
+.hpl-heading{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.hpl-heading-icon{display:grid;place-items:center;width:42px;height:42px;flex:none;border:1px solid #d9777044;border-radius:6px;background:#d9777014}
+.hpl-heading-icon img{width:24px;height:24px;object-fit:contain;image-rendering:pixelated}
+.hpl-heading h1{font-family:inherit;font-size:23px;font-weight:700;line-height:1.3;margin:0 0 4px;color:#fff}
+.hpl-heading p{margin:0;color:#a9a9a9;font-size:12px}
+.hpl-tabs{display:flex;gap:6px;padding:6px;background:var(--price-panel);border:1px solid var(--price-line);border-radius:6px;margin-bottom:16px}
+.hpl-tabs>button{position:relative;min-width:145px;font-weight:600;background:transparent;border-color:transparent}
+.hpl-tabs>button[aria-selected=true]{background:#d9777021;border-color:#d9777077;color:#fff}
+.hpl-tabs>button[aria-selected=true]:before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:2px;background:var(--price-accent)}
+.hpl [aria-pressed=true]{background:#d9777021;border-color:#d9777077;color:#fff}
+.hpl-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.hpl-stats>div{border:1px solid var(--price-line);border-left:3px solid var(--price-accent);background:var(--price-panel);padding:12px 15px;border-radius:6px}
+.hpl-stats small{display:block;color:#a9a9a9;font-size:11px}
+.hpl-stats strong{display:block;font-size:21px;margin-top:3px;font-variant-numeric:tabular-nums}
+.hpl-filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px;background:var(--price-panel);border:1px solid var(--price-line);border-radius:6px;margin-bottom:16px}
+.hpl-filters :is(input,select){height:36px;padding:7px 10px;border:1px solid #ffffff18;background:var(--price-inset);border-radius:4px;min-width:0;max-width:100%;color-scheme:dark}
+.hpl-filters input{flex:1;min-width:150px}
+.hpl-filters input::placeholder{color:#989898}
+.hpl-filters select{max-width:185px}
+.hpl-filters>button{height:36px;white-space:nowrap}
+.hpl-period{display:flex;gap:3px;padding:3px;background:var(--price-inset);border-radius:5px}
+.hpl-period button{padding:5px 8px;font-size:11px;white-space:nowrap}
+.hpl-dashboard{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
+.hpl-panel{padding:14px;background:var(--price-panel);border:1px solid var(--price-line);border-radius:6px;min-width:0}
+.hpl-panel h3{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:13px;margin:0 0 12px;padding-bottom:12px;border-bottom:1px solid var(--price-line);color:#eee}
+.hpl-panel h3 small{font-size:10px;font-weight:400;color:#a4a4a4}
+.hpl-trending{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.hpl-newest{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.hpl button.hpl-item{display:block;text-align:left;padding:10px;background:var(--price-inset);border:1px solid var(--price-line);min-width:0;overflow:hidden}
+.hpl button.hpl-item:hover{border-color:#d9777088;background:#3b292a}
+.hpl-item-top{display:flex;gap:10px;min-height:64px;align-items:center}
+.hpl-item-top>div:last-child{min-width:0}
+.hpl-item strong{display:block;font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+.hpl-image{height:58px;width:50px;flex:none;display:grid;place-items:center;background:#ffffff04;border-radius:4px}
+.hpl-image img{max-height:56px;max-width:48px;object-fit:contain;image-rendering:pixelated}
+.hpl-price{display:inline-flex;align-items:center;gap:5px;background:#ffffff08;border-radius:4px;padding:3px 6px;font-size:11px;font-weight:700;margin-top:6px}
+.hpl-price img{width:12px;height:12px;object-fit:contain;image-rendering:pixelated}
+.hpl-item small{display:block;color:#a7a7a7;font-size:10px;margin-top:6px}
+.hpl-mini-stats{display:flex;gap:4px;margin:10px 0 6px}
+.hpl-mini-stats span{display:flex;flex-direction:column;gap:2px;flex:1;background:#ffffff04;padding:4px;border-radius:3px;color:#9c9c9c;font-size:9px}
+.hpl-mini-stats b{color:#e1e1e1;font-size:11px;font-variant-numeric:tabular-nums}
+.hpl-chart{height:38px;display:flex;gap:2px;align-items:flex-end;padding-top:3px;border-bottom:1px solid #d9777022}
+.hpl-chart>span{flex:1;min-width:1px;background:#d9777088;border-radius:2px 2px 0 0}
+.hpl-traders{display:grid;gap:8px}
+.hpl-traders>button{display:flex;align-items:center;gap:8px;padding:9px;background:var(--price-inset);text-align:left;min-width:0;width:100%}
+.hpl-traders>button>b{color:var(--price-accent);font-size:11px}
+.hpl-traders>button>div{flex:1;min-width:0}
+.hpl-traders strong{display:block;font-size:11px;overflow-wrap:anywhere}
+.hpl-traders small{display:block;font-size:9px;color:#a3a3a3}
+.hpl-traders span{font-size:11px;text-align:center}
+.hpl-traders>button>span:not(.hpl-trader-avatar):not(.hpl-trade-total){display:none}
+.hpl-trade-total{background:#d9777014;padding:4px 8px;border-radius:4px;color:#f3c9c5}
+.hpl-summary{display:flex;gap:10px;flex-wrap:wrap;color:#a9a9a9;margin:0 0 16px;font-size:11px}
+.hpl-summary>span{padding:7px 10px;border:1px solid var(--price-line);border-radius:4px;background:var(--price-panel)}
+.hpl-summary b{color:#e5e5e5;margin-left:4px}
+.hpl-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.hpl-pagination{display:flex;justify-content:center;align-items:center;gap:14px;margin:18px 0 0;color:#a9a9a9;font-size:12px}
+.hpl-empty{padding:30px 20px;text-align:center;color:#a9a9a9;background:var(--price-inset);border:1px dashed #ffffff15;border-radius:5px;font-size:12px;margin:0;line-height:1.7}
+.hpl-empty button{display:block;margin:12px auto 0}
+.hpl-detail{position:absolute;top:0;right:0;bottom:0;z-index:5;width:min(350px,100%);overflow:auto;background:var(--price-panel);border:1px solid #d9777055;border-radius:6px;box-shadow:-12px 0 30px #0005;padding:16px;scrollbar-width:thin;scrollbar-color:#555555 #262626;animation:hpl-detail-in .16s ease-out}
+.hpl-detail>header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--price-line);padding-bottom:10px}
+.hpl-detail>header button{padding:3px 8px;font-size:20px;line-height:22px;background:#813f49}
+.hpl-detail-item{text-align:center;padding:18px 12px}
+.hpl-detail-item>img{display:block;max-height:130px;max-width:100%;margin:auto auto 12px;image-rendering:pixelated}
+.hpl-detail h2{font-size:18px;margin:5px}
+.hpl-detail details{padding:12px 0;border-top:1px solid var(--price-line)}
+.hpl-detail summary{font-weight:600;cursor:pointer;margin-bottom:12px}
+.hpl-owner{display:flex;width:100%;align-items:center;gap:8px;margin-top:6px;background:var(--price-inset)}
+.hpl-owner>span:not(.hpl-trader-avatar){flex:1;text-align:left}
+.hpl-owner b{color:#f3c9c5}
+.hpl-trader-avatar{display:flex;align-items:center;justify-content:center;width:34px;height:34px;object-fit:contain;image-rendering:pixelated;border:2px solid #713c38;border-radius:50%;background:#222222;flex:none;overflow:hidden}
+.hpl-trader-avatar>.avatar-image{position:relative;display:flex;width:100%;height:100%;align-items:center;justify-content:center}
+.hpl-trader-avatar .avatar-image img{max-width:30px!important;max-height:30px!important;width:auto!important;height:auto!important;object-fit:contain}
+/* Website uses the same content width, typography and cards as the hotel home page. */
+.habboje-app .studio-page.reference-prices{width:100%;max-width:1600px!important;padding:24px 20px 48px!important;margin:auto;box-sizing:border-box;font-family:var(--cms-font,Arial,sans-serif)}
+.habboje-app .reference-prices .hpl{--price-panel:#2b2b2b;--price-inset:#222222;font-family:inherit;font-size:13px}
+.habboje-app .reference-prices .hpl-heading{padding:16px 18px;margin:0;background:var(--price-panel);border-radius:6px 6px 0 0;gap:10px}
+.habboje-app .reference-prices .hpl-heading-icon{width:28px;height:28px;background:transparent;border:0}
+.habboje-app .reference-prices .hpl-heading-icon img{width:20px;height:20px}
+#root .habboje-app .reference-prices .hpl-heading h1{font-size:17px!important;margin:0 0 2px}
+.habboje-app .reference-prices .hpl-heading p{font-size:12px;color:#999}
+.habboje-app .reference-prices .hpl-tabs{border:0;border-top:1px solid #ffffff0b;border-radius:0 0 6px 6px;padding:10px 16px;margin-bottom:16px}
+.habboje-app .reference-prices .hpl-tabs>button{min-width:140px;padding:7px 16px;font-size:12px}
+.habboje-app .reference-prices .hpl-stats>div{border:0;padding:14px 16px}
+.habboje-app .reference-prices .hpl-stats strong{font-size:20px;color:#ddd}
+.habboje-app .reference-prices .hpl-filters{padding:12px 16px;border:0}
+.habboje-app .reference-prices .hpl-panel{border:0;padding:16px}
+.habboje-app .reference-prices .hpl-panel h3{font-size:14px}
+.habboje-app .reference-prices .hpl-list{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.habboje-app .reference-prices .hpl-empty{border:0;padding:22px 16px}
+.habboje-app .reference-prices .hpl-detail{position:fixed;top:100px;right:max(20px,calc((100vw - 1560px)/2));bottom:24px;max-height:calc(100dvh - 124px)}
+.habboje-app .reference-prices .hpl-tabs>button[aria-selected=true],.habboje-app .reference-prices .hpl [aria-pressed=true]{background:#713c38;border-color:#b8423b;color:#fff}
+/* Client content follows the compact friend/catalog windows. Only the body scrolls. */
+.habbix-pricelist .hpl{--price-panel:#262626;--price-inset:#222222;display:flex;flex-direction:column;flex:1;min-height:0;height:auto;overflow:hidden;padding:0;font-family:inherit;font-size:12px;line-height:1.4}
+.habbix-pricelist .hpl-heading{display:none}
+.habbix-pricelist .hpl-tabs{flex:none;background:none;border:0;padding:0;gap:5px;margin:0 0 8px;border-radius:0}
+.habbix-pricelist .hpl-tabs>button{flex:1;min-width:0;height:30px;padding:5px 10px;border:1px solid #ffffff18;border-radius:4px;background:#262626;font-size:12px}
+.habbix-pricelist .hpl-tabs>button[aria-selected=true]{background:#713c38;border-color:#b8423b}
+.habbix-pricelist .hpl-tabs>button[aria-selected=true]:before{top:5px;bottom:5px;width:3px}
+.habbix-pricelist .hpl-content{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#555 #222222;padding-right:3px}
+.habbix-pricelist .hpl button{border-radius:4px}
+.habbix-pricelist .hpl-filters{gap:5px;padding:8px;margin-bottom:8px;border:0;background:#262626;border-radius:4px}
+.habbix-pricelist .hpl-filters :is(input,select){height:30px;padding:4px 7px;font-size:11px}
+.habbix-pricelist .hpl-filters input{min-width:120px}
+.habbix-pricelist .hpl-filters select{max-width:145px}
+.habbix-pricelist .hpl-filters>button{height:30px;padding:4px 8px;font-size:11px}
+.habbix-pricelist .hpl-period{padding:0;gap:3px}
+.habbix-pricelist .hpl-period button{height:30px;padding:4px 7px;font-size:10px}
+.habbix-pricelist .hpl-stats{gap:7px;margin-bottom:8px}
+.habbix-pricelist .hpl-stats>div{padding:8px 10px;border:0;background:#262626;border-radius:4px}
+.habbix-pricelist .hpl-stats small{font-size:10px;color:#999}
+.habbix-pricelist .hpl-stats strong{font-size:17px;margin-top:1px;color:#eee}
+.habbix-pricelist .hpl-dashboard{grid-template-columns:1fr;gap:8px;margin-bottom:8px}
+.habbix-pricelist .hpl-panel{padding:10px;border:0;border-radius:4px}
+.habbix-pricelist .hpl-panel h3{font-size:12px;padding-bottom:8px;margin-bottom:8px}
+.habbix-pricelist .hpl-trending,.habbix-pricelist .hpl-newest{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.habbix-pricelist .hpl-list{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px}
+.habbix-pricelist .hpl button.hpl-item{padding:8px}
+.habbix-pricelist .hpl-item-top{min-height:48px;gap:7px}
+.habbix-pricelist .hpl-image{width:40px;height:44px;background:none}
+.habbix-pricelist .hpl-image img{max-width:38px;max-height:42px}
+.habbix-pricelist .hpl-item strong{font-size:12px;overflow-wrap:anywhere}
+.habbix-pricelist .hpl-item small{margin-top:4px}
+.habbix-pricelist .hpl-summary{gap:6px;margin-bottom:8px}
+.habbix-pricelist .hpl-summary>span{padding:5px 8px;border:0;background:#262626;font-size:11px;color:#999}
+.habbix-pricelist .hpl-summary b{color:#ccc}
+.habbix-pricelist .hpl-empty{border:0;border-radius:4px;padding:18px 12px;font-size:11px;color:#999}
+.habbix-pricelist .hpl-pagination{margin-top:10px;font-size:11px}
+.habbix-pricelist .hpl-pagination button{padding:5px 10px}
+.habbix-pricelist .hpl-detail{position:absolute;inset:38px 0 0 auto;max-height:none;padding:12px;box-shadow:-8px 0 20px #0005}
+@container prices (max-width:850px){.hpl-dashboard{grid-template-columns:1fr}.hpl-trending,.hpl-newest{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@container prices (max-width:550px){.hpl-trending,.hpl-newest,.habbix-pricelist .hpl-trending,.habbix-pricelist .hpl-newest{grid-template-columns:repeat(2,minmax(0,1fr))}.hpl-filters input{flex-basis:100%}.hpl-filters select{flex:1}.hpl-tabs>button{min-width:0;flex:1}.hpl-stats{gap:6px}.hpl-stats>div{padding:10px}.hpl-stats strong{font-size:18px}.hpl-detail{width:100%}}
+@media(max-width:500px){.habboje-app .studio-page.reference-prices{padding:16px 12px 32px!important}.reference-prices .hpl-list{grid-template-columns:repeat(2,minmax(0,1fr))}.reference-prices .hpl-item-top{flex-wrap:wrap}}
+@keyframes hpl-detail-in{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.hpl *{animation:none!important;transition:none!important}}

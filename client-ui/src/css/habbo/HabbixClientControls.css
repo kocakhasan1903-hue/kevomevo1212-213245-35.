@@ -1,0 +1,111 @@
+/* Scope repairs to custom windows; legacy AIR geometry must not leak into these controls. */
+.ht-window-header>.habbix-animated-close{display:flex;align-items:center;justify-content:center;position:absolute;right:4px;top:4px;width:24px;height:24px;min-width:24px;padding:0;border:0;border-radius:3px;background:#834146;color:#fff;font:700 18px/24px Arial;z-index:3}
+.ht-window-header>.habbix-animated-close span{display:block;color:inherit;line-height:24px}
+.octane-card-shell:is(.mentions-window,.octane-group-forum){box-sizing:border-box;padding:10px!important;resize:none!important}
+.octane-card-shell:is(.mentions-window,.octane-group-forum)>.octane-card-header-shell{position:relative!important;inset:auto!important;width:100%!important;max-width:100%!important;box-sizing:border-box;flex:0 0 30px!important;height:30px!important;min-height:30px!important;max-height:30px!important;margin:0 0 8px!important;padding:0 32px!important;background:#222222!important;border-radius:3px!important}
+.octane-card-shell:is(.mentions-window,.octane-group-forum)>.octane-card-header-shell::before{display:none!important}
+.octane-card-shell:is(.mentions-window,.octane-group-forum) .octane-card-close-button{position:absolute!important;inset:3px 3px auto auto!important;transform:none!important;width:24px!important;height:24px!important;min-width:24px!important;padding:0!important;border:0!important;border-image:none!important;border-radius:3px!important;background:#834146!important}
+.octane-card-shell:is(.mentions-window,.octane-group-forum) .octane-card-close-button::before{display:none!important}
+.octane-card-shell:is(.mentions-window,.octane-group-forum) .octane-card-close-button::after{content:'×'!important;position:absolute!important;inset:0!important;width:24px!important;height:24px!important;transform:none!important;background:none!important;color:white!important;font:700 18px/24px Arial!important;text-align:center}
+.octane-card-shell:is(.mentions-window,.octane-group-forum)>.octane-card-content-shell{position:relative!important;inset:auto!important;width:100%!important;box-sizing:border-box;padding:0!important;min-height:0}
+/* The same turquoise, six-pixel scrollbar used in the navigator. */
+:is(.habbix-pricelist,.ht-window,.mentions-window,.octane-group-forum) :is(.hpl-content,.hpl-detail,.ht-body,.ht-picks,.ht-detail,.ht-audit,.mentions-list){scrollbar-width:thin!important;scrollbar-color:#b8423b #222222!important}
+:is(.habbix-pricelist,.ht-window,.mentions-window,.octane-group-forum) ::-webkit-scrollbar{width:6px!important;height:6px!important;background:#222222!important}
+:is(.habbix-pricelist,.ht-window,.mentions-window,.octane-group-forum) ::-webkit-scrollbar-track{background:#222222!important;background-image:none!important;border:0!important}
+:is(.habbix-pricelist,.ht-window,.mentions-window,.octane-group-forum) ::-webkit-scrollbar-thumb{background:#b8423b!important;background-image:none!important;border:0!important;border-radius:3px!important;box-shadow:none!important}
+:is(.habbix-pricelist,.ht-window,.mentions-window,.octane-group-forum) ::-webkit-scrollbar-button{display:none!important;height:0!important;width:0!important;background:none!important}
+.octane-extended-profile-window .habbix-profile-tab-body :is(p,button,strong,span){color:#ddd!important;text-shadow:none!important}
+.octane-extended-profile-window .habbix-profile-tab-body :is(time,small){color:#aaa!important}
+.octane-extended-profile-window .habbix-profile-photos button{background:#713c38;border:1px solid #b8423b;border-radius:3px;padding:6px 10px}
+/* Anchor to the left edge of the head instead of centering a wide strip offscreen. */
+.tb-slot-memenu>.habbix-me-popover{left:0!important;right:auto!important;translate:none!important;width:max-content;max-width:calc(100vw - 160px)}
+.habbix-me-menu{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center;gap:8px!important;max-width:100%;padding:10px!important;background:#2b2b2b!important;border:1px solid #444!important;box-shadow:0 4px 14px #0006!important;box-sizing:border-box;overflow-x:auto}
+.habbix-me-menu>.navigation-item,.habbix-me-menu>.habbix-me-wheel{position:relative!important;inset:auto!important;justify-self:center;align-self:center;flex:none;max-width:36px;max-height:36px;margin:0!important;transform:none}
+@media(max-width:540px){.habbix-me-menu{gap:6px!important}.tb-slot-memenu>.habbix-me-popover{max-width:calc(100vw - 120px)}}
+/* Outfit editor: keep the virtual grid, visible columns and window geometry in sync. */
+.octane-card-shell.octane-avatar-editor{box-sizing:border-box;width:642px!important;min-width:0!important;max-width:calc(100vw - 20px)!important;height:412px!important;min-height:0!important;max-height:calc(100dvh - 76px)!important;padding:10px!important;overflow:hidden!important;color:#ddd!important}
+.octane-card-shell.octane-avatar-editor.is-wardrobe-open{width:832px!important}
+.octane-card-shell.octane-avatar-editor>.octane-card-header-shell{position:relative!important;inset:auto!important;box-sizing:border-box;width:100%!important;flex:0 0 30px!important;min-height:30px!important;max-height:30px!important;margin:0 0 8px!important;padding:0 32px!important}
+.octane-avatar-editor .octane-card-close-button{right:3px!important;top:3px!important;transform:none!important}
+.octane-card-shell.octane-avatar-editor>.octane-avatar-editor-content.octane-card-content-shell{position:relative!important;inset:auto!important;display:flex!important;flex-direction:row!important;flex:1 1 auto!important;width:100%!important;height:auto!important;max-height:none!important;min-height:0!important;gap:8px!important;overflow:auto!important}
+.octane-avatar-editor .octane-avatar-editor-stage{width:620px;min-width:620px;flex:0 0 620px;height:352px}
+.octane-avatar-editor .octane-avatar-editor-tab-row{z-index:4;left:0;width:564px}
+.octane-avatar-editor .avatar-editor-tabs.octane-card-tabs-shell{width:564px;padding:0!important}
+.octane-avatar-editor .octane-avatar-editor-main-tab.is-hd{flex:1.6}
+.octane-avatar-editor .octane-avatar-editor-main-tab :is(span,.octane-card-tab-item-label){color:#ddd!important;font-family:HabbixKarla,Arial,sans-serif!important}
+.octane-avatar-editor .octane-avatar-editor-main-tab.octane-card-tab-item-active span{color:#f3c9c5!important}
+.octane-avatar-editor .octane-avatar-editor-wardrobe-toggle{left:574px}
+.octane-avatar-editor .octane-avatar-editor-parts-grid [data-index]{grid-template-columns:repeat(3,50px)!important;column-gap:4px!important}
+.octane-avatar-editor .octane-avatar-editor-parts-grid>div{gap:0!important}
+.octane-avatar-editor .octane-avatar-editor-parts-grid .octane-classic-scroll-area-viewport{padding-right:0!important}
+.octane-avatar-editor .octane-avatar-editor-subcategories{left:0;width:76px;overflow-x:hidden;overflow-y:auto;align-items:center}
+.octane-avatar-editor .category-item{flex-shrink:0}
+.octane-avatar-editor .category-item.gender-category-item{width:72px;min-width:72px;height:58px;flex-direction:column;justify-content:center;color:#ddd!important}
+.octane-avatar-editor .gender-category-item .avatar-editor-icon{position:relative;inset:auto!important}
+.octane-avatar-editor .gender-category-item>span{position:relative;inset:auto;width:auto;color:#ddd!important;font-family:HabbixKarla,Arial,sans-serif!important;line-height:18px}
+.octane-avatar-editor .octane-avatar-editor-wardrobe{flex:0 0 182px;width:182px;height:352px;max-height:352px;margin:0;padding:8px;box-shadow:none;overflow:hidden;border-radius:4px}
+.octane-avatar-editor .octane-avatar-editor-wardrobe-header{width:auto;height:24px;margin:0 0 8px;gap:8px}
+.octane-avatar-editor .octane-avatar-editor-wardrobe-slots{width:100%;height:302px;min-height:0;max-height:302px;margin:0;padding:4px;gap:8px;overflow:auto}
+.octane-avatar-editor .octane-avatar-editor-wardrobe-column{flex:0 0 64px;width:64px}
+.octane-avatar-editor .octane-avatar-editor-empty-state{position:absolute;inset:50px 166px auto 10px;color:#bbb!important}
+.octane-avatar-editor .octane-avatar-editor-nft-category-scroll{display:none}
+.octane-avatar-editor :is(.octane-avatar-editor-palettes,.avatar-editor-palette-grid,.octane-avatar-editor-wardrobe-slots){scrollbar-width:thin;scrollbar-color:#b8423b #222222}
+/* Profile room cards: short entrance and the existing turquoise hover accent. */
+.octane-extended-profile-window .habbix-profile-tab-body>.habbix-profile-room{position:relative;display:flex;align-items:center;gap:10px;min-height:44px;padding:11px 32px 11px 15px;border:1px solid #ffffff10!important;border-radius:4px;background:#222222!important;overflow:hidden;cursor:pointer;animation:habbix-profile-room-enter .22s ease-out both;transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease!important}
+.octane-extended-profile-window .habbix-profile-room:nth-child(2){animation-delay:35ms}
+.octane-extended-profile-window .habbix-profile-room:nth-child(3){animation-delay:70ms}
+.octane-extended-profile-window .habbix-profile-room:nth-child(n+4){animation-delay:105ms}
+.octane-extended-profile-window .habbix-profile-room>strong{flex:1;min-width:0;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.octane-extended-profile-window .habbix-profile-room>span{flex:none;font-variant-numeric:tabular-nums}
+.octane-extended-profile-window .habbix-profile-room::before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:3px;background:#b8423b;border-radius:0 2px 2px 0;opacity:.55;transition:top .16s ease,bottom .16s ease,width .16s ease,opacity .16s ease}
+.octane-extended-profile-window .habbix-profile-room::after{content:'';position:absolute;right:15px;top:calc(50% - 3px);width:6px;height:6px;border:solid #d97770;border-width:2px 2px 0 0;rotate:45deg;opacity:.45;translate:-3px 0;transition:translate .16s ease,opacity .16s ease}
+.octane-extended-profile-window .habbix-profile-tab-body>.habbix-profile-room:is(:hover,:focus-visible){background:#3b292a!important;border-color:#b8423b80!important;box-shadow:inset 0 0 0 1px #b8423b14}
+.octane-extended-profile-window .habbix-profile-room:is(:hover,:focus-visible)::before{top:6px;bottom:6px;width:4px;opacity:1}
+.octane-extended-profile-window .habbix-profile-room:is(:hover,:focus-visible)::after{translate:0 0;opacity:1}
+.octane-extended-profile-window .habbix-profile-tab-body>.habbix-profile-room:active{background:#713c38!important}
+.octane-extended-profile-window .habbix-profile-room:focus-visible{outline:2px solid #b8423b;outline-offset:-2px}
+@keyframes habbix-profile-room-enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.octane-extended-profile-window .habbix-profile-room,.octane-extended-profile-window .habbix-profile-room::before,.octane-extended-profile-window .habbix-profile-room::after{animation:none!important;transition:none!important}}
+
+.octane-card-shell.octane-group-forum{width:min(600px,calc(100vw - 20px))!important;height:min(460px,calc(100dvh - 90px))!important;min-width:0!important;min-height:0!important;max-width:calc(100vw - 20px)!important;max-height:calc(100dvh - 90px)!important;background:#2b2b2b!important;color:#ddd!important}
+.octane-card-shell.octane-group-forum>.octane-card-content-shell{height:auto!important;flex:1!important;min-height:0!important;overflow:hidden!important;border:0!important;background:#262626!important;border-radius:4px}
+.octane-group-forum .octane-card-content-shell :is(.h-full,.flex-1){min-width:0;min-height:0}
+.octane-group-forum .octane-card-content-shell :is(.inline,span,p,label,strong,button,select,input,textarea){color:#ddd!important;text-shadow:none!important}
+.octane-group-forum .octane-card-content-shell :is(.text-muted,small){color:#aaa!important}
+.octane-group-forum :is(.bg-white,.bg-muted){background:#222222!important}
+.octane-group-forum .border-b,.octane-group-forum .border{border-color:#ffffff18!important}
+.octane-group-forum :is(select,input:not([type=checkbox]):not([type=radio]),textarea){background:#222222!important;border:1px solid #ffffff20!important;border-radius:4px;padding:5px 8px;max-width:100%;color-scheme:dark}
+.octane-group-forum .overflow-auto{scrollbar-width:thin!important;scrollbar-color:#b8423b #222222!important}
+.octane-group-forum .cursor-pointer:hover{background-color:#713c38!important}
+
+/* Badges reserve space for all five active slots and the footer; collections use pages. */
+.octane-card-shell.octane-card-frame-3.octane-inventory-window.has-badge-controls{height:min(450px,calc(100dvh - 74px))!important;overflow:hidden!important}
+.octane-inventory-window.has-badge-controls .octane-inventory-content{display:flex;flex:1;min-height:0}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges{display:flex;height:100%;min-height:0;overflow:hidden;gap:8px}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-main{flex:1 1 0;min-height:136px;grid-template-columns:minmax(0,1fr) 158px;gap:8px;overflow:hidden}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-owned{display:flex;flex-direction:column;min-width:0;min-height:0;padding:8px;overflow:hidden}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-owned-grid{flex:1;min-height:0;width:100%;height:auto;grid-template-columns:repeat(auto-fill,42px);grid-auto-rows:42px;gap:5px;overflow:hidden}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-pages{position:static;inset:auto;display:flex;flex:none;align-items:center;justify-content:center;gap:8px;height:28px;min-height:28px;margin:5px 0 0;flex-wrap:nowrap;color:#aaa;font-size:11px}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-pages button{width:28px;height:28px;padding:0!important;font-size:18px;text-decoration:none}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-wearing{box-sizing:border-box;padding:8px;overflow:hidden;min-width:0;min-height:136px}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-wearing-grid{grid-template-columns:repeat(3,42px);grid-auto-rows:42px;gap:4px;width:134px;margin:8px auto 0;overflow:visible}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-footer{box-sizing:border-box;flex:0 0 88px;height:88px;min-height:88px;padding:8px;overflow:hidden}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-footer-desc{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-polaris-row{position:static;flex:0 0 30px;min-height:30px;height:30px;flex-wrap:nowrap;gap:5px}
+.octane-inventory-window.has-badge-controls .octane-inventory-badges-polaris-row button{white-space:nowrap;font-size:11px;padding:4px 6px!important}
+/* Report flow uses the full window; the removed illustration must not reserve a blank column. */
+.octane-help.habbix-help-window.is-report{width:440px!important;min-width:0!important;height:auto!important;min-height:0!important}
+.habbix-help-window .habbix-help-report{min-height:280px;gap:12px!important;color:#ddd!important;font-family:HabbixKarla,Arial,sans-serif!important}
+.habbix-help-window .habbix-help-report :is(span,p,div,label){color:inherit!important}
+.habbix-help-report>div{flex-shrink:0}
+.habbix-help-report :is(button,.habbo-btn-primary,.habbo-btn-secondary,.habbo-btn-danger){min-height:30px;padding:6px 10px!important;background:#282828!important;color:#ddd!important;border:1px solid #555!important;border-image:none!important;border-radius:3px!important;font-family:inherit!important;text-shadow:none!important}
+.habbix-help-report :is(button,.habbo-btn-primary,.habbo-btn-secondary,.habbo-btn-danger):hover:not(:disabled),.habbix-help-report :is(button,.habbo-btn-primary,.habbo-btn-secondary,.habbo-btn-danger).active{background:#713c38!important;border-color:#b8423b!important}
+.habbix-help-report :is(button,.habbo-btn-primary,.habbo-btn-secondary,.habbo-btn-danger):disabled{opacity:.4}
+.habbix-help-report textarea{min-height:130px;background:#222222!important;color:#eee!important;border:1px solid #555;resize:vertical}
+.habbix-room-thumbnail-camera button:disabled{opacity:.45;cursor:default}
+.habbix-room-thumbnail-error{padding:8px;background:#2b2b2b;color:#ffaaa8;font:12px HabbixKarla,Arial,sans-serif;border-radius:3px}
+.octane-card-shell.octane-avatar-editor>.octane-avatar-editor-content.octane-card-content-shell{background:#2b2b2b!important}
+.octane-avatar-editor .octane-avatar-editor-main-tab.is-hd{flex:2}
+.octane-avatar-editor .octane-avatar-editor-palettes{overflow:hidden!important}
+.octane-avatar-editor .octane-avatar-editor-palettes .avatar-editor-palette-set-view{height:100%;min-height:0;flex:1 1 0;overflow:hidden}
+.octane-avatar-editor .avatar-editor-palette-grid{height:100%;max-height:none;overflow:auto}

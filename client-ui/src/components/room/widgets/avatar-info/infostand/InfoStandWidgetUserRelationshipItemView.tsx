@@ -1,0 +1,36 @@
+import { RelationshipStatusEnum, RelationshipStatusInfo } from '@octane/renderer';
+import { FC } from 'react';
+import { GetUserProfile, LocalizeText, localizeWithFallback } from '../../../../../api';
+import { Flex, Text } from '../../../../../common';
+
+interface InfoStandWidgetUserRelationshipsRelationshipItemViewProps {
+    type: number;
+    relationship: RelationshipStatusInfo;
+}
+
+export const InfoStandWidgetUserRelationshipsRelationshipItemView: FC<InfoStandWidgetUserRelationshipsRelationshipItemViewProps> = (props) => {
+    const { type = -1, relationship = null } = props;
+
+    if (!relationship) return null;
+
+    const relationshipName = RelationshipStatusEnum.RELATIONSHIP_NAMES[type].toLocaleLowerCase();
+
+    return (
+        <div className="flex items-center gap-1">
+            <i className={`octane-friends-spritesheet icon-${relationshipName}`} />
+            <Flex alignItems="center" gap={0}>
+                <button type="button" onClick={() => GetUserProfile(relationship.randomFriendId)}>
+                    <u>{relationship.randomFriendName}</u>
+                    {relationship.friendCount > 1 &&
+                        ' ' +
+                            localizeWithFallback(
+                                `infostand.relstatus.${relationshipName}.others`,
+                                LocalizeText(`extendedprofile.relstatus.others.${relationshipName}`, ['count'], [(relationship.friendCount - 1).toString()]),
+                                ['amount'],
+                                [(relationship.friendCount - 1).toString()]
+                            )}
+                </button>
+            </Flex>
+        </div>
+    );
+};

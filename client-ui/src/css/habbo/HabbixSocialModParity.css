@@ -1,0 +1,209 @@
+/* Social and staff windows share the compact hotel chrome and stable hover geometry. */
+.octane-card[class*="octane-mod-tools"]{--octane-card-text:#eee;--octane-card-muted:#a5a5a5;--habbo-text:#eee;--habbo-text-muted:#a5a5a5;font-family:HabbixKarla,"Segoe UI",Arial,sans-serif!important;color:#eee!important;background:#2b2b2b!important;border:1px solid #ffffff12!important;border-radius:5px!important;box-shadow:0 4px 12px #0005;padding:10px!important;max-height:calc(100dvh - 80px)!important}
+.hsm-mod-window{width:min(600px,calc(100vw - 20px))!important;height:min(430px,calc(100dvh - 80px))!important;min-width:0!important;min-height:0!important;resize:none!important;overflow:hidden!important}
+.hsm-mod-window.hsm-mod-wide{width:min(600px,calc(100vw - 20px))!important}
+.hsm-mod-window .octane-card-header-shell{height:32px!important;min-height:32px!important;margin:0 0 8px!important;background:#232323!important}
+.hsm-mod-tabs{display:flex;gap:4px;margin:0 0 8px;height:30px;flex:0 0 30px}
+.hsm-mod-tabs button{display:flex;align-items:center;justify-content:center;gap:4px;flex:1;min-width:0;height:30px;padding:4px 5px;color:#ddd;background:#262626;border:1px solid #ffffff16;border-radius:3px;font:600 11px HabbixKarla,"Segoe UI",Arial,sans-serif;cursor:pointer;transition:background-color .12s,border-color .12s;transform:none!important}
+.hsm-mod-tabs button:hover,.hsm-mod-tabs button[aria-pressed=true]{background:#713c38!important;border-color:#b8423b!important;color:#fff!important}
+.hsm-mod-count{min-width:13px;padding:0 3px;line-height:14px;background:#78403d;color:#fff;border-radius:3px;font-size:9px}
+.hsm-mod-content{padding:0!important;background:transparent!important;color:#eee!important;gap:8px!important;overflow:auto!important;min-height:0!important}
+.hsm-mod-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.hsm-mod-overview>button{display:flex;align-items:center;gap:10px;min-width:0;height:63px;padding:10px;color:#eee;background:#252525;border:1px solid #ffffff0e;border-radius:4px;text-align:left;cursor:pointer;position:relative;overflow:hidden;transition:background-color .14s,border-color .14s;transform:none!important}
+.hsm-mod-overview>button:hover{background:#3b292a;border-color:#b8423b}
+.hsm-mod-overview>button>span:last-child{display:flex;flex-direction:column;min-width:0;gap:3px}
+.hsm-mod-overview strong{font-size:14px;font-weight:700}.hsm-mod-overview small{font-size:10px;line-height:14px;color:#999999}
+.hsm-mod-icon{display:grid;place-items:center;flex:0 0 32px;height:32px}.hsm-mod-icon img,.hsm-mod-action-icon{width:auto;height:auto;max-width:28px;max-height:28px;image-rendering:pixelated;filter:drop-shadow(0 1px 1px #0008)}
+.hsm-mod-action-icon{max-width:18px;max-height:18px;margin-right:6px}
+.hsm-mod-section{display:flex;flex-direction:column;gap:12px;padding:12px;background:#272727;border-radius:4px;color:#eee;min-width:0}
+.hsm-mod-search{display:flex;gap:6px;align-items:flex-end;min-width:0}.hsm-mod-search label{display:flex;flex:1;flex-direction:column;gap:4px;font-size:12px;min-width:0}.hsm-mod-user-search label:first-child{flex:0 1 90px}
+.hsm-mod-search input{width:100%;height:30px;background:#191919!important;color:#eee!important;border:1px solid #ffffff1c!important;border-radius:4px!important;box-shadow:none!important;padding:5px 8px!important;font:12px HabbixKarla,"Segoe UI",Arial,sans-serif!important}
+.hsm-mod-search button,.hsm-closed-toolbar button,.hsm-closed-more{height:30px;padding:4px 12px;border:1px solid #b8423b;border-radius:4px;background:#713c38;color:#eee;font:600 12px HabbixKarla,"Segoe UI",Arial,sans-serif;cursor:pointer;transition:background-color .12s}
+.hsm-mod-search button:hover,.hsm-closed-toolbar button:hover,.hsm-closed-more:hover{background:#b8423b}
+.hsm-mod-empty{display:flex;justify-content:center;align-items:center;min-height:65px;margin:0;padding:12px;background:#1e1e1e;border-radius:3px;color:#9c9c9c;font-size:12px;text-align:center}
+.hsm-mod-hint{margin:0;padding:10px;color:#adadad;font-size:11px;line-height:16px;border-top:1px solid #ffffff12}
+.hsm-mod-error{margin:0;padding:8px 10px;color:#f3b4b4;background:#573535;border-radius:3px;font-size:12px}
+.hsm-mod-ticket-list{min-height:0;min-width:0;color:#eee}.hsm-mod-ticket-list .octane-card-content-shell{padding:10px 0 0!important;background:transparent!important;min-height:0!important;max-height:calc(100dvh - 210px);overflow:auto!important}.hsm-mod-ticket-list .octane-card-tabs-shell{margin:0!important}
+.hsm-closed-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:12px;color:#ddd}
+.hsm-closed-ticket{padding:10px;margin:0 0 6px;background:#222222;border:1px solid #ffffff12;border-radius:4px;font-size:12px;overflow-wrap:anywhere}
+.hsm-closed-ticket summary{display:flex;align-items:center;gap:8px;cursor:pointer;min-width:0}.hsm-closed-ticket summary strong{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.hsm-closed-ticket summary span,.hsm-closed-ticket summary time,.hsm-closed-ticket small{color:#9d9d9d;font-size:10px}.hsm-closed-ticket p{margin:8px 0;padding-top:8px;border-top:1px solid #ffffff0d;white-space:pre-wrap}.hsm-closed-more{margin-top:8px;width:100%}
+.octane-card[class*="octane-mod-tools"] .text-black,.octane-card[class*="octane-mod-tools"] [class*="text-zinc-"],.octane-card[class*="octane-mod-tools"] [class*="text-sky-"],.octane-card[class*="octane-mod-tools"] [class*="text-amber-"]{color:#dfdfdf!important}
+.octane-card[class*="octane-mod-tools"] [class*="bg-zinc-50"],.octane-card[class*="octane-mod-tools"] [class*="bg-sky-50"],.octane-card[class*="octane-mod-tools"] [class*="bg-amber-50"],.octane-card[class*="octane-mod-tools"] [class*="bg-emerald-50"],.octane-card[class*="octane-mod-tools"] [class*="from-"]{background:#252525!important;background-image:none!important;border-color:#ffffff16!important}
+.octane-card[class*="octane-mod-tools"] [class*="bg-rose-50"]{background:#513537!important;color:#efb5b8!important;border-color:#754549!important}
+.octane-card[class*="octane-mod-tools"] [class*="border-zinc-"]{border-color:#ffffff18!important}
+.octane-card[class*="octane-mod-tools"] :is(input:not([type=checkbox]):not([type=radio]),textarea,select){background:#1b1b1b!important;color:#eee!important;border:1px solid #ffffff26!important;border-radius:4px!important;box-shadow:none!important;font-family:inherit!important}
+.octane-card[class*="octane-mod-tools"] button:not(.habbix-animated-close){transition:background-color .12s,border-color .12s!important;transform:none!important}.octane-card[class*="octane-mod-tools"] button:not(.habbix-animated-close):hover{background-color:#713c38!important;color:#fff!important;border-color:#b8423b!important}
+.octane-card[class*="octane-mod-tools"] button:disabled{opacity:.45;cursor:default}
+.octane-card[class*="octane-mod-tools"] :is(.octane-card-tabs-item,.octane-card-tabs-item-shell){background-image:none!important;border-image:none!important;text-shadow:none!important;font-family:inherit!important}
+.octane-card[class*="octane-mod-tools"] *{scrollbar-width:thin!important;scrollbar-color:#555555 #222222!important}
+
+/* Drop every native AIR light scrollbar state, including hover, active and corner. */
+.octane-navigator-air .octane-navigator-air__results{scrollbar-width:thin!important;scrollbar-color:#515151 #252525!important;scrollbar-gutter:stable;padding-right:4px!important}
+.octane-navigator-air .octane-navigator-air__results::-webkit-scrollbar{width:6px!important;height:6px!important;background:#252525!important}
+.octane-navigator-air .octane-navigator-air__results::-webkit-scrollbar-track,.octane-navigator-air .octane-navigator-air__results::-webkit-scrollbar-corner{background:#252525!important;background-image:none!important;border-image:none!important}
+.octane-navigator-air .octane-navigator-air__results::-webkit-scrollbar-thumb,.octane-navigator-air .octane-navigator-air__results::-webkit-scrollbar-thumb:vertical,.octane-navigator-air .octane-navigator-air__results::-webkit-scrollbar-thumb:vertical:hover,.octane-navigator-air .octane-navigator-air__results::-webkit-scrollbar-thumb:vertical:active{background:#555555!important;background-image:none!important;border:0!important;border-image:none!important;border-radius:4px!important}
+.octane-navigator-air .octane-navigator-air__results::-webkit-scrollbar-button{display:none!important;width:0!important;height:0!important;background:none!important}
+.octane-navigator-air :is(.octane-navigator-air__row,.octane-navigator-air__tile,.octane-navigator-air__tab){transform:none!important;transition:background-color .14s,border-color .14s!important}
+
+/* The accent widens within reserved space; it never pushes avatars, text or buttons. */
+.habbo-friend-list .hfl-friend,.hmx-messenger .hmx-conversation{position:relative;overflow:hidden;transform:none!important;transition:background-color .14s,border-color .14s!important}
+.habbo-friend-list .hfl-friend::before,.hmx-messenger .hmx-conversation::before{content:"";position:absolute;left:5px;top:12px;bottom:12px;width:2px;border-radius:1px;background:#b8423b;opacity:.6;transition:width .14s,opacity .14s;pointer-events:none}
+.habbo-friend-list .hfl-friend:hover::before,.habbo-friend-list .hfl-friend.selected::before,.hmx-messenger .hmx-conversation:hover::before,.hmx-messenger .hmx-conversation.is-active::before{width:4px;opacity:1}
+.habbo-friend-list .hfl-friend{padding-left:15px!important}.hmx-messenger .hmx-conversation{padding-left:14px!important}
+.habbo-friend-list .hfl-friend.selected,.hmx-messenger .hmx-conversation.is-active{background:#713c38!important;border-color:#b8423b!important}
+.habbo-friend-list .habbix-friends-tabs button{position:relative;overflow:hidden;transition:background-color .14s,border-color .14s!important;transform:none!important}
+.habbo-friend-list .habbix-friends-tabs button[aria-pressed=true]{background:#713c38!important;border-color:#b8423b!important;color:#fff!important}
+.habbo-friend-list .habbix-friends-tabs button:hover{background:#3b292a!important;border-color:#b8423b!important}
+.habbo-friend-list :is(.hfl-content,.hmx-conversations,.hmx-messages){scrollbar-width:thin!important;scrollbar-color:#505050 #1b1b1b!important}
+.hmx-read{color:#59b7fa!important;font-weight:700}.hmx-sent{color:#989898!important}
+.friend-bar .friend-bar-friend.is-chat-open>.friend-bar-tab,.friend-bar .friend-bar-friend.is-selected>.friend-bar-tab,.friend-bar .friend-bar-find-friends.is-selected>.friend-bar-search{background:#713c38!important;border-color:#b8423b!important}
+.friend-bar :is(.friend-bar-tab,.friend-bar-search){position:relative;overflow:hidden;transition:background-color .14s,border-color .14s!important;transform:none!important}
+.friend-bar :is(.friend-bar-tab,.friend-bar-search)::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;background:#b8423b;border-radius:1px;opacity:0;pointer-events:none;transition:width .14s,opacity .14s}
+.friend-bar :is(.friend-bar-tab,.friend-bar-search):hover::before,.friend-bar .is-chat-open>.friend-bar-tab::before,.friend-bar .is-selected>:is(.friend-bar-tab,.friend-bar-search)::before{width:4px;opacity:1}
+@media(prefers-reduced-motion:reduce){.hsm-mod-window *,.habbo-friend-list .hfl-friend,.hmx-messenger .hmx-conversation,.habbo-friend-list .hfl-friend::before,.hmx-messenger .hmx-conversation::before,.friend-bar :is(.friend-bar-tab,.friend-bar-search)::before{transition:none!important;animation:none!important}}
+
+.hsm-mod-window :is(input,select,textarea,button,label){font-family:HabbixKarla,Arial,sans-serif!important}
+.hsm-mod-tabs button{font-size:12px;font-weight:700}
+.hsm-mod-search input{background:rgba(40,40,40,.68)!important;padding:8px 10px!important;height:34px}
+.hsm-mod-window h3{font:700 14.4px HabbixKarla,Arial,sans-serif}
+.hmx-messenger :is(input,textarea,button){font-family:HabbixKarla,Arial,sans-serif!important}
+.hmx-messenger :is(.hmx-avatar,.message-avatar) .avatar-image img{object-fit:contain!important;object-position:center!important}
+
+.octane-card.octane-mod-tools-tickets{resize:none!important;width:min(600px,calc(100vw - 20px))!important;height:min(430px,calc(100dvh - 80px))!important;min-width:0!important;min-height:0!important;max-width:calc(100vw - 20px)!important;overflow:hidden!important}
+.hsm-mod-window.hsm-mod-wide{height:min(430px,calc(100dvh - 80px))!important;min-height:0!important;max-width:calc(100vw - 20px)!important;overflow:hidden!important}
+.hsm-mod-wide .hsm-mod-content,.hsm-mod-ticket-list{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden!important}
+.hsm-mod-ticket-list .octane-card-content-shell{flex:1;min-height:0!important;overflow:auto!important}
+.habbo-friend-list .hfl-status-label{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:#eee}
+.habbo-friend-list .hfl-status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#777;flex:none}
+.habbo-friend-list .hfl-status-dot.online{background:#55b34b}
+.habbo-friend-list .hfl-status-count{background:#494949;color:#aaa;font-size:11px;font-weight:700;line-height:17px;min-width:18px;padding:0 4px;border-radius:3px;text-align:center}
+.habbo-friend-list .hfl-section-header{padding:6px 10px!important;height:35px!important;justify-content:space-between}
+.habbo-friend-list .hfl-select-all{opacity:0;font-size:10px;transition:opacity .15s}
+.habbo-friend-list .hfl-section-header:is(:hover,:focus-within) .hfl-select-all{opacity:1}
+.habbo-friend-list .hfl-content{overflow-y:auto;overflow-x:hidden;scrollbar-color:#555 #262626;scrollbar-width:thin}
+.habbo-friend-list .hfl-list{gap:4px!important;padding-top:0!important}
+.habbo-friend-list .hfl-friend{display:grid!important;grid-template-columns:32px minmax(0,1fr) auto!important;gap:7px!important;padding:7px 9px 7px 20px!important;border:0!important;border-radius:9px!important;box-shadow:none!important;min-height:48px!important;height:48px!important}
+.habbo-friend-list .hfl-friend-avatar{position:relative;display:flex;align-items:center;justify-content:center;width:32px!important;height:32px!important;padding:0;background:#1e1e1e;border:3px solid #555;border-radius:50%;overflow:hidden;cursor:pointer}
+.habbo-friend-list .hfl-friend-avatar .avatar-image{position:relative!important;inset:auto!important;display:flex!important;align-items:center;justify-content:center;width:100%!important;height:100%!important;transform:none!important;background:none!important}
+.habbo-friend-list .hfl-friend-avatar .avatar-image img{position:static!important;max-width:100%!important;max-height:100%!important;width:auto!important;height:auto!important;object-fit:contain;image-rendering:pixelated;transform:none!important}
+.habbo-friend-list .hfl-friend-copy{display:flex;flex-direction:column;gap:2px;min-width:0;line-height:14px}
+.habbo-friend-list .hfl-friend-name{font-size:13px!important;line-height:14px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.habbo-friend-list .hfl-friend-motto{color:#aaa;font-size:10px!important;line-height:12px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.habbo-friend-list .hfl-friend-actions{gap:6px!important;align-items:center;min-width:0}
+.habbo-friend-list .hfl-action.follow{width:21px!important;height:21px!important;background-image:url('../../assets/images/friends/friends-spritesheet.png')!important;background-position:-38px -5px!important}
+.habbo-friend-list .hfl-relationship{width:16px!important;height:14px!important}
+.habbo-friend-list .hfl-relationship.none{background-image:url('../../assets/images/friends/friends-spritesheet.png')!important;background-position:-31px -67px!important}
+.habbo-friend-list .hfl-relationship::after{display:none!important}
+.habbo-friend-list .hfl-relationship-menu{top:50%!important;right:9px!important;transform:translateY(-50%);width:auto!important;height:auto!important;padding:0!important;border:0!important;background:#262626!important;display:flex;gap:5px;box-shadow:none!important}
+.habbo-friend-list .hfl-relationship-menu button{width:16px!important;height:14px!important;margin:0!important;background-color:transparent!important;cursor:pointer}
+.habbo-friend-list .hfl-relationship-menu button.none{background-image:url('../../assets/images/friends/friends-spritesheet.png')!important;background-position:-31px -67px}
+.habbo-friend-list .hfl-friend.relationship-open .hfl-friend-actions{visibility:hidden}
+.habbo-friend-list .hfl-friend :is(button,.hfl-relationship-menu button):hover{filter:drop-shadow(1px 1px 0 #0008)}
+.hmx-team .hmx-header{display:none!important}
+.hmx-team .hmx-chat-pane{background:#2b2b2b}
+.hmx-team-header{display:flex;align-items:center;gap:5px;padding:8px 12px;min-height:46px;background:#222222;border-bottom:1px solid #ffffff1a}
+.hmx-team-channel,.hmx-team-header button{padding:6px 12px;border-radius:6px;background:#ffffff19;color:#eee;font-size:12px;font-weight:700;border:0;cursor:pointer}
+.hmx-team-channel{background:#b8423b}
+.hmx-team-header .hmx-team-info-button{margin-left:auto;padding:6px 10px}
+.hmx-team-info{margin:6px 12px;padding:10px;background:#222222;border:1px solid #ffffff19;border-radius:5px;color:#aaa;font-size:12px;line-height:1.4}
+.tb-open-shell-right .friend-bar .friend-bar-find-friends .friend-bar-search{width:127px!important;height:38px!important;min-height:38px!important;background:#262626!important;border:1px solid #ffffff08!important;border-radius:9px!important;padding:0 10px 0 42px!important;box-shadow:none!important;font:700 12px HabbixKarla,Arial,sans-serif!important;color:#ddd!important;transform:none!important}
+.tb-open-shell-right .friend-bar .friend-bar-find-friends .friend-bar-search:hover{background:#2b2b2b!important}
+.tb-open-shell-right .friend-bar .friend-bar-find-friends .friend-bar-search::before{display:none!important}
+.tb-open-shell-right .friend-bar .friend-bar-search .friend-bar-item-head{position:absolute!important;left:5px!important;top:1px!important;width:31px!important;height:34px!important;background-repeat:no-repeat;background-position:center;filter:drop-shadow(1px 1px 0 #0008);pointer-events:none}
+.tb-open-shell-right .friend-bar .friend-bar-find-friends .friend-bar-text{font:700 12px HabbixKarla,Arial,sans-serif!important;text-align:left!important}
+.hmx-messenger :is(.hmx-avatar,.message-avatar){border:0!important;background:transparent!important;border-radius:50%!important;padding:0!important}
+.hmx-avatar-frame{box-sizing:border-box;position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-width:0;min-height:0;border:3px solid #2b2b2b;border-radius:50%;background:#1e1e1e;overflow:hidden;flex:none}
+.hmx-avatar-frame .avatar-image{position:relative!important;inset:auto!important;display:flex!important;align-items:center;justify-content:center;width:100%!important;height:100%!important;margin:0!important;background:none!important;transform:none!important}
+.hmx-avatar-frame .avatar-image img{position:static!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain;image-rendering:pixelated;transform:none!important}
+.hps-avatar-preview{display:flex;align-items:center;gap:14px;margin:0 0 12px;padding:12px;background:#222222;border-radius:5px;color:#eee}
+.hps-avatar-preview>.hmx-avatar-frame{width:64px;height:64px}
+.hps-avatar-preview>span:last-child{display:flex;flex-direction:column;gap:4px}
+.hps-avatar-preview small{color:#aaa;font-size:12px}
+.hsm-mod-window .hsm-mod-content{min-height:0!important;flex:1;overflow:auto!important}
+.hmx-messenger .hmx-avatar-frame .avatar-image{width:100%!important;height:100%!important;display:flex!important;align-items:center;justify-content:center}
+.hmx-messenger .hmx-avatar-frame .avatar-image img{max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important}
+.habbo-friend-list .hfl-friend-avatar .avatar-image img,.hmx-messenger .hmx-avatar-frame .avatar-image img{max-width:80%!important;max-height:80%!important}
+.hsm-mod-window,.hsm-mod-window.hsm-mod-wide{width:min(400px,calc(100vw - 20px))!important}
+.habbix-wallet-separator{display:block;flex:none;width:1px;height:24px;background:#ffffff12;margin:0 3px}
+.habbix-wallet-bar>button{background:transparent!important;border:0!important;width:38px;height:32px}
+.habbix-wallet-bar>button>img{max-width:24px!important;max-height:24px!important;transition:transform .15s,filter .15s}
+.habbix-wallet-bar>button:hover>img{transform:translate(-1px,-1px);filter:drop-shadow(2px 2px 0 #000b)}
+.octane-card.octane-mod-tools-tickets{width:min(400px,calc(100vw - 20px))!important}
+.habbix-wallet-bar{height:44px!important;box-sizing:border-box;gap:12px!important;padding:8px 12px!important}
+.habbix-wallet-bar>button{width:28px!important;height:28px!important;flex:none}
+.habbix-wallet-separator{height:24px;margin:0 -5px}
+.habbix-live-lotto{left:auto!important;right:max(10px,calc(50% - var(--habbix-wallet-half-width,230px)))!important;top:62px!important}
+body:has(.habbix-live-lotto) .hep-live-stack{left:max(10px,calc(50% - var(--habbix-wallet-half-width,230px)))!important}
+.tb-open-shell .tb-memenu-avatar .habbix-toolbar-avatar{display:flex!important;align-items:center;justify-content:center;width:36px!important;height:40px!important;background:none!important}
+.tb-open-shell .habbix-toolbar-avatar img{position:static!important;width:auto!important;height:auto!important;max-width:30px!important;max-height:34px!important;object-fit:contain;image-rendering:pixelated}
+.habbix-room-owner-avatar{box-sizing:border-box;width:24px;height:24px;border-width:2px}
+.habbix-room-owner-avatar .avatar-image{position:relative!important;inset:auto!important;display:flex!important;align-items:center;justify-content:center;background:none!important}
+.habbix-room-owner-avatar .avatar-image img{position:static!important;max-width:16px!important;max-height:18px!important;transform:none!important;object-fit:contain}
+
+.octane-avatar-action-menu--own .octane-context-menu-footer::before,.octane-avatar-action-menu--own.menu-hidden .octane-context-menu-footer::before{width:10px!important;height:5px!important;background-size:10px 5px!important;transform:none!important;filter:none!important}
+.octane-avatar-action-menu--own.menu-hidden{width:38px!important;min-width:38px!important;max-width:38px!important;height:25px!important;min-height:25px!important;padding:0!important}
+.octane-avatar-action-menu--own.menu-hidden .octane-context-menu-footer{width:38px!important;min-width:38px!important;height:25px!important;min-height:25px!important;margin:0!important}
+.octane-avatar-action-menu--own.menu-hidden .octane-context-menu-footer::before{top:10px!important;left:14px!important}
+
+.tb-open-shell-right .friend-bar .friend-bar-find-friends.is-selected .friend-bar-search{background:#b8423b!important;border-color:#b8423b!important}
+.tb-open-shell-right .friend-bar .friend-bar-find-friends .friend-bar-search:hover{background:#b8423b!important;border-color:#b8423b!important}
+
+/* Inventory subpanels use the same dark surfaces as the furniture tab. */
+.octane-inventory-window .octane-inventory-badges{width:100%!important;gap:8px;min-height:0;color:#eee}
+.octane-inventory-window .octane-inventory-badges-main{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:12px;min-height:120px;flex:1;overflow:hidden}
+.octane-inventory-window .octane-inventory-badges-owned{position:relative;inset:auto;width:auto;min-width:0;min-height:0;padding:8px;background:#222222;border-radius:4px;overflow:auto}
+.octane-inventory-window .octane-inventory-badges-owned-grid{grid-template-columns:repeat(auto-fill,42px);gap:5px;overflow:visible;height:auto}
+.octane-inventory-window .octane-inventory-badges-wearing{position:relative;inset:auto;width:auto;padding:8px;background:#222222;border-radius:4px;overflow:auto}
+.octane-inventory-window .octane-inventory-badges-wearing-grid{grid-template-columns:repeat(3,42px);grid-auto-rows:42px;gap:4px;margin:8px 0 0;width:auto}
+.octane-inventory-window .octane-inventory-badges-wearing-title{width:auto;color:#ccc}
+.octane-inventory-window .octane-inventory-badges-footer{display:flex;align-items:center;gap:10px;width:100%;height:auto;min-height:88px;flex:0 0 auto;padding:10px;border:1px solid #ffffff12;border-image:none!important;background:#222222;border-radius:4px}
+.octane-inventory-window .octane-inventory-badges-footer-image{position:static;flex:none;width:44px;height:44px}
+.octane-inventory-window .octane-inventory-badges-footer-details{position:static;flex:1;min-width:0;width:auto;gap:4px}
+.octane-inventory-window :is(.octane-inventory-badges-footer-name,.octane-inventory-badges-footer-desc){width:auto;color:#eee;overflow-wrap:anywhere}
+.octane-inventory-window .octane-inventory-badges-footer-desc{color:#aaa}
+.octane-inventory-window .octane-inventory-badges-footer-actions{position:static;flex:none;align-self:center}
+.octane-inventory-window .octane-inventory-badges-polaris-row{display:flex;flex-wrap:wrap;gap:5px;height:auto;min-height:30px;width:100%}
+.octane-inventory-window .octane-inventory-badges-pages{position:static;flex-wrap:wrap;height:auto;margin-top:8px}
+.octane-inventory-window .octane-inventory-badges :is(button,.octane-button){background:#2b2b2b!important;color:#eee!important;border:1px solid #ffffff20!important;border-image:none!important;border-radius:3px!important;min-height:28px;box-shadow:none!important;padding:4px 8px!important}
+.octane-inventory-window .octane-inventory-badges button:hover:not(:disabled){background:#b8423b!important}
+.octane-inventory-window .octane-inventory-badges button:disabled{opacity:.45}
+.octane-inventory-window .habbix-inventory-prefix{min-height:0;color:#eee;overflow:hidden}
+.habbix-inventory-prefix .habbix-prefix-tabs{display:flex;gap:4px;background:transparent;border:0;padding:0}
+.habbix-prefix-tabs>div{width:100%;gap:4px!important}
+.habbix-prefix-tabs button{flex:1;min-height:30px;border:1px solid #ffffff20;border-radius:3px;background:#262626;color:#ddd;font:700 12px HabbixKarla,Arial,sans-serif}
+.habbix-prefix-tabs button.habbix-prefix-active{background:#b8423b;border-color:#b8423b;color:#fff}
+.habbix-inventory-prefix>.grid{flex:1;min-height:0;height:auto!important}
+.habbix-inventory-prefix .grid>:is(.col-span-7,.col-span-5){min-width:0;min-height:0;background:#222222;border-radius:4px;padding:8px;gap:8px}
+.habbix-inventory-prefix :is(.bg-card-grid-item,.border-card-grid-item-border){background:#262626!important;border-color:#555!important}
+.habbix-inventory-prefix button:not(.habbix-prefix-active):hover{background:#713c38;color:#fff}
+/* Mentions: no inherited cream input caps or shiny button sprites. */
+.mentions-window{width:min(380px,calc(100vw - 20px))!important;max-height:calc(100dvh - 80px)!important;color:#eee;font-family:HabbixKarla,Arial,sans-serif!important}
+.mentions-window .mentions-search{height:32px;flex:none;background:#222222!important;border:1px solid #ffffff20;border-radius:4px;box-shadow:none}
+.mentions-window .mentions-search::before,.mentions-window .mentions-search::after{display:none!important}
+.mentions-window .mentions-search input{background:transparent!important;color:#eee!important;border:0!important;min-width:0;padding:0;box-shadow:none!important}
+.mentions-window :is(.mentions-filter,.mentions-refresh,.mention-row-action){background:#262626!important;color:#ddd!important;border:1px solid #ffffff20!important;border-image:none!important;border-radius:4px;box-shadow:none;min-height:28px}
+.mentions-window button::before,.mentions-window button::after{background-image:none!important;box-shadow:none!important}
+.mentions-window .mentions-filter.is-active,.mentions-window .mentions-filter:hover{background:#b8423b!important;border-color:#b8423b!important;color:#fff!important}
+.mentions-window .mentions-list{min-height:140px;max-height:320px;overflow:auto;scrollbar-width:thin;scrollbar-color:#555 #222222}
+.mentions-window .mention-row{background:#222222;border-radius:4px;margin-bottom:5px;min-width:0}
+.mentions-window .mention-row:hover{background:#713c38}
+.mentions-window :is(.mention-row-name,.mention-row-msg){color:#eee}
+.mentions-window :is(.mention-row-room,.mention-row-time,.mentions-group-label){color:#aaa}
+.mentions-window .mention-row-avatar{width:32px;height:32px;border:2px solid #555;border-radius:50%;background:#1e1e1e;overflow:hidden;flex:none}
+.mentions-window .mention-row-avatar .avatar-image{position:relative!important;inset:auto!important;display:flex;align-items:center;justify-content:center;width:100%!important;height:100%!important;background:none!important}
+.mentions-window .mention-row-avatar img{position:static!important;max-width:24px;max-height:26px;width:auto;height:auto;object-fit:contain;image-rendering:pixelated}
+/* Larger integral-sized action icons with crisp, hard shadows. */
+.habbix-wallet-bar{height:44px!important;transform:none!important}
+.habbix-wallet-bar>button{width:28px!important;height:28px!important}
+.habbix-wallet-bar img{image-rendering:pixelated!important;filter:drop-shadow(1px 1px 0 #0009)!important}
+.habbix-wallet-bar>button>img{max-width:none!important;max-height:none!important}
+.habbix-wallet-bar>button[aria-label="Preisliste"]>img{width:28px!important;height:28px!important;object-fit:contain}
+.habbix-wallet-bar>button[aria-label="Smart Mode"]>img{width:22px!important;height:22px!important}
+.habbix-wallet-bar>button[aria-label="Zur Website"]>img{width:22px!important;height:22px!important}
+.habbix-live-lotto,.hep-live-stack{top:62px!important}
+@media(max-width:480px){.octane-inventory-window .octane-inventory-badges-main{grid-template-columns:minmax(0,1fr) 116px}.octane-inventory-window .octane-inventory-badges-wearing-grid{grid-template-columns:repeat(2,42px)}.octane-inventory-window .octane-inventory-badges-footer{flex-wrap:wrap}.habbix-wallet-bar{gap:6px!important;padding:8px!important}}
+.octane-inventory-window .octane-inventory-badge-wear-empty{position:static;margin-left:auto;width:auto;min-width:130px}
+.octane-inventory-window .octane-inventory-badges-polaris-row{flex:0 0 auto}
+.octane-inventory-window .octane-inventory-badges-footer-actions{width:140px;height:auto}
+.octane-inventory-window .octane-inventory-badges-footer .octane-inventory-btn-wear{width:140px;max-width:100%}
+.hsm-mod-window,.hsm-mod-window.hsm-mod-wide,.octane-card.octane-mod-tools-tickets{width:min(360px,calc(100vw - 20px))!important;height:min(380px,calc(100dvh - 80px))!important}

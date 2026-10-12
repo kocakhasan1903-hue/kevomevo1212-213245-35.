@@ -1,0 +1,156 @@
+package server.websocket;
+
+import com.eu.habbo.Emulator;
+import com.eu.habbo.networking.Server;
+import gnu.trove.map.hash.THashMap;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.timeout.IdleStateHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import server.websocket.client.WebSocketClientManager;
+import server.websocket.incoming.IncomingWebMessage;
+import server.websocket.incoming.common.account.ChangePasswordEvent;
+import server.websocket.incoming.common.account.ChangeSettingsEvent;
+import server.websocket.incoming.common.account.GetAccountSettings;
+import server.websocket.incoming.common.articles.comments.DeleteCommentByUserEvent;
+import server.websocket.incoming.common.articles.comments.InsertCommentEvent;
+import server.websocket.incoming.common.articles.comments.RemoveCommentEvent;
+import server.websocket.incoming.common.auths.*;
+import server.websocket.incoming.common.articles.*;
+import server.websocket.incoming.common.catalog.UpdatePriceItemEvent;
+import server.websocket.incoming.common.community.*;
+import server.websocket.incoming.common.misc.PingEvent;
+import server.websocket.incoming.common.misc.Updates;
+import server.websocket.incoming.common.profile.ProfileEvent;
+import server.websocket.incoming.common.profile.UpdateProfileEvent;
+import server.websocket.incoming.common.shop.ShopSuccessEvent;
+import server.websocket.incoming.common.tweets.*;
+import server.websocket.security.SSLCertificateLoader;
+
+public class WebSocketManager extends Server {
+    public static WebSocketManager instance;
+    private final WebSocketClientManager clientManager;
+    private final THashMap<String, Class<? extends IncomingWebMessage>> incomingMessages;
+    private final SslContext context;
+    private final boolean SSL;
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketManager.class);
+
+    public WebSocketManager() throws Exception {
+        super("WebSocketCMS Server", "0.0.0.0", 2087, 2, 4);
+        this.clientManager = new WebSocketClientManager();
+        this.incomingMessages = new THashMap<>();
+        context = SSLCertificateLoader.getContext(Emulator.getConfig().getValue("ws.cert.pass", ""));
+        SSL = context != null;
+        initializeMessages();
+    }
+
+    public static void Init() {
+        try {
+            instance = new WebSocketManager();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void initializePipeline() {
+        super.initializePipeline();
+        this.serverBootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
+            @Override
+            public void initChannel(SocketChannel ch) throws Exception {
+                if (SSL)
+                    ch.pipeline().addLast(context.newHandler(ch.alloc()));
+
+                ch.pipeline().addLast(new HttpServerCodec());
+                ch.pipeline().addLast(new HttpObjectAggregator(65536));
+                ch.pipeline().addLast(new CustomHTTPHandler());
+                ch.pipeline().addLast(new WebSocketServerProtocolHandler("/", true));
+                ch.pipeline().addLast(new IdleStateHandler(60, 30, 0));
+                ch.pipeline().addLast(new WebSocketMessageHandler());
+            }
+        });
+    }
+
+    public void initializeMessages() {
+        // AUTHS
+        this.registerMessage("auth", AuthEvent.class);
+        this.registerMessage("login", LoginEvent.class);
+        this.registerMessage("register", RegisterEvent.class);
+
+        // COMMUNITY
+        this.registerMessage("tops", TopsEvent.class);
+        this.registerMessage("staff", StaffsEvent.class);
+        this.registerMessage("topsCommunity", CommunityEvent.class);
+        this.registerMessage("vipsEvent", VipsEvent.class);
+
+        // NEWS
+        this.registerMessage("news", LastArticlesEvent.class);
+        this.registerMessage("article", GetArticleEvent.class);
+        this.registerMessage("allnew", AllArticlesEvent.class);
+        this.registerMessage("newComment", InsertCommentEvent.class);
+        this.registerMessage("removeComment", RemoveCommentEvent.class);
+        this.registerMessage("dcomment", DeleteCommentByUserEvent.class);
+
+        // TWEETS
+        this.registerMessage("tweets", TweetsEvent.class);
+        this.registerMessage("createTweet", CreateTweetEvent.class);
+        this.registerMessage("deleteTweet", DeleteTweetEvent.class);
+        this.registerMessage("addReaction", ReactionEvent.class);
+        this.registerMessage("dtweet", DeleteTweetByUserEvent.class);
+
+        // ACCOUNT
+        this.registerMessage("changePassword", ChangePasswordEvent.class);
+        this.registerMessage("settings", GetAccountSettings.class);
+        this.registerMessage("changeSettings", ChangeSettingsEvent.class);
+
+        // SHOP
+        this.registerMessage("shopSuccess", ShopSuccessEvent.class);
+
+        // PROFILE
+        this.registerMessage("getProfile", ProfileEvent.class);
+        this.registerMessage("updateProfile", UpdateProfileEvent.class);
+
+        // MISC
+        this.registerMessage("ping", PingEvent.class);
+        this.registerMessage("upd4te", Updates.class);
+        this.registerMessage("updateRarePrice", UpdatePriceItemEvent.class);
+    }
+
+    public void registerMessage(String key, Class<? extends IncomingWebMessage> message) {
+        this.incomingMessages.put(key, message);
+    }
+
+    public THashMap<String, Class<? extends IncomingWebMessage>> getIncomingMessages() {
+        return this.incomingMessages;
+    }
+
+    public static WebSocketManager getInstance() {
+        if (instance == null) {
+            try {
+                instance = new WebSocketManager();
+            } catch (Exception ex) {
+                LOGGER.info(ex.getMessage());
+            }
+        }
+        return instance;
+    }
+
+    public WebSocketClientManager getClientManager() {
+        return this.clientManager;
+    }
+
+    public boolean isSSL() {
+        return SSL;
+    }
+
+    public void Dispose() {
+        clientManager.dispose();
+        incomingMessages.clear();
+        instance = null;
+    }
+}

@@ -1,0 +1,31 @@
+import { FC, MouseEvent, useMemo } from 'react';
+import { Flex, FlexProps } from '../../../../common';
+
+interface ContextMenuListItemViewProps extends FlexProps {
+    disabled?: boolean;
+}
+
+export const ContextMenuListItemView: FC<ContextMenuListItemViewProps> = (props) => {
+    const { disabled = false, fullWidth = true, justifyContent = 'center', alignItems = 'center', classNames = [], onClick = null, ...rest } = props;
+
+    const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+        if (disabled) return;
+
+        if (onClick) onClick(event);
+    };
+
+    const getClassNames = useMemo(() => {
+        const newClassNames: string[] = [
+            'octane-context-menu-item',
+            'cursor-pointer'
+        ];
+
+        if (disabled) newClassNames.push('disabled');
+
+        if (classNames.length) newClassNames.push(...classNames);
+
+        return newClassNames;
+    }, [disabled, classNames]);
+
+    return <Flex alignItems={alignItems} classNames={getClassNames} fullWidth={fullWidth} justifyContent={justifyContent} onClick={handleClick} role="menuitem" aria-disabled={disabled} tabIndex={disabled?-1:0} onKeyDown={event=>{if(disabled)return;if(event.key==='Enter'||event.key===' '){event.preventDefault();event.currentTarget.click();}}} {...rest} />;
+};

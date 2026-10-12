@@ -1,0 +1,59 @@
+.tb-open-shell-right .friend-bar.friend-bar--paged {
+    gap: 6px !important;
+    padding: 0 !important;
+}
+
+.friend-bar.friend-bar--paged .friend-bar-page-arrow {
+    flex: 0 0 32px;
+    width: 32px;
+}
+
+.tb-open-shell-right .friend-bar.friend-bar--paged .friend-bar-button,
+.friend-bar.friend-bar--paged .friend-bar-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 32px !important;
+    height: 32px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    background: #292929 !important;
+    box-shadow: none !important;
+    color: #eee !important;
+    opacity: 1 !important;
+    cursor: pointer;
+    transform: none !important;
+    transition: background-color .14s ease, color .14s ease;
+}
+
+.tb-open-shell-right .friend-bar.friend-bar--paged .friend-bar-button:disabled,
+.friend-bar.friend-bar--paged .friend-bar-button:disabled {
+    color: #595959 !important;
+    background: #2d2d2d !important;
+    cursor: default;
+    filter: none !important;
+}
+
+.friend-bar.friend-bar--paged .friend-bar-button:not(:disabled):hover {
+    background: #3c3c3c !important;
+    color: #fff !important;
+}
+
+.friend-bar.friend-bar--paged .friend-bar-button:focus-visible {
+    outline: 2px solid #46aaa3;
+    outline-offset: 2px;
+}
+
+.friend-bar.friend-bar--paged .friend-bar-button svg {
+    display: block;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .friend-bar.friend-bar--paged .friend-bar-button {
+        transition: none;
+    }
+}

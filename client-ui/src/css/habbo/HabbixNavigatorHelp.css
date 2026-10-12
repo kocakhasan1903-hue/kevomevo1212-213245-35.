@@ -1,0 +1,109 @@
+/* Override AIR hover sprites in every state; geometry stays constant. */
+.octane-navigator-air .octane-navigator-air__tab,
+.octane-navigator-air .octane-navigator-air__tab:hover,
+.octane-navigator-air .octane-navigator-air__tab.is-active,
+.octane-navigator-air .octane-navigator-air__tab.is-active:hover {
+    height:30px!important;min-height:30px!important;max-height:30px!important;
+    padding:4px 8px!important;line-height:20px!important;border:1px solid #ffffff1a!important;
+    border-radius:3px!important;background:#262626!important;background-image:none!important;
+    color:#eee!important;transform:none!important;transition:background-color .12s ease,border-color .12s ease!important;
+}
+.octane-navigator-air .octane-navigator-air__tab:hover,
+.octane-navigator-air .octane-navigator-air__tab:focus-visible {background:#713c38!important;border-color:#b8423b!important}
+.octane-navigator-air .octane-navigator-air__tab.is-active,
+.octane-navigator-air .octane-navigator-air__tab.is-active:hover {background:#b8423b!important;border-color:#b8423b!important}
+.octane-navigator-air .octane-navigator-air__rows,
+.octane-navigator-air .octane-navigator-air__tiles {width:100%!important;max-width:none!important;box-sizing:border-box;margin:0!important;padding:4px 0!important}
+.octane-navigator-air .octane-navigator-air__category {margin-left:0!important}
+.octane-navigator-air .octane-navigator-air__tiles {display:grid!important;grid-template-columns:repeat(auto-fit,minmax(122px,1fr));gap:8px!important}
+.octane-navigator-air .octane-navigator-air__tile {width:100%!important;min-width:0!important;max-width:none!important;transform:none!important}
+.octane-navigator-air .octane-navigator-air__row:hover,
+.octane-navigator-air .octane-navigator-air__row:focus-visible {background:#713c38!important;transform:none!important}
+.octane-navigator-air .octane-navigator-air__row .octane-navigator-air__room-info {background-position:right center!important;padding-left:9px!important}
+.octane-navigator-air .octane-navigator-air__quick-toggle,
+.octane-navigator-air .octane-navigator-air__quick-toggle:hover {background:#262626!important;background-image:none!important;transform:none!important;transition:background-color .12s ease!important}
+.octane-navigator-air .octane-navigator-air__quick-toggle:hover {background:#713c38!important}
+.octane-navigator-air .octane-navigator-air__action {height:34px!important;min-height:34px!important;font-size:12px!important}
+.octane-navigator-air .octane-navigator-air__actions {height:34px!important;min-height:34px!important;flex:0 0 34px!important}
+.octane-navigator-air .octane-navigator-air__action img {width:26px!important;min-width:26px!important;max-width:26px!important;height:26px!important;object-fit:contain!important}
+.octane-navigator-air__room-bubble {min-height:0!important;max-height:calc(100vh - 16px);overflow:auto;padding:10px!important;border:1px solid #ffffff26!important;border-image:none!important;border-radius:5px!important;background:#2b2b2bf5!important;color:#eee!important;font-family:HabbixKarla,"Segoe UI",Arial,sans-serif!important;filter:none!important;box-shadow:0 3px 12px #0006}
+.octane-navigator-air__room-bubble:before {display:none}
+.octane-navigator-air__room-bubble-content,
+.octane-navigator-air__room-popover-header,
+.octane-navigator-air__room-popover-owner-row,
+.octane-navigator-air__room-popover-details {width:100%!important;max-width:100%!important}
+.octane-navigator-air__room-popover-header {grid-template-columns:78px minmax(0,1fr)!important;height:auto!important;min-height:82px;padding:0!important;gap:8px;background:transparent!important}
+.octane-navigator-air__room-popover-thumbnail {width:78px!important;height:78px!important;border-color:#ffffff26!important;border-radius:3px!important}
+.octane-navigator-air__room-popover-copy {height:auto!important;padding:0!important}
+.octane-navigator-air__room-popover-title {font-family:inherit!important;font-size:14px!important}
+.octane-navigator-air__room-popover-description {color:#aaa!important;font-size:12px!important;line-height:16px!important}
+.octane-navigator-air__room-owner,.octane-navigator-air__room-group {color:#eee!important;font-family:inherit!important}
+.octane-navigator-air__room-popover-details {grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:6px;border-top:1px solid #ffffff14;padding-top:6px}
+.octane-navigator-air__room-popover-properties {grid-template-columns:minmax(0,1fr) auto!important;gap:4px}
+.octane-navigator-air__room-popover-actions {padding-left:0!important}
+.octane-navigator-air__room-popover-actions button {width:100%!important;color:#ddd!important;font-family:inherit!important}
+
+.octane-help.habbix-help-window {display:flex!important;flex-direction:column!important;box-sizing:border-box!important;padding:10px!important;gap:8px!important;border:1px solid #ffffff12!important;border-image:none!important;border-radius:4px!important;background:#2b2b2b!important;background-image:none!important;color:#eee!important;box-shadow:0 4px 16px #0004!important;font-family:HabbixKarla,"Segoe UI",Arial,sans-serif!important;max-height:calc(100dvh - 80px)!important}
+.octane-help.habbix-help-window.is-tickets {width:390px!important;min-width:0!important;max-width:calc(100vw - 16px)!important;height:auto!important;min-height:0!important}
+.habbix-help-window>.octane-card-header-shell {position:relative!important;inset:auto!important;flex:0 0 32px!important;height:32px!important;min-height:32px!important;max-height:32px!important;width:100%!important;margin:0!important;padding:0 30px!important;background:#222222!important;background-image:none!important;border:0!important;border-radius:3px!important}
+.habbix-help-window>.octane-card-header-shell:before {display:none!important}
+.habbix-help-window .octane-card-close-button {right:3px!important;top:50%!important;width:24px!important;height:24px!important;background:#783d43!important;border:0!important;border-image:none!important;border-radius:3px!important;box-shadow:none!important}
+.habbix-help-window .octane-card-close-button:before {display:none!important}
+.habbix-help-window .octane-card-close-button:after {content:'×'!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;margin:0!important;background:none!important;color:#fff!important;font:700 18px/24px Arial!important;transform:none!important;text-align:center}
+.habbix-help-window {resize:none!important}
+.habbix-help-window>.octane-card-content-shell {position:relative!important;inset:auto!important;height:auto!important;padding:0!important;background:transparent!important;overflow:auto!important;min-height:0!important;border:0!important;border-image:none!important;box-shadow:none!important}
+.habbix-help-tickets {display:flex;flex-direction:column;gap:8px;min-width:0;font-size:14px;color:#eee}
+.habbix-ticket-tabs {display:flex;gap:4px}
+.habbix-ticket-tabs button {flex:1;min-width:0;height:30px}
+.habbix-help-tickets button {padding:4px 8px;border:1px solid #ffffff1a;border-radius:3px;background:#282828;color:#ddd;font:600 12px/20px HabbixKarla,"Segoe UI",Arial,sans-serif;cursor:pointer;transition:background-color .12s ease,border-color .12s ease}
+.habbix-help-tickets button:hover:not(:disabled) {background:#713c38;border-color:#b8423b}
+.habbix-ticket-tabs button[aria-selected=true] {background:#282828;border-color:#ffffff33;color:#fff}
+.habbix-ticket-list {min-height:200px;max-height:calc(100vh - 350px);overflow:auto;display:flex;flex-direction:column;gap:8px;scrollbar-width:thin;scrollbar-color:#555 #222222}
+.habbix-ticket-empty {margin:0;padding:16px;text-align:center;background:#0003;border-radius:4px;color:#aaa}
+.habbix-ticket {padding:10px;background:#0003;border:1px solid #ffffff14;border-radius:4px}
+.habbix-ticket header {display:flex;justify-content:space-between;gap:8px;font-size:12px}
+.habbix-ticket time,.habbix-ticket small {color:#999}
+.habbix-ticket p {white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0}
+.habbix-ticket-banner {display:flex;flex-direction:column;gap:4px;background:#b8423b;border-radius:4px;padding:16px}
+.habbix-ticket-banner strong {font-size:18px}
+.habbix-ticket-message {display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:600}
+.habbix-ticket-message textarea {min-height:100px;max-height:calc(100vh - 350px);width:100%;box-sizing:border-box;resize:vertical;border:1px solid #666;border-radius:4px;background:#444!important;color:#eee!important;font:400 14px/20px HabbixKarla,"Segoe UI",Arial,sans-serif;padding:8px}
+.habbix-ticket-message textarea::placeholder {color:#aaa!important}
+.habbix-ticket-message textarea:focus {outline:1px solid #b8423b;border-color:#b8423b}
+.habbix-ticket-counter {color:#999;font-size:11px}
+.habbix-ticket-footer {border-top:1px solid #ffffff1a;padding-top:8px;display:flex;gap:8px}
+.habbix-ticket-footer button {flex:1}
+.habbix-help-tickets button.is-primary {background:#b8423b;border-color:#b8423b;color:#fff}
+.habbix-help-tickets button:disabled {opacity:.45;cursor:default}
+.habbix-ticket-error,.habbix-ticket-notice {margin:0;padding:8px;border-radius:3px;font-size:12px;overflow-wrap:anywhere}
+.habbix-ticket-error {background:#8a3b3b40;color:#ffbdbd}.habbix-ticket-notice {background:#b8423b40;color:#f3c9c5}
+.habbix-ticket-other {font-size:12px;color:#aaa}.habbix-ticket-other summary {cursor:pointer;line-height:22px}
+.habbix-ticket-other img {display:none}.habbix-help-window .help-link,.habbix-ticket-other .text-\[\#5c5c5c\] {color:#bbb!important}
+.habbix-ticket-other .habbo-btn-green {background:#b8423b!important;border-color:#b8423b!important;color:#fff!important;box-shadow:none!important;text-shadow:none!important}
+@media(prefers-reduced-motion:reduce){.octane-navigator-air .octane-navigator-air__tab,.habbix-help-tickets button{transition:none!important}}
+@media(max-height:520px){.habbix-ticket-list{min-height:100px;max-height:150px}.habbix-ticket-message textarea{max-height:140px}}
+
+/* Measured reference geometry: 490 × 530, 32px rows and 8px list gaps. */
+.octane-navigator-air{height:min(530px,calc(100dvh - 74px))!important;min-width:0!important;max-width:calc(100vw - 20px)!important;zoom:1!important;font-family:HabbixKarla,Arial,sans-serif!important}
+.octane-navigator-air__title{font:700 14px/26px HabbixKarla,Arial,sans-serif!important}
+.octane-navigator-air__tabs{right:10px!important;align-items:center!important}
+.octane-navigator-air__tab{flex:1 1 0!important;width:auto!important;font-family:HabbixKarla,Arial,sans-serif!important}
+.octane-navigator-air__quick-toggle{top:15px!important;right:40px!important;width:22px!important;height:22px!important}
+.octane-navigator-air__help{display:none!important}
+.octane-navigator-air__body{top:90px!important;bottom:10px!important;height:auto!important;max-height:none!important}
+.octane-navigator-air__actions,.octane-navigator-air__resize{display:none!important}
+.octane-navigator-air__results{padding:0 8px 0 10px!important}
+.octane-navigator-air__category-header{height:28px!important;min-height:28px!important;font:700 15px/20px HabbixKarla,Arial,sans-serif!important;background:transparent!important}
+.octane-navigator-air__rows{gap:8px!important;padding:4px 0 8px!important}
+.octane-navigator-air__row{height:32px!important;min-height:32px!important;max-height:32px!important;flex:0 0 32px!important;background:#222222!important;clip-path:none!important;border-radius:4px!important;transition:background-color .15s!important}
+.octane-navigator-air__row-name{font:700 13px/24px HabbixKarla,Arial,sans-serif!important;top:4px!important;left:54px!important;width:calc(100% - 102px)!important;height:24px!important;color:#eee!important}
+.octane-navigator-air__row::before{content:'';position:absolute;left:47px;top:9px;bottom:9px;width:3px;border-radius:2px;background:#b8423b;transition:top .15s,bottom .15s}
+.octane-navigator-air__row:hover::before{top:5px;bottom:5px}
+.octane-navigator-air__search-filter,.octane-navigator-air__search-input{height:32px!important;font:600 12px HabbixKarla,Arial,sans-serif!important;border-radius:4px!important}
+.octane-navigator-air__search select{appearance:none!important;background-image:none!important}
+.octane-navigator-air .octane-navigator-air__row-name{font:700 13px/24px HabbixKarla,Arial,sans-serif!important;top:4px!important;left:54px!important;right:48px!important;width:auto!important;height:24px!important}
+.octane-navigator-air__row::before{height:auto!important}
+
+/* Keep a clear six-pixel gap from the user-count pill to the animated stripe. */
+.octane-navigator-air__row::before{left:52px!important}
+.octane-navigator-air .octane-navigator-air__row-name{left:63px!important}

@@ -1,0 +1,48 @@
+/* Detached desktop docks, matching the owner's placement sketch. */
+:root{--habbix-dock-radius:10px}
+.octane-toolbar-hobba{display:none!important}
+.habbix-main-dock:not(.hidden){position:fixed!important;left:12px!important;right:auto!important;top:50%!important;bottom:auto!important;width:88px!important;max-width:88px!important;height:auto!important;overflow:visible!important;transform:translateY(-50%)!important;z-index:71}
+.habbix-main-dock>.tb-open-shell{flex-direction:column!important;gap:5px!important;width:88px!important;max-width:none!important;height:auto!important;padding:8px!important;background:#303030!important;border:1px solid #ffffff15;border-radius:var(--habbix-dock-radius);box-shadow:0 4px 14px #0005;overflow:visible!important}
+.habbix-main-dock .tb-open-shell .tb-slot{width:70px!important;min-width:70px!important;height:50px!important;min-height:50px!important;border-radius:7px!important}
+.habbix-main-dock .tb-slot-compass .habbix-compass{width:70px;gap:6px;padding:0 3px}
+.habbix-main-dock .habbix-compass img{width:30px;height:30px}
+.habbix-main-dock .habbix-compass strong{font-size:11px}
+.habbix-main-dock .tb-slot-memenu>.habbix-me-popover{left:calc(100% + 18px)!important;right:auto!important;top:0!important;bottom:auto!important;max-width:calc(100vw - 115px);border-radius:10px}
+.habbix-me-menu{border-radius:10px!important}
+.habbix-event-dock{position:fixed;z-index:71;left:auto;right:12px;bottom:12px;transform:none;display:flex!important;width:max-content;max-width:calc(100vw - 24px)!important;height:56px!important;padding:8px 10px!important;background:#303030!important;border:1px solid #ffffff15;border-radius:var(--habbix-dock-radius);box-shadow:0 4px 14px #0005}
+.habbix-social-dock:not(.hidden){position:fixed!important;bottom:12px!important;right:auto!important;left:50%!important;width:max-content!important;max-width:calc(100vw - 24px)!important;height:56px!important;border:1px solid #ffffff15;border-radius:var(--habbix-dock-radius);background:#303030!important;box-shadow:0 4px 14px #0005;overflow:visible!important;transform:translateX(-50%)!important}
+.habbix-social-dock>.tb-open-shell-right{height:54px!important;padding:7px 8px!important;border-radius:var(--habbix-dock-radius)}
+.habbix-social-dock .friend-bar :is(.friend-bar-tab,.friend-bar-search){border-radius:7px!important}
+@media (pointer:fine) and (hover:hover){.tb-frame{bottom:80px!important}.octane-room-tools-container{bottom:90px!important}}
+/* Compact wallet with directly accessible actions. */
+.habbix-wallet-bar{position:relative;display:grid!important;grid-template-columns:minmax(110px,auto) minmax(72px,auto) auto;grid-template-rows:30px 30px;height:auto!important;gap:6px!important;padding:9px!important;border:1px solid #ffffff15;border-radius:var(--habbix-dock-radius)!important;max-width:calc(100vw - 32px)!important}
+.habbix-wallet-bar>span{border-radius:6px!important;min-height:30px!important}
+.habbix-wallet-actions{grid-column:3;grid-row:1 / 3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding-left:8px;border-left:1px solid #ffffff20}
+.habbix-wallet-actions button{display:flex;align-items:center;justify-content:center;width:30px;height:24px;flex-shrink:0;border:0;border-radius:6px;background:transparent;color:#eee;cursor:pointer}
+.habbix-wallet-actions button:hover{background:#ffffff12}
+.habbix-wallet-actions img{width:24px;height:24px;object-fit:contain;image-rendering:pixelated}
+/* Keep the social dock and central controls separate on narrower desktops. */
+@media (max-width:1280px) and (pointer:fine) and (hover:hover){.habbix-event-dock{left:auto;right:12px;bottom:76px}.tb-frame{bottom:82px!important}}
+@media (max-width:1050px) and (pointer:fine) and (hover:hover){.habbix-event-dock{bottom:76px;left:auto;right:12px}.tb-frame{bottom:140px!important;max-width:calc(100vw - 115px)!important}.habbix-social-dock:not(.hidden){bottom:12px!important}.octane-room-tools-container{bottom:142px!important}}
+@media (max-height:760px){.habbix-main-dock>.tb-open-shell{gap:3px!important;padding:6px!important}.habbix-main-dock .tb-open-shell .tb-slot{height:42px!important;min-height:42px!important}.habbix-main-dock .tb-icon{scale:1}.habbix-main-dock .tb-slot-compass .habbix-compass{height:32px!important}}
+@media (pointer:fine) and (hover:hover){.octane-room-tools-container.habbix-room-tools{bottom:90px!important}}
+@media(max-width:1050px) and (pointer:fine) and (hover:hover){.octane-room-tools-container.habbix-room-tools{bottom:142px!important}}
+
+@media(max-width:1050px) and (pointer:fine) and (hover:hover){.tb-frame{left:calc(50% + 55px)!important;width:min(400px,calc(100vw - 320px))!important;bottom:142px!important}}
+
+/* Personal shortcuts remain close to the lower left corner. */
+.habbix-personal-dock{position:fixed;left:12px;bottom:12px;z-index:72;display:flex!important;align-items:center;gap:5px!important;width:max-content;height:56px!important;padding:8px!important;background:#303030!important;border:1px solid #ffffff15;border-radius:var(--habbix-dock-radius);box-shadow:0 4px 14px #0005;overflow:visible!important}
+.habbix-personal-dock .tb-slot{width:48px!important;min-width:48px!important;height:40px!important;border-radius:7px!important}
+.habbix-personal-dock .tb-slot-memenu>.habbix-me-popover{left:0!important;right:auto!important;top:auto!important;bottom:calc(100% + 16px)!important;max-width:calc(100vw - 40px);border-radius:10px}
+@media(max-width:1050px) and (pointer:fine) and (hover:hover){.habbix-personal-dock{bottom:76px}}
+
+.habbix-personal-separator{width:1px;min-width:1px;height:28px;background:#ffffff24;margin:0 3px;align-self:center}
+.habbix-personal-price{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border:0;background:transparent;border-radius:7px;cursor:pointer}
+.habbix-personal-price:hover{background:#ffffff0b}
+.habbix-personal-price img{width:28px;height:28px;object-fit:contain;image-rendering:pixelated}
+
+/* Separate lower docks retain their existing positions and spacing. */
+@media(pointer:fine) and (hover:hover){
+ .habbix-social-dock:not(.hidden){z-index:71!important}
+}
+

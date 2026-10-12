@@ -1,0 +1,93 @@
+/* Position animation independently from the transform used for window dragging. */
+@keyframes habbix-window-enter{from{opacity:0;translate:0 9px}to{translate:0 0}}
+.draggable-window[data-window-ready="true"]{animation:habbix-window-enter .24s cubic-bezier(.22,1,.36,1)}
+@keyframes habbix-live-drop{from{opacity:0;translate:0 -32px;scale:.97}to{opacity:1;translate:0 0;scale:1}}
+.hep-live-stack .hep-auction-widget{animation:habbix-live-drop .38s cubic-bezier(.22,1,.36,1)!important}
+.habbix-voice-channels{width:180px!important;border-radius:9px;transition:width .26s cubic-bezier(.22,1,.36,1)}
+.habbix-voice-channels.is-open{width:250px!important}
+.habbix-voice-channels .hvc-header{min-height:32px!important;padding:5px 8px!important;gap:7px}
+.habbix-voice-channels .hvc-header>span{font-size:12px}
+.habbix-voice-channels .hvc-header>svg:first-child{width:17px;height:17px}
+.habbo-friend-list .habbix-friends-tabs>button[aria-pressed="false"]{background:#262626!important;border-color:#ffffff20!important;color:#ccc!important;box-shadow:none!important}
+.habbo-friend-list .habbix-friends-tabs>button[aria-pressed="false"]:hover{background:#353535!important}
+.habbo-friend-list .habbix-friends-tabs>button[aria-pressed="true"]{background:#713c38!important;border-color:#b8423b!important;color:#fff!important;box-shadow:inset 3px 0 #d97770!important}
+.habbix-room-tools .habbix-room-card{transition:translate .3s cubic-bezier(.22,1,.36,1),opacity .25s ease,visibility 0s;translate:0 0;opacity:1;visibility:visible}
+.habbix-room-tools.is-collapsed .habbix-room-card{translate:calc(-100% - 18px) 0;opacity:0;visibility:hidden;transition:translate .3s cubic-bezier(.22,1,.36,1),opacity .25s ease,visibility 0s .3s}
+@media(prefers-reduced-motion:reduce){.draggable-window[data-window-ready="true"],.habbix-live-lotto,.hep-live-stack .hep-auction-widget{animation:none!important}.habbix-voice-channels,.habbix-room-tools .habbix-room-card{transition:none!important}}
+
+/* The profile shortcuts share their avatar anchor and spacing. */
+.habbix-personal-dock .tb-slot-memenu>.habbix-me-popover{bottom:calc(100% + 14px)!important;overflow:visible;transform-origin:24px bottom}
+.habbix-personal-dock .habbix-me-popover::after{content:'';position:absolute;left:18px;bottom:-6px;width:11px;height:11px;rotate:45deg;background:#303030eb;border-right:1px solid #ffffff20;border-bottom:1px solid #ffffff20;pointer-events:none}
+.habbix-personal-dock .habbix-me-menu{background:#303030d9!important;backdrop-filter:blur(8px);border:1px solid #ffffff20!important;gap:8px!important;padding:8px!important;border-radius:9px!important}
+.habbix-personal-dock .habbix-me-menu>.navigation-item,.habbix-personal-dock .habbix-me-menu>.habbix-me-wheel{flex:0 0 36px!important;width:36px!important;height:36px!important;background-position:center;background-repeat:no-repeat;transition:translate .18s ease,background-color .18s ease}
+.habbix-personal-dock .habbix-me-menu>.navigation-item:hover,.habbix-personal-dock .habbix-me-menu>.habbix-me-wheel:hover{translate:0 -3px}
+.habbix-personal-dock .tb-memenu-avatar{transition:translate .2s ease,filter .2s ease;cursor:pointer}
+.habbix-personal-dock .tb-memenu-avatar:hover,.habbix-personal-dock .tb-memenu-avatar.is-open{translate:0 -3px;filter:drop-shadow(0 2px 3px #0006)}
+.habbix-infostand-anchor{right:12px!important;bottom:80px!important;max-height:calc(100dvh - 100px);z-index:73}
+.hpx-infostand{max-height:calc(100dvh - 110px)!important;transition:translate .22s cubic-bezier(.22,1,.36,1),box-shadow .22s ease;animation:habbix-window-enter .24s ease-out}
+.hpx-infostand:hover{translate:0 -4px;box-shadow:0 8px 18px #0007}
+.hpx-infostand>section,.hpx-infostand>.hpx-group{flex-shrink:0}
+.hpx-infostand .hpx-motto,.hpx-infostand .hpx-infostand-badges{position:relative;inset:auto;min-width:0}
+.hpx-infostand .hpx-namebar{padding-left:94px;height:auto;min-height:28px;flex-basis:auto;overflow-wrap:anywhere}
+@media(max-width:1280px) and (pointer:fine) and (hover:hover){.habbix-infostand-anchor{bottom:144px!important;max-height:calc(100dvh - 160px)}.hpx-infostand{max-height:calc(100dvh - 170px)!important}}
+.habbix-context-content{overflow:hidden;min-height:0}
+.octane-avatar-action-menu--own{transition:width .28s cubic-bezier(.22,1,.36,1),min-width .28s cubic-bezier(.22,1,.36,1),max-width .28s cubic-bezier(.22,1,.36,1),padding .28s ease}
+.octane-avatar-action-menu--own .habbix-context-content{width:116px;max-width:100%;flex-shrink:0}
+.octane-avatar-action-menu--own.menu-hidden{height:auto!important;min-height:25px!important}
+@media(prefers-reduced-motion:reduce){.hpx-infostand,.habbix-personal-dock .tb-memenu-avatar,.habbix-personal-dock .habbix-me-menu>.navigation-item,.octane-avatar-action-menu--own{transition:none!important;animation:none!important}}
+
+/* Embedded room-layout step shares the navigator window. */
+.habbix-room-create>[hidden]{display:none!important}
+.habbix-floorplan-embedded{height:100%;min-height:0;display:flex;flex-direction:column;overflow:auto;background:#262626;color:#eee;border-radius:7px;animation:habbix-window-enter .24s ease-out;font:12px HabbixKarla,Arial,sans-serif}
+.habbix-floorplan-heading{display:flex;align-items:center;gap:12px;padding:8px;flex:none;background:#222222}
+.habbix-floorplan-heading button{padding:5px 9px}
+.habbix-floorplan-embedded>div{min-height:0;padding:8px!important;overflow:auto!important;background:transparent!important}
+.habbix-floorplan-embedded .fp-body{min-height:0;gap:8px}
+.habbix-floorplan-embedded .fp-panels{display:flex;flex-direction:column;gap:10px}
+.habbix-floorplan-embedded .fp-panel{min-height:220px;height:250px;flex:none}
+.habbix-floorplan-embedded .fp-panel-body{min-height:0;flex:1}
+.habbix-floorplan-embedded .fp-panel-head{font-size:11px;min-height:30px}
+.habbix-floorplan-embedded .fp-panel-info{font-size:10px}
+.habbix-floorplan-embedded .fp-badge{width:28px;height:28px;font-size:12px}
+.habbix-floorplan-embedded .fp-controls{flex:none}
+.habbix-floorplan-embedded .fp-controls button{max-width:42px;max-height:38px}
+.habbix-floorplan-embedded .fp-footer{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0;flex:none}
+.habbix-floorplan-embedded .fp-btn{font-size:12px;padding:7px 9px;border-radius:4px;background:#b8423b;border:1px solid #b8423b;box-shadow:none}
+.habbix-floorplan-embedded .fp-btn.is-red{background:#573739;border-color:#805055}
+.habbix-floorplan-embedded .fp-btn.is-grey{background:#353535;border-color:#555}
+.octane-navigator-air .octane-navigator-air__search-field{height:32px!important;display:flex;align-items:center;position:relative;padding:0!important;box-sizing:border-box}
+.octane-navigator-air .octane-navigator-air__search-input{position:static!important;inset:auto!important;display:block;height:30px!important;line-height:normal!important;padding:0 32px 0 9px!important;box-sizing:border-box;border:0!important;margin:0!important;background:transparent!important;font-style:normal}
+.octane-navigator-air .octane-navigator-air__search-clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);margin:0}
+.octane-extended-profile-window *, .habbix-room-create *{scrollbar-width:thin!important;scrollbar-color:#686868 #222222!important}
+.octane-extended-profile-window ::-webkit-scrollbar,.habbix-room-create ::-webkit-scrollbar{width:7px!important;height:7px!important;background:#222222!important}
+.octane-extended-profile-window ::-webkit-scrollbar-thumb,.habbix-room-create ::-webkit-scrollbar-thumb{background:#686868!important;border:0!important;border-radius:4px!important}
+.octane-extended-profile-window ::-webkit-scrollbar-button,.habbix-room-create ::-webkit-scrollbar-button{display:none!important;width:0!important;height:0!important}
+@media(prefers-reduced-motion:reduce){.habbix-floorplan-embedded{animation:none}}
+
+.habbix-floorplan-embedded{--fp-bg:#262626;--fp-text:#eee;--fp-box:#353535;--fp-box-top:#454545;--fp-box-bottom:#222222;--fp-box-active:#713c38;--fp-box-active-top:#b8423b;--fp-box-active-bottom:#713c38;--fp-select:#343434;--fp-select-top:#444;--fp-select-bottom:#222222;--fp-frame:#262626;--fp-blue:#b8423b;--fp-blue-dark:#713c38}
+.habbix-floorplan-embedded .fp-body{height:auto;padding:3px;flex:none}
+.habbix-floorplan-embedded .fp-tools{flex-wrap:wrap;gap:4px}
+.habbix-floorplan-embedded .fp-tool{width:38px;height:36px;border:1px solid #ffffff20;border-radius:4px;color:#ccc}
+.habbix-floorplan-embedded .fp-tool.is-gap{margin-left:4px}
+.habbix-floorplan-embedded .fp-tool:hover{background:#713c38}
+.habbix-floorplan-embedded .fp-tool.is-disabled{background:#262626;opacity:.4}
+.habbix-floorplan-embedded .fp-control-label{font:700 12px HabbixKarla,Arial;color:#bbb}
+.habbix-floorplan-import{min-height:0;display:flex;flex-direction:column;flex:1;background:#262626;border-radius:7px;animation:habbix-window-enter .24s ease-out}
+.habbix-floorplan-import textarea{background:#1b1b1b;color:#ddd;border:1px solid #555;min-height:180px}
+@media(prefers-reduced-motion:reduce){.habbix-floorplan-import{animation:none}}
+.habbix-floorplan-embedded .fp-body,
+.habbix-floorplan-embedded :is(.fp-panel-title,.fp-panel-info,.fp-control-label,.fp-tool,.fp-round-btn,.fp-pill,.fp-btn,.fp-select),
+.habbix-floorplan-import :is(button,textarea){color:#fff!important}
+.habbix-floorplan-embedded .fp-round-btn svg{color:inherit}
+.habbix-floorplan-embedded .fp-tools{gap:5px;padding:5px;background:#222222;border:1px solid #ffffff0e;border-radius:7px;width:fit-content}
+.habbix-floorplan-embedded .fp-tool{width:31px;height:30px;min-width:31px;min-height:30px;padding:0;border-radius:5px;box-shadow:none}
+.habbix-floorplan-embedded .fp-tool .octane-icon{scale:.8}
+.habbix-floorplan-embedded .fp-tool.is-active{background:#713c38;border-color:#d97770}
+.habbix-floorplan-embedded .fp-round-btn{width:24px!important;height:24px!important;min-width:24px!important;min-height:24px!important;padding:0!important;border:1px solid #ffffff30!important;border-radius:5px!important;box-shadow:none!important;background:#3b292a!important;font-size:10px!important}
+.habbix-floorplan-embedded .fp-round-btn:hover:not(:disabled){background:#b8423b!important}
+.habbix-floorplan-embedded .fp-stage-buttons{gap:4px;top:6px;right:6px}
+.habbix-floorplan-embedded .fp-panel-title{font-size:12px}
+.habbix-floorplan-embedded .fp-panel-info{font-size:10px}
+.habbix-floorplan-embedded .fp-group-label{font:700 11px HabbixKarla,Arial;color:#fff;margin-bottom:5px}
+.habbix-floorplan-embedded .fp-badge{width:23px;height:23px;font-size:11px;box-shadow:0 0 0 1px #ffffff80}
+.habbix-floorplan-embedded .fp-footer .fp-btn{font:700 11px HabbixKarla,Arial;padding:6px 8px;min-height:28px}
