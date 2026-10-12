@@ -5,7 +5,7 @@ Stand: 13.10.2026. Dieses Repository ergänzt einen bereits vorhandenen Octane-C
 ## Inhalt
 
 - `client-ui/src`: geänderte und zusätzliche UI-Komponenten, Funktionen, CSS, Tests sowie sämtliche Client-Bilder, Icons und Schriftdateien. Unveränderte Client-Komponenten kommen aus dem vorhandenen Octane-Projekt.
-- `client-ui/public`: zugehörige öffentliche Assets, eigene Fischgrafiken, deutsche Texte und angepasste Loader.
+- `client-ui/public`: zugehörige öffentliche Assets, eigene Fischgrafiken und deutsche Texte.
 - `renderer-overlay`: die geänderten Renderer-Dateien für Verbindungsverwaltung und Raumeinladungen; kein kompletter Renderer.
 - `polaris-overlay`: zusätzliche und geänderte Emulator-Dateien für die zugehörigen Funktionen; kein kompletter Emulator.
 - `plugins/HabbixFishing`: Angelplugin-Quellcode, Tests und Kompatibilitäts-Builder.
@@ -43,7 +43,7 @@ Vorher den vorhandenen Client sichern und in einem eigenen Git-Branch arbeiten. 
 1. Den **Inhalt** von `client-ui/` in das vorhandene Octane-Verzeichnis übernehmen. Dadurch werden `src/` und `public/` ergänzt. Das komplette Octane-Projekt wird hier nicht mitgeliefert.
 2. Die Dateien aus `renderer-overlay/` an dieselben relativen Pfade im vorhandenen Renderer übernehmen.
 3. Bestehende `package.json`, Lockdateien, Vite-Konfiguration, SSO und Hotelkonfiguration behalten. Die neuen Komponenten nutzen die Bibliotheken des angegebenen vorhandenen Client-Stands, unter anderem React, Zustand und Framer Motion. Bei älteren Versionen Abhängigkeiten und APIs abgleichen.
-4. In der Zielkonfiguration HTTP-/WebSocket-Endpunkte, API, Furni-Assets, STUN/TURN und Bootstrap passend zum eigenen Hotel einstellen. Exportierte feste Hoteladressen wurden auf `habbo.am` umgestellt. Loader vor dem Ersetzen mit dem eigenen Loader vergleichen.
+4. In der Zielkonfiguration HTTP-/WebSocket-Endpunkte, API, Furni-Assets, STUN/TURN und Bootstrap passend zum eigenen Hotel einstellen. Exportierte feste Hoteladressen wurden auf `habbo.am` umgestellt. Den vorhandenen Loader und die SSO-Einbindung des Zielhotels verwenden.
 5. Mit der im vorhandenen Projekt verwendeten Paketverwaltung installieren, Typecheck/Tests ausführen und den Client neu bauen. Mindestens Node.js 22.12 für den geprüften Stand verwenden.
 6. Den eigenen Build in den Client-Webordner übertragen. Fischgrafiken müssen unter `/client/assets/fishing/` erreichbar sein; bei abweichendem Pfad die Icon-URLs in der Fischverwaltung anpassen.
 

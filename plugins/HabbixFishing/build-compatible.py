@@ -6,7 +6,7 @@ root=Path(__file__).resolve().parent;core=Path(a.core).resolve(strict=True);webs
 with zipfile.ZipFile(core) as z:
     required=['com/eu/habbo/habbohotel/economy/EconomyLedger.class','com/eu/habbo/habbohotel/users/LedgerWalletMutation.class']
     missing=[n for n in required if n not in z.namelist()]
-    if missing:raise SystemExit('Core API incompatible: '+', '.join(missing)+'. Use the included Polaris sources; do not replace a running core blindly.')
+    if missing:raise SystemExit('Core API incompatible: '+', '.join(missing)+'. Integrate the required APIs into your compatible Polaris fork; do not replace a running core blindly.')
 classes=out/'fishing-classes';classes.mkdir(exist_ok=True)
 subprocess.run(['javac','-encoding','UTF-8','-cp',str(core),'-d',str(classes),*[str(f) for f in (root/'src').rglob('*.java')]],check=True)
 subprocess.run(['jar','--create','--file',str(out/'HabbixFishing.jar'),'-C',str(classes),'.','-C',str(root),'plugin.json'],check=True)
